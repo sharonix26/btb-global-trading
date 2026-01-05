@@ -1,0 +1,15 @@
+{
+  "home": {
+    "title": "BTB Global Trading",
+    "subtitle": "Cross-border payments and FX execution support built for global operators and private clients.",
+    "intro": "BTB is an EU-based company headquartered in Warsaw, Poland, supporting international settlements, currency operations, and trade execution support through a network of licensed financial partners. We work with importers, exporters, corporate finance teams, and private clients who need structured execution, operational efficiency, and transparent pricing across multiple countries and currencies.",
+    "capabilities": {
+      "multiCurrency": "Multi-currency settlement support across major and emerging corridors (including EUR, USD, GBP, ILS, TRY, AED, BRL, MXN, CNY, and more).",
+      "regulated": "Regulated financial infrastructure supported by licensed partners in the EU and other key jurisdictions.",
+      "execution": "Execution support across payment workflows, FX coordination, and cross-border treasury operations.",
+      "regional": "Regional experience across Europe, Latin America, the Middle East, and China."
+    },
+    "closing": "Whether you’re importing goods, exporting services, managing global treasury, or making a personal international transfer, we help you move capital with clarity and control.",
+    "disclaimer": "Note: BTB does not act as a bank or licensed payment partner. Payments are processed by regulated partner partners, subject to onboarding and compliance requirements."
+  }
+}

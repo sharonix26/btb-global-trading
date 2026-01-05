@@ -1,0 +1,248 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About Us",
+    "contact": "Contact Us",
+    "contactSales": "Contact Sales"
+  },
+
+  "home": {
+    "hero": {
+      "titleLine1": "Empowering Your Global Trade",
+      "titleLine2": "Journey",
+      "subtitle": "Seamless International Payments, FX & Treasury, and Expert Trade Support.",
+      "cta": "Contact Sales"
+    },
+    "features": {
+      "globalPayments": {
+        "title": "Global Payments",
+        "body": "Seamlessly send and receive international payments with competitive rates and speed."
+      },
+      "fxTreasury": {
+        "title": "FX & Treasury",
+        "body": "Optimize your foreign exchange strategies and manage currency risks effectively."
+      },
+      "tradeSupport": {
+        "title": "Trade Support",
+        "body": "Access expert guidance and solutions for your complex international trade operations."
+      }
+    },
+    "aboutSection": {
+      "title": "About BTB Trading",
+      "body": "TradeFlow Global is your premier partner in navigating the complexities of international trade and finance. Based in Warsaw, our team of experts provides tailored solutions designed to empower businesses worldwide, ensuring efficient, secure, and compliant cross-border transactions. We are committed to fostering global connectivity and growth."
+    },
+    "whyChoose": {
+      "title": "Why Choose Us?",
+      "subtitle": "",
+      "points": {
+        "euCompliance": "EU-Regulated Compliance",
+        "personalizedGuidance": "Personalized Guidance",
+        "crossBorderExpertise": "Cross-Border Expertise",
+        "fastSecureTransactions": "Fast & Secure Transactions"
+      }
+    }
+  },
+
+  "about": {
+    "hero": {
+      "title": "ABOUT US",
+      "imageAlt": "Global network",
+      "description": "BTB Global Trading is a privately held EU-based company headquartered in Warsaw, Poland. We provide access to regulated financial infrastructure through a network of licensed partners. Our role is to coordinate, support, and simplify complex cross-border financial operations. Transactions are carried out by licensed financial partners.",
+      "ctaPrimary": "Contact Sales",
+      "ctaSecondary": "Learn More"
+    },
+    "whoWeAre": {
+      "title": "Who We Are",
+      "description": "BTB Global Trading is a privately held EU-based company headquartered in Warsaw, Poland. We provide access to regulated financial infrastructure through a network of licensed partners. Our role is to coordinate, support, and simplify complex cross-border financial operations. Transactions are carried out by licensed financial partners.",
+      "features": {
+        "coordination": {
+          "title": "Coordination",
+          "text": "We orchestrate execution through licensed partners and keep operations moving end-to-end."
+        },
+        "compliance": {
+          "title": "Compliance First",
+          "text": "Processes are aligned to regulatory frameworks across jurisdictions."
+        },
+        "crossBorder": {
+          "title": "Cross-Border Focus",
+          "text": "Designed for international flows, multi-currency needs, and complex settlement routes."
+        },
+        "visibility": {
+          "title": "Operational Clarity",
+          "text": "Clear visibility across steps, timelines, and counterparties involved."
+        }
+      }
+    },
+    "builtFor": {
+      "title": "What We’re Built For",
+      "subtitle": "We support organizations and individuals that require:",
+      "bullets": [
+        "Reliable, accurate international settlements.",
+        "Transparent foreign exchange (FX) execution and clear operational visibility.",
+        "Coordinated support across time zones, currencies, and regulatory frameworks.",
+        "Compliance-aligned processes backed by licensed partners in multiple jurisdictions."
+      ]
+    },
+    "operate": {
+      "title": "Where We Operate",
+      "regions": "European Union - Israel - Turkey - UAE - Latin America - China"
+    },
+    "workWith": {
+      "title": "Who We Work With",
+      "cards": {
+        "importers": {
+          "title": "Importers, Exporters, & Global Supply Chains",
+          "items": [
+            "Streamlined payments for international trade.",
+            "Efficient FX execution to manage currency risks.",
+            "Compliance-aligned processes for smooth cross-border operations."
+          ]
+        },
+        "cfos": {
+          "title": "CFOs, Treasury Teams, & Finance Departments",
+          "items": [
+            "Enhanced operational visibility for financial controls.",
+            "Reliable and accurate international settlements.",
+            "Support across complex regulatory frameworks."
+          ]
+        },
+        "logistics": {
+          "title": "International Logistics Providers & B2B Platforms",
+          "items": [
+            "Coordinated support across time zones and currencies.",
+            "Simplified complex cross-border financial operations.",
+            "Access to regulated financial infrastructure."
+          ]
+        },
+        "private": {
+          "title": "Private Individuals & Family Offices",
+          "items": [
+            "Cross-border capital needs handled with expertise.",
+            "Reliable and accurate international settlements.",
+            "Subject to onboarding and compliance verification."
+          ]
+        },
+        "partners": {
+          "title": "Licensed Financial Partners",
+          "items": [
+            "Network of trusted, licensed partners.",
+            "Ensuring regulatory compliance for all transactions.",
+            "Facilitating secure and efficient financial operations globally."
+          ]
+        },
+        "security": {
+          "title": "Compliance & Security Focused",
+          "items": [
+            "Adherence to EU regulatory standards.",
+            "Robust security measures for all transactions.",
+            "Partnerships with fully licensed financial institutions."
+          ]
+        }
+      }
+    },
+    "cta": {
+      "title": "Ready to Bridge Markets and Empower Your Trade?",
+      "button": "Contact Sales"
+    }
+  },
+
+  "footer": {
+    "description": "Your trusted partner for seamless international trade and payments. Empowering global business.",
+    "company": "Company",
+    "services": "Services",
+    "links": {
+      "home": "Home",
+      "about": "Services",
+      "contact": "Contact Us"
+    },
+    "serviceItems": {
+      "globalPayments": "Global Payments",
+      "fxTreasury": "FX & Treasury",
+      "tradeSupport": "Trade Support"
+    },
+    "copyright": "BTB Global Trading. All rights reserved."
+  },
+
+  "services": {
+    "hero": {
+      "title": "Comprehensive Solutions for Your Global Business",
+      "subtitle": "At BTB Global Trading, we support international operators and private clients with execution-focused services designed to streamline cross-border payments, optimize FX coordination, and reduce friction across global trade workflows."
+    },
+    "cta": "Contact Sales",
+
+    "globalPayments": {
+      "title": "Global Payments",
+      "body": "Cross-border settlements coordinated through regulated channels. We support multi-currency payments across key corridors in Europe, Latin America, the Middle East, and Asia through licensed financial partners.",
+      "bullets": [
+        "Multi-currency settlements across major and emerging corridors.",
+        "Supplier and operational payments with tracking and documentation readiness.",
+        "Same-day / next-day execution in many corridors (subject to onboarding and cut-offs).",
+        "Payment structuring aligned to regulated processes and operational realities."
+      ]
+    },
+
+    "fxTreasury": {
+      "title": "FX & Treasury Services",
+      "body": "Better currency execution, timing, and control across jurisdictions. We support finance teams with structured FX coordination and treasury planning via partner solutions where appropriate.",
+      "bullets": [
+        "FX conversion coordination with clear visibility into execution structure.",
+        "Hedging support through partner solutions (where available and appropriate).",
+        "Treasury timing and cash flow planning across currencies and pay dates.",
+        "Deal-specific structuring (split payments, staged settlements, multi-party flows)."
+      ]
+    },
+
+    "tradeSupport": {
+      "title": "Trade Support",
+      "body": "Operational support for international trade workflows. We help teams reduce friction in payments, documentation readiness, and cross-border coordination across regions and counterparties.",
+      "bullets": [
+        "Execution support for trade-related payment workflows across jurisdictions.",
+        "Support for compliance-aligned processes and partner onboarding readiness.",
+        "Coordination across time zones, currencies, and operational constraints.",
+        "Regional experience across Europe, Latin America, the Middle East, and China."
+      ]
+    }
+  },
+
+  "contact": {
+    "hero": {
+      "title": "Global Trading",
+      "subtitle": "Your Trusted Partner in International Trade and Payments",
+      "body1": "BTB Global Trading is a leading expert in international trade finance and cross-border payments, headquartered in Warsaw, Poland. Our mission is to simplify complex global transactions, offering businesses efficient and reliable solutions to expand their reach and optimize their financial operations worldwide.",
+      "body2": "With a deep understanding of global markets and regulatory landscapes, our team of seasoned professionals provides tailored strategies that empower importers, exporters, and multinational corporations. We are dedicated to delivering personalized guidance and cutting-edge technology to ensure secure and compliant transactions.",
+      "body3": "We pride ourselves on fostering long-term partnerships built on trust and transparency. At BTB Global Trading, we believe that seamless international payments and robust trade support are the cornerstones of successful global business.",
+      "cta": "Explore Services"
+    },
+
+    "touch": {
+      "title": "Get in Touch",
+      "subtitle": "We’re here to help you navigate global markets.",
+      "leftTitle": "Reach Out to Our Team",
+      "items": {
+        "email": { "label": "Email", "value": "info@tradeflowglobal.com" },
+        "phone1": { "label": "Main Line (Poland)", "value": "+48 22 123 4567", "tel": "+48221234567" },
+        "office": { "label": "Warsaw Office", "value": "+48 22 765 4321" },
+        "whatsapp": { "label": "WhatsApp", "value": "+48 501 234 567", "href": "https://wa.me/48501234567" }
+      }
+    },
+
+    "form": {
+      "title": "Send Us a Message",
+      "fields": {
+        "name": "Name",
+        "email": "Email",
+        "subject": "Subject",
+        "message": "Message"
+      },
+      "placeholders": {
+        "name": "Your Full Name",
+        "email": "your.email@example.com",
+        "subject": "Inquiry Subject",
+        "message": "Your detailed message..."
+      },
+      "submit": "Submit Message",
+      "disclaimer": "By submitting, you acknowledge that onboarding and compliance checks may apply via regulated partners."
+    }
+  }
+}
