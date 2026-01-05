@@ -80,14 +80,14 @@ export default function Navbar() {
       if (!panel) return;
       if (!panel.contains(e.target as Node)) setOpen(false);
     };
-    document.addEventListener("mousedown", onMouseDown);
-    return () => document.removeEventListener("mousedown", onMouseDown);
+    document.addEventListener("pointerdown", onMouseDown);
+    return () => document.removeEventListener("pointerdown", onMouseDown);
   }, [open]);
 
   const drawerHiddenX = drawerFrom === "right" ? "100%" : "-100%";
 
   return (
-    <header className="sticky top-0 z-50">
+    <header className="sticky top-0 z-60">
       {/* TRUE transparent wrapper (no grey) */}
       <div
         className="
@@ -213,7 +213,7 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.15 }}
-              className="fixed inset-0 z-40 bg-black/70 backdrop-blur-[2px]"
+              className="fixed inset-0 z-998 bg-black/70 backdrop-blur-[2px]"
               onClick={() => setOpen(false)}
               aria-hidden="true"
             />
@@ -225,7 +225,7 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: drawerHiddenX }}
               transition={{ type: "spring", stiffness: 380, damping: 36 }}
-              className="fixed top-0 z-50 h-dvh w-[88vw] max-w-sm border-l border-white/10 bg-black/90 backdrop-blur-xl"
+              className="fixed top-0 z-999 h-dvh w-[88vw] max-w-sm border-l border-white/10 bg-black/90 backdrop-blur-xl"
               style={drawerFrom === "right" ? { right: 0 } : { left: 0 }}
               role="dialog"
               aria-modal="true"
