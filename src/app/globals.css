@@ -143,3 +143,14 @@
     opacity: 0.0;
   }
 }
+
+.vanta-canvas {
+  pointer-events: none !important;
+}
+
+/* Prevent Vanta/Three canvas from blocking clicks/taps */
+.vanta-canvas,
+canvas.vanta-canvas {
+  pointer-events: none !important;
+}
+
