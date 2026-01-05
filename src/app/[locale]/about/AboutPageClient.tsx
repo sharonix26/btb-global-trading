@@ -1,6 +1,8 @@
 "use client";
 
 import React from "react";
+import { motion, type Variants } from "framer-motion";
+
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
@@ -17,20 +19,21 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 18, filter: "blur(10px)" },
   show: {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.7, ease: "easeOut" },
+    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] }, // ✅ easeOut-ish
   },
 };
 
-const stagger = {
+const stagger: Variants = {
   hidden: {},
   show: { transition: { staggerChildren: 0.08, delayChildren: 0.08 } },
 };
+
 
 export default function AboutPageClient() {
   const t = useTranslations("about");

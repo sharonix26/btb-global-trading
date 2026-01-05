@@ -2,17 +2,17 @@
 
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { Mail, Phone, MapPin, MessageCircle } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 18, filter: "blur(10px)" },
   show: {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.7, ease: "easeOut" },
+    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
@@ -275,6 +275,21 @@ export default function ContactPageClient() {
           </div>
         </div>
       </section>
+
+      {/* keyframes for the animated gradient */}
+      <style jsx global>{`
+        @keyframes btb-gradient-move {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+      `}</style>
     </main>
   );
 }
