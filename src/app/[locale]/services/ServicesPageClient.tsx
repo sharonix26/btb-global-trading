@@ -2,33 +2,33 @@
 
 import React from "react";
 import Image from "next/image";
-import { useLocale, useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
+import { motion, type Variants } from "framer-motion";
 import { Globe, DollarSign, Ship, CheckCircle2 } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 
-const fadeUp: any = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 18, filter: "blur(8px)" },
   show: {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.7, ease: "easeOut" }
+    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const }
   }
 };
 
-const list: any = {
+const list: Variants = {
   hidden: {},
   show: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } }
 };
 
-const li: any = {
+const li: Variants = {
   hidden: { opacity: 0, y: 10, filter: "blur(6px)" },
   show: {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.55, ease: "easeOut" }
+    transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] as const }
   }
 };
 
@@ -39,8 +39,7 @@ function ServiceBlock({
   bullets,
   ctaLabel,
   ctaHref,
-  bgImage,
-  locale
+  bgImage
 }: {
   icon: React.ReactNode;
   title: string;
@@ -49,7 +48,6 @@ function ServiceBlock({
   ctaLabel: string;
   ctaHref: string; // route WITHOUT locale, ex: "/contact-us"
   bgImage: string;
-  locale: string;
 }) {
   return (
     <motion.section
@@ -141,8 +139,7 @@ function ServiceBlock({
 
           <div className="mt-8">
             <Link
-              href={ctaHref as any}
-              locale={locale as any} // ✅ keeps current language
+              href={ctaHref}
               className="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium text-black relative overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
             >
               <span
@@ -179,7 +176,6 @@ function ServiceBlock({
 
 export default function ServicesPageClient() {
   const t = useTranslations("services");
-  const locale = useLocale();
 
   return (
     <main className="min-h-screen bg-black text-white">
@@ -205,7 +201,6 @@ export default function ServicesPageClient() {
       {/* BLOCKS */}
       <section className="px-6 pb-20 md:pb-28 space-y-10 md:space-y-12">
         <ServiceBlock
-          locale={locale}
           icon={<Globe className="h-6 w-6" />}
           title={t("globalPayments.title")}
           body={t("globalPayments.body")}
@@ -221,7 +216,6 @@ export default function ServicesPageClient() {
         />
 
         <ServiceBlock
-          locale={locale}
           icon={<DollarSign className="h-6 w-6" />}
           title={t("fxTreasury.title")}
           body={t("fxTreasury.body")}
@@ -237,7 +231,6 @@ export default function ServicesPageClient() {
         />
 
         <ServiceBlock
-          locale={locale}
           icon={<Ship className="h-6 w-6" />}
           title={t("tradeSupport.title")}
           body={t("tradeSupport.body")}
