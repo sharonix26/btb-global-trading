@@ -1,10 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, MessageCircle } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 18, filter: "blur(10px)" },
@@ -18,7 +18,6 @@ const fadeUp = {
 
 export default function ContactPageClient() {
   const t = useTranslations("contact");
-  const locale = useLocale();
 
   return (
     <main className="min-h-screen bg-black text-white">
@@ -73,7 +72,7 @@ export default function ContactPageClient() {
 
               <div className="mt-10 flex justify-center">
                 <Link
-                  href={`/${locale}/services`}
+                  href="/services"
                   className="group relative inline-flex items-center justify-center rounded-full px-7 py-3.5 text-sm font-medium text-black overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
                 >
                   <span

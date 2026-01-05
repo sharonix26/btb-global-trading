@@ -1,15 +1,238 @@
 {
+  "nav": {
+    "home": "Ana Sayfa",
+    "services": "Hizmetler",
+    "about": "Hakkımızda",
+    "contact": "İletişim",
+    "contactSales": "Satış Ekibiyle İletişime Geçin"
+  },
   "home": {
-    "title": "BTB Global Trading",
-    "subtitle": "Cross-border payments and FX execution support built for global operators and private clients.",
-    "intro": "BTB is an EU-based company headquartered in Warsaw, Poland, supporting international settlements, currency operations, and trade execution support through a network of licensed financial partners. We work with importers, exporters, corporate finance teams, and private clients who need structured execution, operational efficiency, and transparent pricing across multiple countries and currencies.",
-    "capabilities": {
-      "multiCurrency": "Multi-currency settlement support across major and emerging corridors (including EUR, USD, GBP, ILS, TRY, AED, BRL, MXN, CNY, and more).",
-      "regulated": "Regulated financial infrastructure supported by licensed partners in the EU and other key jurisdictions.",
-      "execution": "Execution support across payment workflows, FX coordination, and cross-border treasury operations.",
-      "regional": "Regional experience across Europe, Latin America, the Middle East, and China."
+    "hero": {
+      "titleLine1": "Küresel Ticaretinizi Güçlendiriyoruz",
+      "titleLine2": "Yolculuğunuz",
+      "subtitle": "Sorunsuz uluslararası ödemeler, FX & hazine çözümleri ve uzman ticaret desteği.",
+      "cta": "Satış Ekibiyle İletişime Geçin"
     },
-    "closing": "Whether you’re importing goods, exporting services, managing global treasury, or making a personal international transfer, we help you move capital with clarity and control.",
-    "disclaimer": "Note: BTB does not act as a bank or licensed payment partner. Payments are processed by regulated partner partners, subject to onboarding and compliance requirements."
+    "features": {
+      "globalPayments": {
+        "title": "Küresel Ödemeler",
+        "body": "Rekabetçi oranlar ve yüksek hızla uluslararası ödemeleri sorunsuz şekilde gönderin ve alın."
+      },
+      "fxTreasury": {
+        "title": "FX & Hazine",
+        "body": "Döviz stratejilerinizi optimize edin ve kur risklerini etkin biçimde yönetin."
+      },
+      "tradeSupport": {
+        "title": "Ticaret Desteği",
+        "body": "Karmaşık uluslararası ticaret operasyonlarınız için uzman rehberlik ve çözümlere erişin."
+      }
+    },
+    "aboutSection": {
+      "title": "BTB Trading Hakkında",
+      "body": "TradeFlow Global, uluslararası ticaret ve finansın karmaşıklıklarında yol almanız için öncü ortağınızdır. Varşova merkezli uzman ekibimiz, dünya çapındaki işletmeleri güçlendirmek üzere özel çözümler sunar; sınır ötesi işlemlerin verimli, güvenli ve uyumlu şekilde yürütülmesini sağlar. Küresel bağlantıyı ve büyümeyi desteklemeye kararlıyız."
+    },
+    "whyChoose": {
+      "title": "Neden Bizi Seçmelisiniz?",
+      "subtitle": "",
+      "points": {
+        "euCompliance": "AB Düzenlemelerine Uyum",
+        "personalizedGuidance": "Kişiselleştirilmiş Rehberlik",
+        "crossBorderExpertise": "Sınır Ötesi Uzmanlık",
+        "fastSecureTransactions": "Hızlı ve Güvenli İşlemler"
+      }
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "HAKKIMIZDA",
+      "imageAlt": "Küresel ağ",
+      "description": "BTB Global Trading, merkezi Varşova, Polonya’da bulunan AB merkezli özel bir şirkettir. Lisanslı iş ortakları ağımız üzerinden düzenlenmiş finansal altyapıya erişim sağlarız. Rolümüz; karmaşık sınır ötesi finansal operasyonları koordine etmek, desteklemek ve basitleştirmektir. İşlemler lisanslı finansal ortaklar tarafından gerçekleştirilir.",
+      "ctaPrimary": "Satış Ekibiyle İletişime Geçin",
+      "ctaSecondary": "Daha Fazla Bilgi"
+    },
+    "whoWeAre": {
+      "title": "Biz Kimiz",
+      "description": "BTB Global Trading, merkezi Varşova, Polonya’da bulunan AB merkezli özel bir şirkettir. Lisanslı iş ortakları ağımız üzerinden düzenlenmiş finansal altyapıya erişim sağlarız. Rolümüz; karmaşık sınır ötesi finansal operasyonları koordine etmek, desteklemek ve basitleştirmektir. İşlemler lisanslı finansal ortaklar tarafından gerçekleştirilir.",
+      "features": {
+        "coordination": {
+          "title": "Koordinasyon",
+          "text": "Lisanslı ortaklar üzerinden yürütmeyi organize eder ve operasyonları uçtan uca ilerletiriz."
+        },
+        "compliance": {
+          "title": "Önce Uyum",
+          "text": "Süreçler, farklı yargı alanlarındaki düzenleyici çerçevelere uyumludur."
+        },
+        "crossBorder": {
+          "title": "Sınır Ötesi Odak",
+          "text": "Uluslararası akışlar, çoklu para birimi ihtiyaçları ve karmaşık mutabakat rotaları için tasarlanmıştır."
+        },
+        "visibility": {
+          "title": "Operasyonel Netlik",
+          "text": "Adımlar, zaman çizelgeleri ve dahil olan karşı taraflar boyunca açık görünürlük."
+        }
+      }
+    },
+    "builtFor": {
+      "title": "Ne İçin Tasarlandık",
+      "subtitle": "Şu ihtiyaçlara sahip kurum ve bireyleri destekliyoruz:",
+      "bullets": [
+        "Güvenilir ve doğru uluslararası mutabakatlar.",
+        "Şeffaf döviz (FX) yürütümü ve net operasyonel görünürlük.",
+        "Zaman dilimleri, para birimleri ve düzenleyici çerçeveler arasında koordine destek.",
+        "Birden fazla yargı alanında lisanslı ortaklarla desteklenen, uyum odaklı süreçler."
+      ]
+    },
+    "operate": {
+      "title": "Nerelerde Faaliyet Gösteriyoruz",
+      "regions": "Avrupa Birliği - İsrail - Türkiye - BAE - Latin Amerika - Çin"
+    },
+    "workWith": {
+      "title": "Kimlerle Çalışıyoruz",
+      "cards": {
+        "importers": {
+          "title": "İthalatçılar, İhracatçılar ve Küresel Tedarik Zincirleri",
+          "items": [
+            "Uluslararası ticaret için sadeleştirilmiş ödemeler.",
+            "Kur risklerini yönetmek için verimli FX yürütümü.",
+            "Sınır ötesi operasyonlarda akışkanlık için uyumlu süreçler."
+          ]
+        },
+        "cfos": {
+          "title": "CFO’lar, Hazine Ekipleri ve Finans Departmanları",
+          "items": [
+            "Finansal kontroller için artırılmış operasyonel görünürlük.",
+            "Güvenilir ve doğru uluslararası mutabakatlar.",
+            "Karmaşık düzenleyici çerçevelerde destek."
+          ]
+        },
+        "logistics": {
+          "title": "Uluslararası Lojistik Sağlayıcıları ve B2B Platformları",
+          "items": [
+            "Zaman dilimleri ve para birimleri arasında koordine destek.",
+            "Karmaşık sınır ötesi finansal operasyonların sadeleştirilmesi.",
+            "Düzenlenmiş finansal altyapıya erişim."
+          ]
+        },
+        "private": {
+          "title": "Özel Bireyler ve Aile Ofisleri",
+          "items": [
+            "Sınır ötesi sermaye ihtiyaçları uzmanlıkla ele alınır.",
+            "Güvenilir ve doğru uluslararası mutabakatlar.",
+            "Müşteri edinimi ve uyum doğrulamasına tabidir."
+          ]
+        },
+        "partners": {
+          "title": "Lisanslı Finansal Ortaklar",
+          "items": [
+            "Güvenilir, lisanslı ortaklardan oluşan ağ.",
+            "Tüm işlemler için düzenleyici uyumun sağlanması.",
+            "Küresel ölçekte güvenli ve verimli finansal operasyonların kolaylaştırılması."
+          ]
+        },
+        "security": {
+          "title": "Uyum ve Güvenlik Odaklı",
+          "items": [
+            "AB düzenleyici standartlarına bağlılık.",
+            "Tüm işlemler için güçlü güvenlik önlemleri.",
+            "Tam lisanslı finansal kurumlarla ortaklıklar."
+          ]
+        }
+      }
+    },
+    "cta": {
+      "title": "Pazarlar Arasında Köprü Kurmaya ve Ticaretinizi Güçlendirmeye Hazır mısınız?",
+      "button": "Satış Ekibiyle İletişime Geçin"
+    }
+  },
+  "footer": {
+    "description": "Sorunsuz uluslararası ticaret ve ödemeler için güvenilir ortağınız. Küresel işletmeleri güçlendiriyoruz.",
+    "company": "Şirket",
+    "services": "Hizmetler",
+    "links": {
+      "home": "Ana Sayfa",
+      "about": "Hizmetler",
+      "contact": "İletişim"
+    },
+    "serviceItems": {
+      "globalPayments": "Küresel Ödemeler",
+      "fxTreasury": "FX & Hazine",
+      "tradeSupport": "Ticaret Desteği"
+    },
+    "copyright": "BTB Global Trading. Tüm hakları saklıdır."
+  },
+  "services": {
+    "hero": {
+      "title": "Küresel İşletmeniz İçin Kapsamlı Çözümler",
+      "subtitle": "BTB Global Trading’de, uluslararası operatörleri ve özel müşterileri; sınır ötesi ödemeleri sadeleştirmek, FX koordinasyonunu optimize etmek ve küresel ticaret iş akışlarındaki sürtünmeyi azaltmak için yürütüm odaklı hizmetlerle destekliyoruz."
+    },
+    "cta": "Satış Ekibiyle İletişime Geçin",
+    "globalPayments": {
+      "title": "Küresel Ödemeler",
+      "body": "Düzenlenmiş kanallar üzerinden koordine edilen sınır ötesi mutabakatlar. Lisanslı finansal ortaklar aracılığıyla Avrupa, Latin Amerika, Orta Doğu ve Asya’daki kilit koridorlarda çoklu para birimi ödemelerini destekliyoruz.",
+      "bullets": [
+        "Büyük ve gelişmekte olan koridorlarda çoklu para birimi mutabakatları.",
+        "Takip ve dokümantasyon hazırlığıyla tedarikçi ve operasyonel ödemeler.",
+        "Birçok koridorda aynı gün / ertesi gün yürütüm (müşteri edinimi ve cut-off’lara tabidir).",
+        "Düzenlenmiş süreçlere ve operasyonel gerçeklere uygun ödeme yapılandırması."
+      ]
+    },
+    "fxTreasury": {
+      "title": "FX & Hazine Hizmetleri",
+      "body": "Yargı alanları arasında daha iyi kur yürütümü, zamanlama ve kontrol. Finans ekiplerini; uygun olduğunda ortak çözümler üzerinden yapılandırılmış FX koordinasyonu ve hazine planlamasıyla destekliyoruz.",
+      "bullets": [
+        "Yürütüm yapısına dair net görünürlükle FX dönüşüm koordinasyonu.",
+        "Ortak çözümleri üzerinden hedge desteği (mevcut ve uygun olduğunda).",
+        "Para birimleri ve ödeme tarihlerine göre hazine zamanlaması ve nakit akışı planlaması.",
+        "İşleme özel yapılandırma (bölünmüş ödemeler, kademeli mutabakatlar, çok taraflı akışlar)."
+      ]
+    },
+    "tradeSupport": {
+      "title": "Ticaret Desteği",
+      "body": "Uluslararası ticaret iş akışları için operasyonel destek. Ödeme, dokümantasyon hazırlığı ve bölgeler ile karşı taraflar arasında sınır ötesi koordinasyonda ekiplerin sürtünmeyi azaltmasına yardımcı oluyoruz.",
+      "bullets": [
+        "Yargı alanları arasında ticaretle ilgili ödeme iş akışları için yürütüm desteği.",
+        "Uyumlu süreçler ve ortak onboarding hazırlığı için destek.",
+        "Zaman dilimleri, para birimleri ve operasyonel kısıtlar arasında koordinasyon.",
+        "Avrupa, Latin Amerika, Orta Doğu ve Çin genelinde bölgesel deneyim."
+      ]
+    }
+  },
+  "contact": {
+    "hero": {
+      "title": "Küresel Ticaret",
+      "subtitle": "Uluslararası Ticaret ve Ödemelerde Güvenilir Ortağınız",
+      "body1": "BTB Global Trading, merkezi Varşova, Polonya’da bulunan; uluslararası ticaret finansmanı ve sınır ötesi ödemelerde lider bir uzmandır. Misyonumuz, karmaşık küresel işlemleri sadeleştirerek işletmelere dünya çapında erişimlerini genişletmeleri ve finansal operasyonlarını optimize etmeleri için verimli ve güvenilir çözümler sunmaktır.",
+      "body2": "Küresel piyasalar ve düzenleyici ortamlar hakkında derin bilgiye sahip deneyimli profesyonellerden oluşan ekibimiz; ithalatçıları, ihracatçıları ve çok uluslu şirketleri güçlendiren özel stratejiler sunar. Güvenli ve uyumlu işlemler için kişiselleştirilmiş rehberlik ve ileri teknoloji sağlamaya adanmış durumdayız.",
+      "body3": "Güven ve şeffaflık üzerine kurulu uzun vadeli ortaklıklar geliştirmekle gurur duyuyoruz. BTB Global Trading’de, sorunsuz uluslararası ödemelerin ve güçlü ticaret desteğinin küresel iş başarısının temel taşları olduğuna inanıyoruz.",
+      "cta": "Hizmetleri Keşfedin"
+    },
+    "touch": {
+      "title": "İletişime Geçin",
+      "subtitle": "Küresel pazarlarda yol almanıza yardımcı olmak için buradayız.",
+      "leftTitle": "Ekibimize Ulaşın",
+      "items": {
+        "email": { "label": "E-posta", "value": "info@tradeflowglobal.com" },
+        "phone1": { "label": "Ana Hat (Polonya)", "value": "+48 22 123 4567", "tel": "+48221234567" },
+        "office": { "label": "Varşova Ofisi", "value": "+48 22 765 4321" },
+        "whatsapp": { "label": "WhatsApp", "value": "+48 501 234 567", "href": "https://wa.me/48501234567" }
+      }
+    },
+    "form": {
+      "title": "Bize Mesaj Gönderin",
+      "fields": {
+        "name": "Ad Soyad",
+        "email": "E-posta",
+        "subject": "Konu",
+        "message": "Mesaj"
+      },
+      "placeholders": {
+        "name": "Adınız Soyadınız",
+        "email": "your.email@example.com",
+        "subject": "Talep Konusu",
+        "message": "Detaylı mesajınız..."
+      },
+      "submit": "Mesajı Gönder",
+      "disclaimer": "Gönderim yaparak, düzenlenmiş ortaklar aracılığıyla onboarding ve uyum kontrollerinin uygulanabileceğini kabul etmiş olursunuz."
+    }
   }
 }

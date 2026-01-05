@@ -2,9 +2,9 @@
 
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { useTranslations, useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import {
   Globe,
   ShieldCheck,
@@ -34,7 +34,6 @@ const stagger = {
 
 export default function AboutPageClient() {
   const t = useTranslations("about");
-  const locale = useLocale();
 
   return (
     <main className="min-h-screen bg-black text-white">
@@ -114,7 +113,7 @@ export default function AboutPageClient() {
               >
                 {/* Primary CTA — calmer (white button) */}
                 <Link
-                  href={`/${locale}/contact`}
+                  href="/contact-us"
                   className="inline-flex items-center justify-center rounded-full px-7 py-3.5 text-sm font-medium text-black bg-white hover:opacity-90 transition"
                 >
                   <span className="flex items-center gap-2">
@@ -435,7 +434,7 @@ export default function AboutPageClient() {
 
             <motion.div variants={fadeUp} className="relative mt-7">
               <Link
-                href={`/${locale}/contact`}
+                href="/contact-us"
                 className="inline-flex items-center justify-center rounded-full px-8 py-3.5 text-sm font-medium text-black bg-white hover:opacity-90 transition"
               >
                 <span className="flex items-center gap-2">

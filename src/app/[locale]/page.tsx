@@ -1,5 +1,7 @@
-import { useLocale, useTranslations } from "next-intl";
-import Link from "next/link";
+"use client";
+
+import { useTranslations } from "next-intl";
+import {Link} from "@/i18n/navigation";
 import VantaGlobeBg from "@/components/VantaGlobeBg";
 import SectionDivider from "@/components/SectionDivider";
 import FeatureCards from "@/components/FeatureCards";
@@ -7,19 +9,16 @@ import AboutSection from "@/components/AboutSection";
 import WhyChooseUs from "@/components/WhyChooseUs";
 
 
-
 export default function HomePage() {
   const t = useTranslations("home");
-  const locale = useLocale();
 
   return (
     <main className="min-h-screen bg-black text-white">
-      
       {/* HERO with Vanta Globe */}
       <VantaGlobeBg className="min-h-[70vh] flex items-center">
         <section className="px-6 py-24 mx-auto max-w-6xl">
           <div className="max-w-4xl md:ml-16">
-            {/* H1 (2 lines on desktop) */}
+            {/* H1 */}
             <h1 className="text-4xl md:text-5xl font-semibold leading-tight">
               <span className="block">{t("hero.titleLine1")}</span>
               <span className="block">{t("hero.titleLine2")}</span>
@@ -33,7 +32,7 @@ export default function HomePage() {
             {/* CTA */}
             <div className="mt-10">
               <Link
-                href={`/${locale}/contact-us`}
+                href="/contact-us"
                 className="
                   inline-flex items-center justify-center
                   rounded-full px-6 py-3
@@ -61,19 +60,17 @@ export default function HomePage() {
           </div>
         </section>
       </VantaGlobeBg>
-      
+
       <SectionDivider />
 
       {/* FEATURE CARDS */}
-
       <section>
-      <div>
-      <FeatureCards />
-      </div>
+        <FeatureCards />
       </section>
 
       <AboutSection />
       <WhyChooseUs />
+
       <SectionDivider />
     </main>
   );

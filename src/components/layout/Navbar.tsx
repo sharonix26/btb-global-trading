@@ -1,17 +1,20 @@
 "use client";
 
-import Link from "next/link";
-import { useLocale, useTranslations } from "next-intl";
-import { usePathname } from "next/navigation";
-import { useEffect, useMemo, useRef, useState } from "react";
-import { Menu, X } from "lucide-react";
-import { AnimatePresence, motion } from "framer-motion";
+import {useEffect, useMemo, useRef, useState} from "react";
+import {useLocale, useTranslations} from "next-intl";
+import {Menu, X} from "lucide-react";
+import {AnimatePresence, motion} from "framer-motion";
+
 import Container from "./Container";
 import LanguageSwitcher from "./LanguageSwitcher";
+import {Link, usePathname} from "@/i18n/navigation";
+
+type NavKey = "home" | "about" | "services" | "contact";
+type NavHref = "/" | "/about" | "/services" | "/contact-us";
 
 type NavItem = {
-  key: "home" | "about us" | "services" | "contact";
-  href: string;
+  key: NavKey;
+  href: NavHref;
 };
 
 export default function Navbar() {
@@ -23,40 +26,40 @@ export default function Navbar() {
   const [drawerFrom, setDrawerFrom] = useState<"left" | "right">("right");
   const panelRef = useRef<HTMLDivElement | null>(null);
 
+  // ✅ Keys match your JSON: nav.home / nav.about / nav.services / nav.contact
   const items: NavItem[] = useMemo(
     () => [
-      { key: "home", href: "/" },
-      { key: "about", href: "/about" },
-      { key: "services", href: "/services" },
-      { key: "contact", href: "/contact-us" }
+      {key: "home", href: "/"},
+      {key: "about", href: "/about"},
+      {key: "services", href: "/services"},
+      {key: "contact", href: "/contact-us"}
     ],
     []
   );
 
-  const withLocale = (href: NavItem["href"]) =>
-    href === "/" ? `/${locale}` : `/${locale}${href}`;
-
-  const isActive = (href: NavItem["href"]) => {
-    const full = withLocale(href);
-    if (href === "/") return pathname === `/${locale}` || pathname === full;
-    return pathname === full || pathname.startsWith(`${full}/`);
+  // ✅ Active detection (pathname is locale-aware with createNavigation)
+  const isActive = (href: NavHref) => {
+    if (href === "/") return pathname === "/";
+    return pathname === href || pathname.startsWith(`${href}/`);
   };
 
+  // close drawer on route change
   useEffect(() => setOpen(false), [pathname]);
 
+  // decide drawer side by dir
   useEffect(() => {
     const dir = document.documentElement.getAttribute("dir") || "ltr";
     setDrawerFrom(dir.toLowerCase() === "rtl" ? "left" : "right");
   }, [locale]);
 
+  // lock body scroll when open
   useEffect(() => {
     if (!open) return;
 
     const originalOverflow = document.body.style.overflow;
     const originalPaddingRight = document.body.style.paddingRight;
 
-    const scrollbarWidth =
-      window.innerWidth - document.documentElement.clientWidth;
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
     if (scrollbarWidth > 0) document.body.style.paddingRight = `${scrollbarWidth}px`;
     document.body.style.overflow = "hidden";
 
@@ -66,6 +69,7 @@ export default function Navbar() {
     };
   }, [open]);
 
+  // Esc closes drawer
   useEffect(() => {
     if (!open) return;
     const onKeyDown = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
@@ -73,6 +77,7 @@ export default function Navbar() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [open]);
 
+  // click outside closes drawer
   useEffect(() => {
     if (!open) return;
     const onMouseDown = (e: MouseEvent) => {
@@ -88,7 +93,6 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50">
-      {/* TRUE transparent wrapper (no grey) */}
       <div
         className="
           group relative
@@ -98,7 +102,7 @@ export default function Navbar() {
           border-b border-white/10
         "
       >
-        {/* Cute animated line ONLY on hover */}
+        {/* Hover line */}
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[2px] opacity-0 transition-opacity duration-300 group-hover:opacity-90">
           <div
             className="h-full w-full"
@@ -113,14 +117,12 @@ export default function Navbar() {
 
         <Container>
           <div className="flex h-16 items-center justify-between">
-            {/* Brand */}
-            <Link href={`/${locale}`} className="flex items-center gap-3">
+            {/* ✅ Brand: always stays in current locale */}
+            <Link href="/" className="flex items-center gap-3">
               <div className="relative">
                 <div className="relative inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-xs font-semibold text-white">
                   BTB
                 </div>
-
-                {/* tiny neon edge (cute, controlled) */}
                 <div
                   className="pointer-events-none absolute -inset-[1px] rounded-xl opacity-70"
                   style={{
@@ -147,13 +149,12 @@ export default function Navbar() {
                 return (
                   <Link
                     key={item.key}
-                    href={withLocale(item.href)}
+                    href={item.href}
                     className={[
                       "relative rounded-full px-4 py-2 text-sm transition",
                       active ? "text-white" : "text-white/70 hover:text-white"
                     ].join(" ")}
                   >
-                    {/* Cute hover glow (NOT grey slab) */}
                     <span
                       className="absolute inset-0 rounded-full opacity-0 transition hover:opacity-100"
                       style={{
@@ -165,7 +166,6 @@ export default function Navbar() {
 
                     <span className="relative z-10">{t(item.key)}</span>
 
-                    {/* Active underline */}
                     {active && (
                       <motion.span
                         layoutId="btb-active-underline"
@@ -176,7 +176,7 @@ export default function Navbar() {
                           backgroundSize: "200% 200%",
                           animation: "btb-gradient-move 7s ease infinite"
                         }}
-                        transition={{ type: "spring", stiffness: 420, damping: 32 }}
+                        transition={{type: "spring", stiffness: 420, damping: 32}}
                       />
                     )}
                   </Link>
@@ -184,7 +184,7 @@ export default function Navbar() {
               })}
             </nav>
 
-            {/* Right desktop: language only */}
+            {/* Desktop right */}
             <div className="hidden md:flex items-center">
               <LanguageSwitcher />
             </div>
@@ -204,15 +204,15 @@ export default function Navbar() {
         </Container>
       </div>
 
-      {/* MOBILE DRAWER */}
+      {/* Mobile drawer */}
       <AnimatePresence>
         {open && (
           <>
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.15 }}
+              initial={{opacity: 0}}
+              animate={{opacity: 1}}
+              exit={{opacity: 0}}
+              transition={{duration: 0.15}}
               className="fixed inset-0 z-40 bg-black/70 backdrop-blur-[2px]"
               onClick={() => setOpen(false)}
               aria-hidden="true"
@@ -221,12 +221,12 @@ export default function Navbar() {
             <motion.aside
               id="mobile-drawer"
               ref={panelRef}
-              initial={{ x: drawerHiddenX }}
-              animate={{ x: 0 }}
-              exit={{ x: drawerHiddenX }}
-              transition={{ type: "spring", stiffness: 380, damping: 36 }}
+              initial={{x: drawerHiddenX}}
+              animate={{x: 0}}
+              exit={{x: drawerHiddenX}}
+              transition={{type: "spring", stiffness: 380, damping: 36}}
               className="fixed top-0 z-50 h-dvh w-[88vw] max-w-sm border-l border-white/10 bg-black/90 backdrop-blur-xl"
-              style={drawerFrom === "right" ? { right: 0 } : { left: 0 }}
+              style={drawerFrom === "right" ? {right: 0} : {left: 0}}
               role="dialog"
               aria-modal="true"
               aria-label="Navigation menu"
@@ -262,7 +262,7 @@ export default function Navbar() {
                     return (
                       <Link
                         key={item.key}
-                        href={withLocale(item.href)}
+                        href={item.href}
                         className={[
                           "rounded-2xl px-4 py-3 text-sm transition border",
                           active

@@ -1,7 +1,8 @@
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
+import { usePathname } from "@/i18n/navigation";
+import { useRouter } from "next/navigation";
 
 type Lang = { code: string; label: string };
 
@@ -15,15 +16,14 @@ const LANGS: Lang[] = [
 
 export default function LanguageSwitcher() {
   const router = useRouter();
-  const pathname = usePathname();
+  const pathname = usePathname(); // This is locale-free (e.g., "/about" not "/en/about")
   const locale = useLocale();
 
   function switchTo(nextLocale: string) {
-    // pathname looks like: /en/about-us or /he/contact-us
-    // replace only the first segment
-    const segments = pathname.split("/");
-    segments[1] = nextLocale;
-    router.push(segments.join("/"));
+    // pathname from @/i18n/navigation is locale-free (e.g., "/about" not "/en/about")
+    // Construct the full path with the new locale
+    const newPath = pathname === "/" ? `/${nextLocale}` : `/${nextLocale}${pathname}`;
+    router.push(newPath);
   }
 
   return (

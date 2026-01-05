@@ -1,14 +1,11 @@
 "use client";
 
-import Link from "next/link";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { Linkedin, Twitter, Instagram, Youtube } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 
 export default function Footer() {
   const t = useTranslations("footer");
-  const locale = useLocale();
-
-  const withLocale = (href: string) => (href === "/" ? `/${locale}` : `/${locale}${href}`);
 
   return (
     <footer className="relative mt-auto">
@@ -92,17 +89,17 @@ export default function Footer() {
               <h4 className="text-sm font-semibold text-white">{t("company")}</h4>
               <ul className="mt-4 space-y-2 text-sm text-white/70">
                 <li>
-                  <Link className="hover:text-white transition" href={withLocale("/")}>
+                  <Link className="hover:text-white transition" href="/">
                     {t("links.home")}
                   </Link>
                 </li>
                 <li>
-                  <Link className="hover:text-white transition" href={withLocale("/about-us")}>
+                  <Link className="hover:text-white transition" href="/about">
                     {t("links.about")}
                   </Link>
                 </li>
                 <li>
-                  <Link className="hover:text-white transition" href={withLocale("/contact-us")}>
+                  <Link className="hover:text-white transition" href="/contact-us">
                     {t("links.contact")}
                   </Link>
                 </li>
