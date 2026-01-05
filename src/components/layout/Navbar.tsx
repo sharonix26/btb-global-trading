@@ -44,13 +44,24 @@ export default function Navbar() {
   };
 
   // close drawer on route change
-  useEffect(() => setOpen(false), [pathname]);
+  useEffect(() => {
+    if (open) {
+      queueMicrotask(() => {
+        setOpen(false);
+      });
+    }
+  }, [pathname, open]);
 
   // decide drawer side by dir
   useEffect(() => {
     const dir = document.documentElement.getAttribute("dir") || "ltr";
-    setDrawerFrom(dir.toLowerCase() === "rtl" ? "left" : "right");
-  }, [locale]);
+    const newDrawerFrom = dir.toLowerCase() === "rtl" ? "left" : "right";
+    if (drawerFrom !== newDrawerFrom) {
+      queueMicrotask(() => {
+        setDrawerFrom(newDrawerFrom);
+      });
+    }
+  }, [locale, drawerFrom]);
 
   // lock body scroll when open
   useEffect(() => {

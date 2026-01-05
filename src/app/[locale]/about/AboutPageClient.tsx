@@ -2,9 +2,7 @@
 
 import React from "react";
 import { motion, type Variants } from "framer-motion";
-
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import {

@@ -1,8 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { useTranslations } from "next-intl";
-import type { Variants } from "framer-motion";
 
 const reveal: Variants = {
   hidden: { opacity: 0, y: 26, filter: "blur(6px)" },

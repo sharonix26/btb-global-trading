@@ -20,7 +20,7 @@ const item = {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.55, ease: "easeOut" }
+    transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] as const }
   }
 };
 
@@ -42,7 +42,7 @@ export default function WhyChooseUs() {
           initial={{ opacity: 0, y: 14, filter: "blur(8px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true, amount: 0.35 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="mx-auto max-w-2xl text-center"
         >
           <h2 className="text-2xl md:text-3xl font-semibold text-white">
