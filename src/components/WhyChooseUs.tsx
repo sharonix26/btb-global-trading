@@ -4,14 +4,16 @@ import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { CheckCircle2 } from "lucide-react";
 
+const EASE_OUT: [number, number, number, number] = [0.16, 1, 0.3, 1];
+
 const container = {
   hidden: {},
   show: {
     transition: {
       staggerChildren: 0.18,
-      delayChildren: 0.15
-    }
-  }
+      delayChildren: 0.15,
+    },
+  },
 };
 
 const item = {
@@ -20,8 +22,8 @@ const item = {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.55, ease: "easeOut" }
-  }
+    transition: { duration: 0.55, ease: EASE_OUT },
+  },
 };
 
 export default function WhyChooseUs() {
@@ -31,7 +33,7 @@ export default function WhyChooseUs() {
     "euCompliance",
     "personalizedGuidance",
     "crossBorderExpertise",
-    "fastSecureTransactions"
+    "fastSecureTransactions",
   ] as const;
 
   return (
@@ -42,7 +44,7 @@ export default function WhyChooseUs() {
           initial={{ opacity: 0, y: 14, filter: "blur(8px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true, amount: 0.35 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
+          transition={{ duration: 0.7, ease: EASE_OUT }}
           className="mx-auto max-w-2xl text-center"
         >
           <h2 className="text-2xl md:text-3xl font-semibold text-white">
@@ -74,7 +76,7 @@ export default function WhyChooseUs() {
                   className="absolute inset-0 rounded-full blur-md opacity-60"
                   style={{
                     background:
-                      "radial-gradient(circle, rgba(34,211,238,0.22), transparent 70%)"
+                      "radial-gradient(circle, rgba(34,211,238,0.22), transparent 70%)",
                   }}
                 />
                 <CheckCircle2 className="relative z-10 h-5 w-5 text-cyan-300" />

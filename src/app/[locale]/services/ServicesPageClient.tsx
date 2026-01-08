@@ -1,33 +1,36 @@
 "use client";
 
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { Globe, DollarSign, Ship, CheckCircle2 } from "lucide-react";
 
-const fadeUp = {
+/* ---------- Motion variants (PROD SAFE) ---------- */
+
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 18, filter: "blur(8px)" },
   show: {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.7, ease: "easeOut" },
+    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
-const list = {
+const list: Variants = {
   hidden: {},
   show: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
 };
 
-const li = {
+const li: Variants = {
   hidden: { opacity: 0, y: 10, filter: "blur(6px)" },
   show: {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.55, ease: "easeOut" },
+    transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
@@ -46,7 +49,7 @@ function ServiceBlock({
   bullets: string[];
   ctaLabel: string;
   ctaHref: string;
-  bgImage: string; // <-- new
+  bgImage: string;
 }) {
   return (
     <motion.section
@@ -73,7 +76,6 @@ function ServiceBlock({
             src={bgImage}
             alt=""
             fill
-            priority={false}
             sizes="(max-width: 768px) 100vw, 960px"
             className="object-cover object-center opacity-[0.22]"
           />
@@ -116,23 +118,23 @@ function ServiceBlock({
             {body}
           </p>
 
+          {/* bullets */}
           <motion.ul
             variants={list}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-            className="mt-7 space-y-3 text-left mx-auto max-w-xl"
+            className="mt-7 mx-auto max-w-xl space-y-3 text-left"
           >
             {bullets.map((b, idx) => (
               <motion.li
-                key={idx}
+                key={`${idx}-${b}`}
                 variants={li}
                 className="flex items-start gap-3 text-white/75"
               >
                 <span className="mt-0.5 shrink-0">
                   <CheckCircle2 className="h-5 w-5 text-cyan-300" />
                 </span>
-                <span className="text-sm md:text-[15px] leading-relaxed">{b}</span>
+                <span className="text-sm md:text-[15px] leading-relaxed">
+                  {b}
+                </span>
               </motion.li>
             ))}
           </motion.ul>
@@ -140,7 +142,7 @@ function ServiceBlock({
           <div className="mt-8">
             <Link
               href={ctaHref}
-              className="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium text-black relative overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+              className="relative inline-flex items-center justify-center overflow-hidden rounded-full px-6 py-3 text-sm font-medium text-black focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
             >
               <span
                 className="absolute inset-0"
@@ -186,7 +188,12 @@ export default function ServicesPageClient() {
       {/* HERO */}
       <section className="px-6 pt-16 pb-12 md:pt-20 md:pb-16">
         <div className="mx-auto max-w-6xl">
-          <motion.div variants={fadeUp} initial="hidden" animate="show" className="text-center">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            animate="show"
+            className="text-center"
+          >
             <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-white">
               {t("hero.title")}
             </h1>
@@ -198,7 +205,7 @@ export default function ServicesPageClient() {
       </section>
 
       {/* BLOCKS */}
-      <section className="px-6 pb-20 md:pb-28 space-y-10 md:space-y-12">
+      <section className="space-y-10 px-6 pb-20 md:space-y-12 md:pb-28">
         <ServiceBlock
           icon={<Globe className="h-6 w-6" />}
           title={t("globalPayments.title")}

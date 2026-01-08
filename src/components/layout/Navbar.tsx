@@ -10,7 +10,7 @@ import Container from "./Container";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 type NavItem = {
-  key: "home" | "about us" | "services" | "contact";
+  key: "home" | "about" | "services" | "contact";
   href: string;
 };
 
@@ -20,7 +20,6 @@ export default function Navbar() {
   const pathname = usePathname();
 
   const [open, setOpen] = useState(false);
-  const [drawerFrom, setDrawerFrom] = useState<"left" | "right">("right");
   const panelRef = useRef<HTMLDivElement | null>(null);
 
   const items: NavItem[] = useMemo(
@@ -42,21 +41,23 @@ export default function Navbar() {
     return pathname === full || pathname.startsWith(`${full}/`);
   };
 
-  useEffect(() => setOpen(false), [pathname]);
+  // ✅ derive drawer side from DOM dir (no setState in effect)
+  const dir =
+    typeof document !== "undefined"
+      ? document.documentElement.getAttribute("dir") || "ltr"
+      : "ltr";
 
-  useEffect(() => {
-    const dir = document.documentElement.getAttribute("dir") || "ltr";
-    setDrawerFrom(dir.toLowerCase() === "rtl" ? "left" : "right");
-  }, [locale]);
+  const drawerFrom: "left" | "right" = dir.toLowerCase() === "rtl" ? "left" : "right";
+  const drawerHiddenX = drawerFrom === "right" ? "100%" : "-100%";
 
+  // ✅ lock body scroll when drawer open
   useEffect(() => {
     if (!open) return;
 
     const originalOverflow = document.body.style.overflow;
     const originalPaddingRight = document.body.style.paddingRight;
 
-    const scrollbarWidth =
-      window.innerWidth - document.documentElement.clientWidth;
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
     if (scrollbarWidth > 0) document.body.style.paddingRight = `${scrollbarWidth}px`;
     document.body.style.overflow = "hidden";
 
@@ -66,29 +67,34 @@ export default function Navbar() {
     };
   }, [open]);
 
+  // ✅ ESC close
   useEffect(() => {
     if (!open) return;
-    const onKeyDown = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [open]);
 
+  // ✅ click outside close (use PointerEvent correctly)
   useEffect(() => {
     if (!open) return;
-    const onMouseDown = (e: MouseEvent) => {
+
+    const onPointerDown = (e: PointerEvent) => {
       const panel = panelRef.current;
       if (!panel) return;
       if (!panel.contains(e.target as Node)) setOpen(false);
     };
-    document.addEventListener("pointerdown", onMouseDown);
-    return () => document.removeEventListener("pointerdown", onMouseDown);
+
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => document.removeEventListener("pointerdown", onPointerDown);
   }, [open]);
 
-  const drawerHiddenX = drawerFrom === "right" ? "100%" : "-100%";
+  const close = () => setOpen(false);
 
   return (
-    <header className="sticky top-0 z-60">
-      {/* TRUE transparent wrapper (no grey) */}
+    <header className="sticky top-0 z-[60]">
       <div
         className="
           group relative
@@ -98,7 +104,6 @@ export default function Navbar() {
           border-b border-white/10
         "
       >
-        {/* Cute animated line ONLY on hover */}
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[2px] opacity-0 transition-opacity duration-300 group-hover:opacity-90">
           <div
             className="h-full w-full"
@@ -113,16 +118,13 @@ export default function Navbar() {
 
         <Container>
           <div className="flex h-16 items-center justify-between">
-            {/* Brand */}
             <Link href={`/${locale}`} className="flex items-center gap-3">
               <div className="relative">
                 <div className="relative inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-xs font-semibold text-white">
                   BTB
                 </div>
-
-                {/* tiny neon edge (cute, controlled) */}
                 <div
-                  className="pointer-events-none absolute -inset-[1px] rounded-xl opacity-70"
+                  className="pointer-events-none absolute -inset-px rounded-xl opacity-70"
                   style={{
                     background:
                       "linear-gradient(135deg, rgba(34,211,238,0.22), rgba(168,85,247,0.18), rgba(99,102,241,0.16))"
@@ -140,7 +142,6 @@ export default function Navbar() {
               </div>
             </Link>
 
-            {/* Desktop nav */}
             <nav className="hidden md:flex items-center gap-1">
               {items.map((item) => {
                 const active = isActive(item.href);
@@ -153,7 +154,6 @@ export default function Navbar() {
                       active ? "text-white" : "text-white/70 hover:text-white"
                     ].join(" ")}
                   >
-                    {/* Cute hover glow (NOT grey slab) */}
                     <span
                       className="absolute inset-0 rounded-full opacity-0 transition hover:opacity-100"
                       style={{
@@ -162,14 +162,12 @@ export default function Navbar() {
                           "radial-gradient(circle at 70% 70%, rgba(168,85,247,0.08), transparent 55%)"
                       }}
                     />
-
                     <span className="relative z-10">{t(item.key)}</span>
 
-                    {/* Active underline */}
                     {active && (
                       <motion.span
                         layoutId="btb-active-underline"
-                        className="absolute left-4 right-4 -bottom-[2px] h-[2px] rounded-full"
+                        className="absolute left-4 right-4 -bottom-0.5 h-0.5 rounded-full"
                         style={{
                           background:
                             "linear-gradient(90deg, rgba(34,211,238,1), rgba(168,85,247,1), rgba(99,102,241,1))",
@@ -184,12 +182,10 @@ export default function Navbar() {
               })}
             </nav>
 
-            {/* Right desktop: language only */}
             <div className="hidden md:flex items-center">
               <LanguageSwitcher />
             </div>
 
-            {/* Mobile button */}
             <button
               className="md:hidden inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/5 p-2 text-white"
               onClick={() => setOpen(true)}
@@ -204,17 +200,17 @@ export default function Navbar() {
         </Container>
       </div>
 
-      {/* MOBILE DRAWER */}
       <AnimatePresence>
         {open && (
           <>
+            {/* ✅ use bracket z-index so Tailwind definitely outputs it */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.15 }}
-              className="fixed inset-0 z-998 bg-black/70 backdrop-blur-[2px]"
-              onClick={() => setOpen(false)}
+              className="fixed inset-0 z-[998] bg-black/70 backdrop-blur-[2px]"
+              onClick={close}
               aria-hidden="true"
             />
 
@@ -225,7 +221,7 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: drawerHiddenX }}
               transition={{ type: "spring", stiffness: 380, damping: 36 }}
-              className="fixed top-0 z-999 h-dvh w-[88vw] max-w-sm border-l border-white/10 bg-black/90 backdrop-blur-xl"
+              className="fixed top-0 z-[999] h-dvh w-[88vw] max-w-sm border-l border-white/10 bg-black/90 backdrop-blur-xl"
               style={drawerFrom === "right" ? { right: 0 } : { left: 0 }}
               role="dialog"
               aria-modal="true"
@@ -235,7 +231,7 @@ export default function Navbar() {
                 <div className="px-5 py-4 flex items-center justify-between">
                   <div className="text-white font-semibold">Menu</div>
                   <button
-                    onClick={() => setOpen(false)}
+                    onClick={close}
                     className="inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/5 p-2 text-white"
                     aria-label="Close menu"
                     type="button"
@@ -245,7 +241,7 @@ export default function Navbar() {
                 </div>
 
                 <div
-                  className="h-[2px] w-full opacity-80"
+                  className="h-0.5 w-full opacity-80"
                   style={{
                     background:
                       "linear-gradient(90deg, rgba(34,211,238,0), rgba(34,211,238,1), rgba(168,85,247,1), rgba(99,102,241,1), rgba(34,211,238,1), rgba(34,211,238,0))",
@@ -263,6 +259,7 @@ export default function Navbar() {
                       <Link
                         key={item.key}
                         href={withLocale(item.href)}
+                        onClick={close}
                         className={[
                           "rounded-2xl px-4 py-3 text-sm transition border",
                           active

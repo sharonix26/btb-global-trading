@@ -3,16 +3,25 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { Mail, Phone, MapPin, MessageCircle } from "lucide-react";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 18, filter: "blur(10px)" },
+/* ---------- Motion variants (typed for prod builds) ---------- */
+
+const fadeUp: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 18,
+    filter: "blur(10px)",
+  },
   show: {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.7, ease: "easeOut" },
+    transition: {
+      duration: 0.7,
+      ease: [0.16, 1, 0.3, 1], // valid easing (easeOut)
+    },
   },
 };
 
@@ -22,9 +31,8 @@ export default function ContactPageClient() {
 
   return (
     <main className="min-h-screen bg-black text-white">
-      {/* HERO (image + overlays + centered copy) */}
+      {/* HERO */}
       <section className="relative min-h-[72vh] md:min-h-[78vh] overflow-hidden">
-        {/* Background image */}
         <Image
           src="/images/contact-hero.png"
           alt="City skyline"
@@ -34,10 +42,8 @@ export default function ContactPageClient() {
           className="object-cover object-center"
         />
 
-        {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/65" />
 
-        {/* Brand wash */}
         <div
           className="absolute inset-0 opacity-55"
           style={{
@@ -48,7 +54,6 @@ export default function ContactPageClient() {
           }}
         />
 
-        {/* Content */}
         <div className="relative z-10 px-6 pt-20 pb-16 md:pt-24 md:pb-20">
           <div className="mx-auto max-w-6xl">
             <motion.div
@@ -93,7 +98,6 @@ export default function ContactPageClient() {
           </div>
         </div>
 
-        {/* bottom fade into black so section transition is smooth */}
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-black" />
       </section>
 
@@ -114,7 +118,7 @@ export default function ContactPageClient() {
           </motion.div>
 
           <div className="mt-10 grid gap-10 md:grid-cols-2 md:gap-12 items-start">
-            {/* LEFT: CONTACT DETAILS */}
+            {/* CONTACT DETAILS */}
             <motion.div
               variants={fadeUp}
               initial="hidden"
@@ -127,66 +131,34 @@ export default function ContactPageClient() {
               </h3>
 
               <div className="space-y-4 text-white/75">
-                <div className="flex items-start gap-3">
-                  <Mail className="h-5 w-5 text-cyan-300 mt-0.5" />
-                  <div>
-                    <div className="text-sm text-white/55">
-                      {t("touch.items.email.label")}
-                    </div>
-                    <a
-                      className="hover:text-white transition"
-                      href={`mailto:${t("touch.items.email.value")}`}
-                    >
-                      {t("touch.items.email.value")}
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <Phone className="h-5 w-5 text-cyan-300 mt-0.5" />
-                  <div>
-                    <div className="text-sm text-white/55">
-                      {t("touch.items.phone1.label")}
-                    </div>
-                    <a
-                      className="hover:text-white transition"
-                      href={`tel:${t("touch.items.phone1.tel")}`}
-                    >
-                      {t("touch.items.phone1.value")}
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <MapPin className="h-5 w-5 text-cyan-300 mt-0.5" />
-                  <div>
-                    <div className="text-sm text-white/55">
-                      {t("touch.items.office.label")}
-                    </div>
-                    <div>{t("touch.items.office.value")}</div>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <MessageCircle className="h-5 w-5 text-cyan-300 mt-0.5" />
-                  <div>
-                    <div className="text-sm text-white/55">
-                      {t("touch.items.whatsapp.label")}
-                    </div>
-                    <a
-                      className="hover:text-white transition"
-                      href={t("touch.items.whatsapp.href")}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {t("touch.items.whatsapp.value")}
-                    </a>
-                  </div>
-                </div>
+                <ContactItem
+                  icon={<Mail className="h-5 w-5 text-cyan-300" />}
+                  label={t("touch.items.email.label")}
+                  value={t("touch.items.email.value")}
+                  href={`mailto:${t("touch.items.email.value")}`}
+                />
+                <ContactItem
+                  icon={<Phone className="h-5 w-5 text-cyan-300" />}
+                  label={t("touch.items.phone1.label")}
+                  value={t("touch.items.phone1.value")}
+                  href={`tel:${t("touch.items.phone1.tel")}`}
+                />
+                <ContactItem
+                  icon={<MapPin className="h-5 w-5 text-cyan-300" />}
+                  label={t("touch.items.office.label")}
+                  value={t("touch.items.office.value")}
+                />
+                <ContactItem
+                  icon={<MessageCircle className="h-5 w-5 text-cyan-300" />}
+                  label={t("touch.items.whatsapp.label")}
+                  value={t("touch.items.whatsapp.value")}
+                  href={t("touch.items.whatsapp.href")}
+                  external
+                />
               </div>
             </motion.div>
 
-            {/* RIGHT: FORM (UI-only) */}
+            {/* FORM */}
             <motion.div
               variants={fadeUp}
               initial="hidden"
@@ -194,7 +166,6 @@ export default function ContactPageClient() {
               viewport={{ once: true, amount: 0.25 }}
               className="relative"
             >
-              {/* glow behind card */}
               <div
                 className="pointer-events-none absolute -inset-10 opacity-45 blur-3xl"
                 style={{
@@ -210,45 +181,10 @@ export default function ContactPageClient() {
                 </h3>
 
                 <form className="mt-6 space-y-4">
-                  <div>
-                    <label className="text-xs text-white/60">
-                      {t("form.fields.name")}
-                    </label>
-                    <input
-                      className="mt-2 w-full rounded-xl border border-white/10 bg-black/35 px-4 py-3 text-sm text-white placeholder:text-white/35 outline-none focus:border-cyan-400/40"
-                      placeholder={t("form.placeholders.name")}
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-xs text-white/60">
-                      {t("form.fields.email")}
-                    </label>
-                    <input
-                      className="mt-2 w-full rounded-xl border border-white/10 bg-black/35 px-4 py-3 text-sm text-white placeholder:text-white/35 outline-none focus:border-cyan-400/40"
-                      placeholder={t("form.placeholders.email")}
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-xs text-white/60">
-                      {t("form.fields.subject")}
-                    </label>
-                    <input
-                      className="mt-2 w-full rounded-xl border border-white/10 bg-black/35 px-4 py-3 text-sm text-white placeholder:text-white/35 outline-none focus:border-cyan-400/40"
-                      placeholder={t("form.placeholders.subject")}
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-xs text-white/60">
-                      {t("form.fields.message")}
-                    </label>
-                    <textarea
-                      className="mt-2 min-h-[130px] w-full rounded-xl border border-white/10 bg-black/35 px-4 py-3 text-sm text-white placeholder:text-white/35 outline-none focus:border-cyan-400/40"
-                      placeholder={t("form.placeholders.message")}
-                    />
-                  </div>
+                  <Input label={t("form.fields.name")} placeholder={t("form.placeholders.name")} />
+                  <Input label={t("form.fields.email")} placeholder={t("form.placeholders.email")} />
+                  <Input label={t("form.fields.subject")} placeholder={t("form.placeholders.subject")} />
+                  <Textarea label={t("form.fields.message")} placeholder={t("form.placeholders.message")} />
 
                   <button
                     type="button"
@@ -267,7 +203,7 @@ export default function ContactPageClient() {
                     <span className="relative z-10">{t("form.submit")}</span>
                   </button>
 
-                  <p className="pt-2 text-[11px] text-white/45 leading-relaxed">
+                  <p className="pt-2 text-[11px] text-white/45">
                     {t("form.disclaimer")}
                   </p>
                 </form>
@@ -277,5 +213,65 @@ export default function ContactPageClient() {
         </div>
       </section>
     </main>
+  );
+}
+
+/* ---------- Small helpers ---------- */
+
+function ContactItem({
+  icon,
+  label,
+  value,
+  href,
+  external,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  value: string;
+  href?: string;
+  external?: boolean;
+}) {
+  const content = (
+    <>
+      <div className="text-sm text-white/55">{label}</div>
+      <div className="hover:text-white transition">{value}</div>
+    </>
+  );
+
+  return (
+    <div className="flex items-start gap-3">
+      {icon}
+      {href ? (
+        <a href={href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined}>
+          {content}
+        </a>
+      ) : (
+        <div>{content}</div>
+      )}
+    </div>
+  );
+}
+
+function Input({ label, placeholder }: { label: string; placeholder: string }) {
+  return (
+    <div>
+      <label className="text-xs text-white/60">{label}</label>
+      <input
+        className="mt-2 w-full rounded-xl border border-white/10 bg-black/35 px-4 py-3 text-sm text-white outline-none focus:border-cyan-400/40"
+        placeholder={placeholder}
+      />
+    </div>
+  );
+}
+
+function Textarea({ label, placeholder }: { label: string; placeholder: string }) {
+  return (
+    <div>
+      <label className="text-xs text-white/60">{label}</label>
+      <textarea
+        className="mt-2 min-h-[130px] w-full rounded-xl border border-white/10 bg-black/35 px-4 py-3 text-sm text-white outline-none focus:border-cyan-400/40"
+        placeholder={placeholder}
+      />
+    </div>
   );
 }
