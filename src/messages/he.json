@@ -1,15 +1,239 @@
 {
+  "nav": {
+    "home": "דף הבית",
+    "services": "שירותים",
+    "about": "אודות",
+    "contact": "צור קשר",
+    "contactSales": "יצירת קשר עם מכירות"
+  },
   "home": {
-    "title": "BTB Global Trading",
-    "subtitle": "Cross-border payments and FX execution support built for global operators and private clients.",
-    "intro": "BTB is an EU-based company headquartered in Warsaw, Poland, supporting international settlements, currency operations, and trade execution support through a network of licensed financial partners. We work with importers, exporters, corporate finance teams, and private clients who need structured execution, operational efficiency, and transparent pricing across multiple countries and currencies.",
-    "capabilities": {
-      "multiCurrency": "Multi-currency settlement support across major and emerging corridors (including EUR, USD, GBP, ILS, TRY, AED, BRL, MXN, CNY, and more).",
-      "regulated": "Regulated financial infrastructure supported by licensed partners in the EU and other key jurisdictions.",
-      "execution": "Execution support across payment workflows, FX coordination, and cross-border treasury operations.",
-      "regional": "Regional experience across Europe, Latin America, the Middle East, and China."
+    "hero": {
+      "titleLine1": "מקדמים את המסחר הגלובלי שלך",
+      "titleLine2": "קדימה",
+      "subtitle": "תשלומים בינלאומיים חלקים, FX וניהול אוצר, ותמיכה מקצועית במסחר.",
+      "cta": "יצירת קשר עם מכירות"
     },
-    "closing": "Whether you’re importing goods, exporting services, managing global treasury, or making a personal international transfer, we help you move capital with clarity and control.",
-    "disclaimer": "Note: BTB does not act as a bank or licensed payment partner. Payments are processed by regulated partner partners, subject to onboarding and compliance requirements."
+    "features": {
+      "globalPayments": {
+        "title": "תשלומים גלובליים",
+        "body": "שליחה וקבלה של תשלומים בינלאומיים במהירות ובתעריפים תחרותיים."
+      },
+      "fxTreasury": {
+        "title": "FX וניהול אוצר",
+        "body": "אופטימיזציה לאסטרטגיית מט״ח וניהול סיכוני מטבע בצורה אפקטיבית."
+      },
+      "tradeSupport": {
+        "title": "תמיכת סחר",
+        "body": "ליווי מומחים ופתרונות לתפעול סחר בינלאומי מורכב."
+      }
+    },
+    "aboutSection": {
+      "title": "אודות BTB Global Trading",
+      "body": "BTB Global Trading היא שותפה מהימנה לניווט במורכבות של מסחר ופיננסים בינלאומיים. עם מטה בוורשה, הצוות שלנו תומך בעסקים ברחבי העולם בפתרונות מותאמים שמאפשרים פעילות יעילה, מאובטחת ומתואמת-ציות. העסקאות מבוצעות באמצעות שותפים פיננסיים מורשים."
+    },
+    "whyChoose": {
+      "title": "למה לבחור בנו?",
+      "subtitle": "",
+      "points": {
+        "euCompliance": "ציות רגולטורי באיחוד האירופי",
+        "personalizedGuidance": "ליווי מותאם אישית",
+        "crossBorderExpertise": "מומחיות חוצת גבולות",
+        "fastSecureTransactions": "עסקאות מהירות ומאובטחות"
+      }
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "אודות",
+      "imageAlt": "רשת גלובלית",
+      "description": "BTB Global Trading היא חברה פרטית מבוססת-האיחוד האירופי עם מטה בוורשה, פולין. אנו מספקים גישה לתשתית פיננסית מפוקחת דרך רשת שותפים מורשים. תפקידנו הוא לתאם, לתמוך ולפשט תפעול פיננסי חוצה גבולות מורכב. העסקאות מבוצעות באמצעות שותפים פיננסיים מורשים.",
+      "ctaPrimary": "יצירת קשר עם מכירות",
+      "ctaSecondary": "למידע נוסף"
+    },
+    "whoWeAre": {
+      "title": "מי אנחנו",
+      "description": "BTB Global Trading היא חברה פרטית מבוססת-האיחוד האירופי עם מטה בוורשה, פולין. אנו מספקים גישה לתשתית פיננסית מפוקחת דרך רשת שותפים מורשים. תפקידנו הוא לתאם, לתמוך ולפשט תפעול פיננסי חוצה גבולות מורכב. העסקאות מבוצעות באמצעות שותפים פיננסיים מורשים.",
+      "features": {
+        "coordination": {
+          "title": "תיאום",
+          "text": "אנו מתזמרים את הביצוע דרך שותפים מורשים ושומרים על רצף תפעולי מקצה לקצה."
+        },
+        "compliance": {
+          "title": "ציות לפני הכול",
+          "text": "תהליכים מיושרים למסגרות רגולטוריות במספר תחומי שיפוט."
+        },
+        "crossBorder": {
+          "title": "מיקוד חוצה גבולות",
+          "text": "מותאם לזרימות בינלאומיות, צרכים רב-מטבעיים ונתיבי סליקה מורכבים."
+        },
+        "visibility": {
+          "title": "שקיפות תפעולית",
+          "text": "תמונה ברורה של שלבים, לוחות זמנים והצדדים המעורבים."
+        }
+      }
+    },
+    "builtFor": {
+      "title": "למה אנחנו בנויים",
+      "subtitle": "אנו תומכים בארגונים ובאנשים שזקוקים ל:",
+      "bullets": [
+        "סליקות בינלאומיות אמינות ומדויקות.",
+        "ביצוע מט״ח (FX) שקוף עם שקיפות תפעולית ברורה.",
+        "תמיכה מתואמת בין אזורי זמן, מטבעות ומסגרות רגולטוריות.",
+        "תהליכים מיושרי-ציות הנתמכים ע״י שותפים מורשים במספר תחומי שיפוט."
+      ]
+    },
+    "operate": {
+      "title": "איפה אנחנו פועלים",
+      "regions": "האיחוד האירופי - ישראל - טורקיה - איחוד האמירויות - אמריקה הלטינית - סין"
+    },
+    "workWith": {
+      "title": "עם מי אנחנו עובדים",
+      "cards": {
+        "importers": {
+          "title": "יבואנים, יצואנים ושרשראות אספקה גלובליות",
+          "items": [
+            "תשלומים יעילים למסחר בינלאומי.",
+            "ביצוע FX יעיל לניהול סיכוני מטבע.",
+            "תהליכים מיושרי-ציות לתפעול חוצה גבולות חלק."
+          ]
+        },
+        "cfos": {
+          "title": "מנהלי כספים, צוותי אוצר ומחלקות פיננסיות",
+          "items": [
+            "שקיפות תפעולית משופרת לבקרה פיננסית.",
+            "סליקות בינלאומיות אמינות ומדויקות.",
+            "תמיכה במסגרות רגולטוריות מורכבות."
+          ]
+        },
+        "logistics": {
+          "title": "ספקי לוגיסטיקה בינלאומיים ופלטפורמות B2B",
+          "items": [
+            "תמיכה מתואמת בין אזורי זמן ומטבעות.",
+            "פישוט תפעול פיננסי חוצה גבולות מורכב.",
+            "גישה לתשתית פיננסית מפוקחת."
+          ]
+        },
+        "private": {
+          "title": "לקוחות פרטיים ו-Family Offices",
+          "items": [
+            "צרכי הון חוצי גבולות מנוהלים במומחיות.",
+            "סליקות בינלאומיות אמינות ומדויקות.",
+            "בכפוף לתהליך הצטרפות ואימות ציות."
+          ]
+        },
+        "partners": {
+          "title": "שותפים פיננסיים מורשים",
+          "items": [
+            "רשת שותפים מהימנים ומורשים.",
+            "הבטחת ציות רגולטורי לכל העסקאות.",
+            "הפעלת תשתית לביצוע פיננסי מאובטח ויעיל גלובלית."
+          ]
+        },
+        "security": {
+          "title": "ממוקדים בציות ובאבטחה",
+          "items": [
+            "עמידה בתקנים רגולטוריים של האיחוד האירופי.",
+            "אמצעי אבטחה חזקים לכל העסקאות.",
+            "שיתופי פעולה עם מוסדות פיננסיים מורשים במלואם."
+          ]
+        }
+      }
+    },
+    "cta": {
+      "title": "מוכנים לחבר בין שווקים ולהעצים את המסחר שלכם?",
+      "button": "יצירת קשר עם מכירות"
+    }
+  },
+  "footer": {
+    "description": "השותף שלכם למסחר בינלאומי ותשלומים חלקים. מניעים עסקים גלובליים.",
+    "company": "חברה",
+    "services": "שירותים",
+    "links": {
+      "home": "דף הבית",
+      "about": "אודות",
+      "contact": "צור קשר"
+    },
+    "serviceItems": {
+      "globalPayments": "תשלומים גלובליים",
+      "fxTreasury": "FX וניהול אוצר",
+      "tradeSupport": "תמיכת סחר"
+    },
+    "copyright": "BTB Global Trading. כל הזכויות שמורות."
+  },
+  "services": {
+    "hero": {
+      "title": "פתרונות מקיפים לעסק הגלובלי שלכם",
+      "subtitle": "ב-BTB Global Trading אנו תומכים במפעילים בינלאומיים ובלקוחות פרטיים עם שירותים מוכווני ביצוע: ייעול תשלומים חוצי גבולות, אופטימיזציה לתיאום FX והפחתת חיכוך בתהליכי מסחר גלובליים."
+    },
+    "cta": "יצירת קשר עם מכירות",
+    "globalPayments": {
+      "title": "תשלומים גלובליים",
+      "body": "סליקות חוצות גבולות המתואמות דרך ערוצים מפוקחים. אנו תומכים בתשלומים רב-מטבעיים במסדרונות מרכזיים באירופה, אמריקה הלטינית, המזרח התיכון ואסיה באמצעות שותפים פיננסיים מורשים.",
+      "bullets": [
+        "סליקות רב-מטבעיות במסדרונות מרכזיים ומתפתחים.",
+        "תשלומים לספקים ולתפעול עם מעקב ומוכנות תיעוד.",
+        "ביצוע באותו יום/יום למחרת במסדרונות רבים (בכפוף לתהליך הצטרפות ושעות חיתוך).",
+        "מבנה תשלומים המיושר לתהליכים מפוקחים ולמציאות תפעולית."
+      ]
+    },
+    "fxTreasury": {
+      "title": "שירותי FX וניהול אוצר",
+      "body": "ביצוע מטבע טוב יותר, תזמון ושליטה בין תחומי שיפוט. אנו תומכים בצוותי כספים בתיאום FX מובנה ותכנון אוצר באמצעות פתרונות שותפים כשמתאים.",
+      "bullets": [
+        "תיאום המרות FX עם שקיפות ברורה של מבנה הביצוע.",
+        "תמיכה בגידור באמצעות פתרונות שותפים (כאשר זמין ומתאים).",
+        "תכנון תזמון אוצר ותזרים מזומנים בין מטבעות ותאריכי תשלום.",
+        "מבנה ייעודי לעסקה (פיצול תשלומים, סליקות בשלבים, זרימות מרובות צדדים)."
+      ]
+    },
+    "tradeSupport": {
+      "title": "תמיכת סחר",
+      "body": "תמיכה תפעולית לתהליכי מסחר בינלאומיים. אנו מסייעים להפחית חיכוך בתשלומים, מוכנות תיעוד ותיאום חוצה גבולות בין אזורים וצדדים.",
+      "bullets": [
+        "תמיכת ביצוע לתהליכי תשלום הקשורים למסחר בין תחומי שיפוט.",
+        "תמיכה בתהליכים מיושרי-ציות ומוכנות להצטרפות עם שותפים.",
+        "תיאום בין אזורי זמן, מטבעות ומגבלות תפעוליות.",
+        "ניסיון אזורי באירופה, אמריקה הלטינית, המזרח התיכון וסין."
+      ]
+    }
+  },
+  "contact": {
+    "hero": {
+      "title": "BTB Global Trading",
+      "subtitle": "השותף שלכם למסחר בינלאומי ותשלומים",
+      "body1": "BTB Global Trading תומכת בתיאום מימון מסחר ובתפעול תשלומים חוצי גבולות, עם מטה בוורשה, פולין. המשימה שלנו היא לפשט תהליכים גלובליים מורכבים ולעזור לעסקים לבצע בצורה יעילה בין שווקים.",
+      "body2": "עם הבנה עמוקה של מסדרונות גלובליים וסביבות רגולטוריות, הצוות שלנו תומך ביבואנים, יצואנים ומפעילים בינלאומיים עם תיאום וליווי ביצוע מותאם דרך שותפים מורשים.",
+      "body3": "אנו נותנים עדיפות לקשרים ארוכי טווח המבוססים על בהירות ואמון. ב-BTB Global Trading, תשלומים חוצי גבולות חלקים ותמיכה תפעולית במסחר הם ליבת הפעילות שמאפשרת עסקים גלובליים.",
+      "cta": "לגלות את השירותים"
+    },
+    "touch": {
+      "title": "יצירת קשר",
+      "subtitle": "אנחנו כאן כדי לעזור לכם לנווט בשווקים גלובליים.",
+      "leftTitle": "פנו לצוות שלנו",
+      "items": {
+      "email": { "label": "אימייל", "value": "info@btbpayments.com" },
+      "phone1": { "label": "טלפון (ישראל)", "value": "+972 58-515-5340", "tel": "+972585155340" },
+      "whatsapp": { "label": "וואטסאפ (פולין)", "value": "+48 510 436 128", "href": "https://wa.me/48510436128" },
+      "linkedin": { "label": "לינקדאין", "value": "BTB Global Trading", "href": "https://www.linkedin.com/company/btbpayments/" }
+      }
+
+    },
+    "form": {
+      "title": "שלחו לנו הודעה",
+      "fields": {
+        "name": "שם",
+        "email": "אימייל",
+        "subject": "נושא",
+        "message": "הודעה"
+      },
+      "placeholders": {
+        "name": "השם המלא שלכם",
+        "email": "your.email@example.com",
+        "subject": "נושא הפנייה",
+        "message": "פרטי ההודעה שלכם..."
+      },
+      "submit": "שליחת הודעה",
+      "disclaimer": "בשליחת הפנייה, אתם מאשרים כי ייתכן שיחולו תהליכי הצטרפות ובדיקות ציות דרך שותפים מפוקחים."
+    }
   }
 }

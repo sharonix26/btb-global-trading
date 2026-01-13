@@ -211,11 +211,12 @@
       "subtitle": "We’re here to help you navigate global markets.",
       "leftTitle": "Reach Out to Our Team",
       "items": {
-        "email": { "label": "Email", "value": "info@btbglobaltrading.com" },
-        "phone1": { "label": "Main Line (Poland)", "value": "+48 22 123 4567", "tel": "+48221234567" },
-        "office": { "label": "Warsaw Office", "value": "+48 22 765 4321" },
-        "whatsapp": { "label": "WhatsApp", "value": "+48 501 234 567", "href": "https://wa.me/48501234567" }
+      "email": { "label": "Email", "value": "info@btbpayments.com" },
+      "phone1": { "label": "Phone (Israel)", "value": "+972 58-515-5340", "tel": "+972585155340" },
+      "whatsapp": { "label": "WhatsApp (Poland)", "value": "+48 510 436 128", "href": "https://wa.me/48510436128" },
+      "linkedin": { "label": "LinkedIn", "value": "BTB Global Trading", "href": "https://www.linkedin.com/company/btbpayments/" }
       }
+
     },
     "form": {
       "title": "Send Us a Message",

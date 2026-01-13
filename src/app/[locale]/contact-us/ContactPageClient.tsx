@@ -1,33 +1,71 @@
 "use client";
 
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { motion, type Variants } from "framer-motion";
-import { Mail, Phone, MapPin, MessageCircle } from "lucide-react";
+import { Mail, Phone, MessageCircle, Linkedin } from "lucide-react";
 
 /* ---------- Motion variants (typed for prod builds) ---------- */
 
 const fadeUp: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 18,
-    filter: "blur(10px)",
-  },
+  hidden: { opacity: 0, y: 18, filter: "blur(10px)" },
   show: {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: {
-      duration: 0.7,
-      ease: [0.16, 1, 0.3, 1], // valid easing (easeOut)
-    },
+    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
   },
 };
+
+type Status = "idle" | "sending" | "sent" | "error";
 
 export default function ContactPageClient() {
   const t = useTranslations("contact");
   const locale = useLocale();
+
+  const [status, setStatus] = useState<Status>("idle");
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("sending");
+    setErrorMsg(null);
+
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+
+    const payload = {
+      name: String(fd.get("name") || ""),
+      email: String(fd.get("email") || ""),
+      subject: String(fd.get("subject") || ""),
+      message: String(fd.get("message") || ""),
+      locale,
+      page: typeof window !== "undefined" ? window.location.href : "",
+      userAgent: typeof navigator !== "undefined" ? navigator.userAgent : "",
+    };
+
+    try {
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        throw new Error(data?.error || "Failed to send");
+      }
+
+      setStatus("sent");
+      form.reset();
+    } catch (err: unknown) {
+      setStatus("error");
+      const message = err instanceof Error ? err.message : "Something went wrong";
+      setErrorMsg(message);
+    }
+  }
 
   return (
     <main className="min-h-screen bg-black text-white">
@@ -137,22 +175,27 @@ export default function ContactPageClient() {
                   value={t("touch.items.email.value")}
                   href={`mailto:${t("touch.items.email.value")}`}
                 />
+
                 <ContactItem
                   icon={<Phone className="h-5 w-5 text-cyan-300" />}
                   label={t("touch.items.phone1.label")}
                   value={t("touch.items.phone1.value")}
                   href={`tel:${t("touch.items.phone1.tel")}`}
                 />
-                <ContactItem
-                  icon={<MapPin className="h-5 w-5 text-cyan-300" />}
-                  label={t("touch.items.office.label")}
-                  value={t("touch.items.office.value")}
-                />
+
                 <ContactItem
                   icon={<MessageCircle className="h-5 w-5 text-cyan-300" />}
                   label={t("touch.items.whatsapp.label")}
                   value={t("touch.items.whatsapp.value")}
                   href={t("touch.items.whatsapp.href")}
+                  external
+                />
+
+                <ContactItem
+                  icon={<Linkedin className="h-5 w-5 text-cyan-300" />}
+                  label={t("touch.items.linkedin.label")}
+                  value={t("touch.items.linkedin.value")}
+                  href={t("touch.items.linkedin.href")}
                   external
                 />
               </div>
@@ -180,15 +223,36 @@ export default function ContactPageClient() {
                   {t("form.title")}
                 </h3>
 
-                <form className="mt-6 space-y-4">
-                  <Input label={t("form.fields.name")} placeholder={t("form.placeholders.name")} />
-                  <Input label={t("form.fields.email")} placeholder={t("form.placeholders.email")} />
-                  <Input label={t("form.fields.subject")} placeholder={t("form.placeholders.subject")} />
-                  <Textarea label={t("form.fields.message")} placeholder={t("form.placeholders.message")} />
+                <form className="mt-6 space-y-4" onSubmit={onSubmit}>
+                  <Input
+                    name="name"
+                    label={t("form.fields.name")}
+                    placeholder={t("form.placeholders.name")}
+                    required
+                  />
+                  <Input
+                    name="email"
+                    label={t("form.fields.email")}
+                    placeholder={t("form.placeholders.email")}
+                    type="email"
+                    required
+                  />
+                  <Input
+                    name="subject"
+                    label={t("form.fields.subject")}
+                    placeholder={t("form.placeholders.subject")}
+                  />
+                  <Textarea
+                    name="message"
+                    label={t("form.fields.message")}
+                    placeholder={t("form.placeholders.message")}
+                    required
+                  />
 
                   <button
-                    type="button"
-                    className="group relative w-full rounded-xl px-4 py-3 text-sm font-medium text-black overflow-hidden"
+                    type="submit"
+                    disabled={status === "sending"}
+                    className="group relative w-full rounded-xl px-4 py-3 text-sm font-medium text-black overflow-hidden disabled:opacity-60"
                   >
                     <span
                       className="absolute inset-0"
@@ -200,8 +264,19 @@ export default function ContactPageClient() {
                       }}
                     />
                     <span className="absolute inset-0 opacity-0 transition group-hover:opacity-100 bg-white/10" />
-                    <span className="relative z-10">{t("form.submit")}</span>
+                    <span className="relative z-10">
+                      {status === "sending" ? "Sending..." : t("form.submit")}
+                    </span>
                   </button>
+
+                  {status === "sent" && (
+                    <p className="text-sm text-emerald-300">Sent ✅</p>
+                  )}
+                  {status === "error" && (
+                    <p className="text-sm text-red-300">
+                      {errorMsg || "Error"}
+                    </p>
+                  )}
 
                   <p className="pt-2 text-[11px] text-white/45">
                     {t("form.disclaimer")}
@@ -242,7 +317,11 @@ function ContactItem({
     <div className="flex items-start gap-3">
       {icon}
       {href ? (
-        <a href={href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined}>
+        <a
+          href={href}
+          target={external ? "_blank" : undefined}
+          rel={external ? "noreferrer" : undefined}
+        >
           {content}
         </a>
       ) : (
@@ -252,11 +331,26 @@ function ContactItem({
   );
 }
 
-function Input({ label, placeholder }: { label: string; placeholder: string }) {
+function Input({
+  name,
+  label,
+  placeholder,
+  required,
+  type = "text",
+}: {
+  name: string;
+  label: string;
+  placeholder: string;
+  required?: boolean;
+  type?: string;
+}) {
   return (
     <div>
       <label className="text-xs text-white/60">{label}</label>
       <input
+        name={name}
+        type={type}
+        required={required}
         className="mt-2 w-full rounded-xl border border-white/10 bg-black/35 px-4 py-3 text-sm text-white outline-none focus:border-cyan-400/40"
         placeholder={placeholder}
       />
@@ -264,11 +358,23 @@ function Input({ label, placeholder }: { label: string; placeholder: string }) {
   );
 }
 
-function Textarea({ label, placeholder }: { label: string; placeholder: string }) {
+function Textarea({
+  name,
+  label,
+  placeholder,
+  required,
+}: {
+  name: string;
+  label: string;
+  placeholder: string;
+  required?: boolean;
+}) {
   return (
     <div>
       <label className="text-xs text-white/60">{label}</label>
       <textarea
+        name={name}
+        required={required}
         className="mt-2 min-h-[130px] w-full rounded-xl border border-white/10 bg-black/35 px-4 py-3 text-sm text-white outline-none focus:border-cyan-400/40"
         placeholder={placeholder}
       />

@@ -1,6 +1,7 @@
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { locales, rtlLocales } from "@/lib/i18n";
+import { setRequestLocale } from "next-intl/server";
 import "@/app/globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/Footer";
@@ -18,20 +19,21 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params;
 
-  if (!locales.includes(locale as any)) notFound();
+  if (!(locales as readonly string[]).includes(locale)) notFound();
+
+  // ✅ bind the request to the route locale
+  setRequestLocale(locale);
 
   const messages = (await import(`@/messages/${locale}.json`)).default;
 
   return (
     <html lang={locale} dir={rtlLocales.has(locale) ? "rtl" : "ltr"}>
       <body className="min-h-dvh bg-black text-white antialiased">
-        <NextIntlClientProvider messages={messages}>
-          {/* App shell: makes footer stick to bottom on short pages */}
+        {/* ✅ pass locale explicitly */}
+        <NextIntlClientProvider locale={locale} messages={messages}>
           <div className="flex min-h-dvh flex-col">
             <Navbar />
-
             <main className="flex-1">{children}</main>
-
             <Footer />
           </div>
         </NextIntlClientProvider>
