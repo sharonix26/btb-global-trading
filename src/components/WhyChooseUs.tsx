@@ -2,92 +2,86 @@
 
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { CheckCircle2 } from "lucide-react";
 
 const EASE_OUT: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 const container = {
   hidden: {},
   show: {
-    transition: {
-      staggerChildren: 0.18,
-      delayChildren: 0.15,
-    },
+    transition: { staggerChildren: 0.1, delayChildren: 0.1 },
   },
 };
 
 const item = {
-  hidden: { opacity: 0, y: 10, filter: "blur(6px)" },
+  hidden: { opacity: 0, y: 16 },
   show: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
     transition: { duration: 0.55, ease: EASE_OUT },
   },
 };
 
+const POINTS = [
+  "euCompliance",
+  "personalizedGuidance",
+  "crossBorderExpertise",
+  "fastSecureTransactions",
+] as const;
+
+const NUMS = ["01", "02", "03", "04"];
+
 export default function WhyChooseUs() {
   const t = useTranslations("home");
 
-  const points = [
-    "euCompliance",
-    "personalizedGuidance",
-    "crossBorderExpertise",
-    "fastSecureTransactions",
-  ] as const;
-
   return (
-    <section className="px-6 py-20 md:py-5">
+    <section className="px-6 py-20 md:py-24">
       <div className="mx-auto max-w-6xl">
-        {/* floating center block */}
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 14, filter: "blur(8px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.35 }}
-          transition={{ duration: 0.7, ease: EASE_OUT }}
-          className="mx-auto max-w-2xl text-center"
+          transition={{ duration: 0.6, ease: EASE_OUT }}
+          className="mb-12"
         >
-          <h2 className="text-2xl md:text-3xl font-semibold text-white">
+          <div className="text-[11px] tracking-[0.22em] text-white/40 uppercase mb-4">
+            Why BTB
+          </div>
+          <h2 className="text-3xl md:text-4xl font-semibold text-white">
             {t("whyChoose.title")}
           </h2>
-
-          <p className="mt-3 text-sm md:text-base text-white/60">
+          <p className="mt-3 text-sm md:text-base text-white/55 max-w-xl">
             {t("whyChoose.subtitle")}
           </p>
         </motion.div>
 
-        {/* list */}
-        <motion.ul
+        {/* 2×2 grid */}
+        <motion.div
           variants={container}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.35 }}
-          className="mt-10 mx-auto max-w-xl space-y-4"
+          viewport={{ once: true, amount: 0.2 }}
+          className="grid gap-4 sm:grid-cols-2"
         >
-          {points.map((key) => (
-            <motion.li
+          {POINTS.map((key, idx) => (
+            <motion.div
               key={key}
               variants={item}
-              className="flex items-center gap-3 text-white/80"
+              className="group relative rounded-2xl border border-white/10 bg-[#0b0e14] p-6 overflow-hidden hover:border-white/20 transition-colors"
             >
-              <span className="relative flex h-6 w-6 items-center justify-center">
-                {/* subtle glow behind icon */}
-                <span
-                  className="absolute inset-0 rounded-full blur-md opacity-60"
-                  style={{
-                    background:
-                      "radial-gradient(circle, rgba(34,211,238,0.22), transparent 70%)",
-                  }}
-                />
-                <CheckCircle2 className="relative z-10 h-5 w-5 text-cyan-300" />
-              </span>
+              {/* Top accent */}
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-cyan-400/40 via-indigo-400/30 to-transparent" />
 
-              <span className="text-sm md:text-base leading-relaxed">
+              <div className="text-[11px] font-mono tracking-[0.18em] text-white/25 mb-4">
+                {NUMS[idx]}
+              </div>
+
+              <p className="text-sm md:text-[15px] leading-relaxed text-white/80">
                 {t(`whyChoose.points.${key}`)}
-              </span>
-            </motion.li>
+              </p>
+            </motion.div>
           ))}
-        </motion.ul>
+        </motion.div>
       </div>
     </section>
   );

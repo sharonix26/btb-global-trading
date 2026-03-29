@@ -41,6 +41,7 @@ export default function ContactPageClient() {
       email: String(fd.get("email") || ""),
       subject: String(fd.get("subject") || ""),
       message: String(fd.get("message") || ""),
+      website: String(fd.get("website") || ""), // honeypot
       locale,
       page: typeof window !== "undefined" ? window.location.href : "",
       userAgent: typeof navigator !== "undefined" ? navigator.userAgent : "",
@@ -86,8 +87,8 @@ export default function ContactPageClient() {
           className="absolute inset-0 opacity-55"
           style={{
             background:
-              "radial-gradient(circle at 25% 30%, rgba(34,211,238,0.20), transparent 55%)," +
-              "radial-gradient(circle at 75% 30%, rgba(168,85,247,0.16), transparent 55%)," +
+              "radial-gradient(circle at 25% 30%, rgba(197,146,42,0.20), transparent 55%)," +
+              "radial-gradient(circle at 75% 30%, rgba(12,31,63,0.16), transparent 55%)," +
               "linear-gradient(to bottom, rgba(0,0,0,0.20), rgba(0,0,0,0.88))",
           }}
         />
@@ -123,7 +124,7 @@ export default function ContactPageClient() {
                     className="absolute inset-0"
                     style={{
                       background:
-                        "linear-gradient(90deg, rgba(34,211,238,1), rgba(168,85,247,1), rgba(99,102,241,1))",
+                        "linear-gradient(90deg, rgba(197,146,42,1), rgba(12,31,63,1), rgba(21,45,86,1))",
                       backgroundSize: "200% 200%",
                       animation: "btb-gradient-move 7s ease infinite",
                     }}
@@ -213,8 +214,8 @@ export default function ContactPageClient() {
                 className="pointer-events-none absolute -inset-10 opacity-45 blur-3xl"
                 style={{
                   background:
-                    "radial-gradient(circle at 45% 40%, rgba(34,211,238,0.18), transparent 60%)," +
-                    "radial-gradient(circle at 80% 35%, rgba(168,85,247,0.14), transparent 60%)",
+                    "radial-gradient(circle at 45% 40%, rgba(197,146,42,0.18), transparent 60%)," +
+                    "radial-gradient(circle at 80% 35%, rgba(12,31,63,0.14), transparent 60%)",
                 }}
               />
 
@@ -224,6 +225,15 @@ export default function ContactPageClient() {
                 </h3>
 
                 <form className="mt-6 space-y-4" onSubmit={onSubmit}>
+                  {/* Honeypot — hidden from real users, bots fill it */}
+                  <input
+                    type="text"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    style={{ position: "absolute", left: "-9999px", opacity: 0, height: 0 }}
+                  />
                   <Input
                     name="name"
                     label={t("form.fields.name")}
@@ -258,23 +268,23 @@ export default function ContactPageClient() {
                       className="absolute inset-0"
                       style={{
                         background:
-                          "linear-gradient(90deg, rgba(34,211,238,1), rgba(168,85,247,1), rgba(99,102,241,1))",
+                          "linear-gradient(90deg, rgba(197,146,42,1), rgba(12,31,63,1), rgba(21,45,86,1))",
                         backgroundSize: "200% 200%",
                         animation: "btb-gradient-move 7s ease infinite",
                       }}
                     />
                     <span className="absolute inset-0 opacity-0 transition group-hover:opacity-100 bg-white/10" />
                     <span className="relative z-10">
-                      {status === "sending" ? "Sending..." : t("form.submit")}
+                      {status === "sending" ? t("form.sending") : t("form.submit")}
                     </span>
                   </button>
 
                   {status === "sent" && (
-                    <p className="text-sm text-emerald-300">Sent ✅</p>
+                    <p className="text-sm text-emerald-300">{t("form.sent")}</p>
                   )}
                   {status === "error" && (
                     <p className="text-sm text-red-300">
-                      {errorMsg || "Error"}
+                      {errorMsg || t("form.error")}
                     </p>
                   )}
 

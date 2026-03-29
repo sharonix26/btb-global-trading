@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
-import { Linkedin, Twitter, Instagram, Youtube } from "lucide-react";
+import { Linkedin } from "lucide-react";
 
 export default function Footer() {
   const t = useTranslations("footer");
@@ -12,93 +12,72 @@ export default function Footer() {
 
   return (
     <footer className="relative mt-auto">
-      {/* Top animated accent line (same vibe as navbar hover line) */}
-      <div className="h-[2px] w-full opacity-80">
+      {/* Top gradient accent line */}
+      <div className="h-px w-full">
         <div
           className="h-full w-full"
           style={{
             background:
-              "linear-gradient(90deg, rgba(34,211,238,0), rgba(34,211,238,1), rgba(168,85,247,1), rgba(99,102,241,1), rgba(34,211,238,1), rgba(34,211,238,0))",
-            backgroundSize: "200% 200%",
-            animation: "btb-gradient-move 7s ease infinite"
+              "linear-gradient(90deg, rgba(197,146,42,0), rgba(197,146,42,0.6), rgba(12,31,63,0.6), rgba(21,45,86,0.6), rgba(197,146,42,0))",
           }}
         />
       </div>
 
-      {/* Glass footer body */}
-      <div className="border-t border-white/10 bg-black/60 backdrop-blur-xl">
-        {/* subtle haze */}
-        <div
-          className="pointer-events-none absolute inset-x-0 top-0 h-24 opacity-50 blur-2xl"
-          style={{
-            background:
-              "radial-gradient(circle at 20% 10%, rgba(99,102,241,0.18), transparent 55%)," +
-              "radial-gradient(circle at 80% 10%, rgba(34,211,238,0.14), transparent 55%)," +
-              "radial-gradient(circle at 50% 80%, rgba(168,85,247,0.10), transparent 55%)"
-          }}
-        />
-
-        <div className="relative mx-auto max-w-6xl px-6 py-12">
+      <div className="border-t border-white/[0.06] bg-black">
+        <div className="mx-auto max-w-6xl px-6 py-12">
           <div className="grid gap-10 md:grid-cols-3">
             {/* Brand */}
             <div>
               <div className="flex items-center gap-3">
-                <div className="relative">
-                  <div
-                    className="absolute -inset-[7px] rounded-2xl opacity-70 blur-md"
-                    style={{
-                      background:
-                        "radial-gradient(circle at 30% 30%, rgba(34,211,238,0.20), transparent 60%)," +
-                        "radial-gradient(circle at 70% 70%, rgba(168,85,247,0.16), transparent 60%)"
-                    }}
-                  />
-                  <div className="relative inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-xs font-semibold text-white">
-                    BTB
-                  </div>
+                <div className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-xs font-semibold text-white shrink-0">
+                  BTB
                 </div>
-
                 <div className="leading-tight">
                   <div className="text-sm font-semibold tracking-tight text-white">
                     BTB Global Trading
                   </div>
-                  <div className="text-[11px] text-white/55">
-                    Cross-border payments & FX execution
+                  <div className="text-[11px] text-white/45">
+                    Cross-border payments &amp; FX
                   </div>
                 </div>
               </div>
 
-              <p className="mt-4 text-sm text-white/60 max-w-xs">
+              <p className="mt-5 text-sm text-white/55 max-w-xs leading-relaxed">
                 {t("description")}
               </p>
 
-              <div className="mt-5 flex gap-4 text-white/60">
-                <a href="#" aria-label="Twitter" className="hover:text-white transition">
-                  <Twitter size={18} />
-                </a>
-                <a href="#" aria-label="LinkedIn" className="hover:text-white transition">
+              <div className="mt-5 flex gap-3 text-white/45">
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="LinkedIn"
+                  className="hover:text-white transition"
+                >
                   <Linkedin size={18} />
-                </a>
-                <a href="#" aria-label="Instagram" className="hover:text-white transition">
-                  <Instagram size={18} />
-                </a>
-                <a href="#" aria-label="YouTube" className="hover:text-white transition">
-                  <Youtube size={18} />
                 </a>
               </div>
             </div>
 
             {/* Company */}
             <div>
-              <h4 className="text-sm font-semibold text-white">{t("company")}</h4>
-              <ul className="mt-4 space-y-2 text-sm text-white/70">
+              <h4 className="text-xs font-semibold tracking-widest text-white/50 uppercase">
+                {t("company")}
+              </h4>
+              <ul className="mt-5 space-y-3 text-sm text-white/60">
                 <li>
                   <Link className="hover:text-white transition" href={withLocale("/")}>
                     {t("links.home")}
                   </Link>
                 </li>
                 <li>
-                  <Link className="hover:text-white transition" href={withLocale("/about-us")}>
+                  <Link className="hover:text-white transition" href={withLocale("/about")}>
                     {t("links.about")}
+                  </Link>
+                </li>
+                <li>
+                  <Link className="hover:text-white transition" href={withLocale("/services")}>
+                    {t("links.services")}
                   </Link>
                 </li>
                 <li>
@@ -111,8 +90,10 @@ export default function Footer() {
 
             {/* Services */}
             <div>
-              <h4 className="text-sm font-semibold text-white">{t("services")}</h4>
-              <ul className="mt-4 space-y-2 text-sm text-white/70">
+              <h4 className="text-xs font-semibold tracking-widest text-white/50 uppercase">
+                {t("services")}
+              </h4>
+              <ul className="mt-5 space-y-3 text-sm text-white/60">
                 <li>{t("serviceItems.globalPayments")}</li>
                 <li>{t("serviceItems.fxTreasury")}</li>
                 <li>{t("serviceItems.tradeSupport")}</li>
@@ -120,9 +101,9 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="my-10 h-px bg-white/10" />
+          <div className="my-10 h-px bg-white/[0.08]" />
 
-          <p className="text-center text-xs text-white/50">
+          <p className="text-center text-xs text-white/35">
             © {new Date().getFullYear()} {t("copyright")}
           </p>
         </div>

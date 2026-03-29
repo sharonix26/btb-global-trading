@@ -54,14 +54,22 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
+  --primary: oklch(0.185 0.072 255);
   --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.235 0.087 253);
+  --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --accent: oklch(0.665 0.13 65);
+  --accent-foreground: oklch(0.145 0 0);
+
+  /* BTB brand palette */
+  --brand-navy: #0C1F3F;
+  --brand-prussian: #152D56;
+  --brand-gold: #C5922A;
+  --brand-surface: #F5F6F8;
+  --brand-border: #E2E4E9;
+  --brand-text-secondary: #6B7485;
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
@@ -122,6 +130,18 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Override Tailwind's default cyan/indigo/purple values to match BTB brand palette */
+@theme {
+  --color-cyan-300: #C5922A;
+  --color-cyan-400: #C5922A;
+  --color-indigo-300: #152D56;
+  --color-indigo-400: #152D56;
+  --color-indigo-500: #152D56;
+  --color-purple-300: #0C1F3F;
+  --color-purple-400: #0C1F3F;
+  --color-purple-500: #0C1F3F;
 }
 
 @keyframes btb-gradient-move {

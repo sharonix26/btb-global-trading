@@ -1,13 +1,11 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { motion, type Variants } from "framer-motion";
 import { Globe, DollarSign, Ship, CheckCircle2 } from "lucide-react";
-
-/* ---------- Motion variants (PROD SAFE) ---------- */
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 18, filter: "blur(8px)" },
@@ -21,159 +19,113 @@ const fadeUp: Variants = {
 
 const list: Variants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
+  show: { transition: { staggerChildren: 0.1, delayChildren: 0.08 } },
 };
 
 const li: Variants = {
-  hidden: { opacity: 0, y: 10, filter: "blur(6px)" },
+  hidden: { opacity: 0, x: -8 },
   show: {
     opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
+    x: 0,
+    transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
+const NUMS = ["01", "02", "03"];
+
 function ServiceBlock({
+  num,
   icon,
   title,
   body,
   bullets,
   ctaLabel,
   ctaHref,
-  bgImage,
+  accentColor,
 }: {
+  num: string;
   icon: React.ReactNode;
   title: string;
   body: string;
   bullets: string[];
   ctaLabel: string;
   ctaHref: string;
-  bgImage: string;
+  accentColor: string;
 }) {
   return (
-    <motion.section
+    <motion.div
       variants={fadeUp}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.25 }}
-      className="relative mx-auto max-w-5xl"
+      viewport={{ once: true, amount: 0.15 }}
+      className="relative mx-auto max-w-5xl rounded-2xl border border-white/10 bg-[#0b0e14] overflow-hidden"
     >
-      {/* glow behind (not side) */}
+      {/* Top accent line */}
       <div
-        className="pointer-events-none absolute -inset-10 opacity-35 blur-3xl"
+        className="absolute inset-x-0 top-0 h-[2px]"
         style={{
-          background:
-            "radial-gradient(circle at 50% 40%, rgba(34,211,238,0.16), transparent 60%)," +
-            "radial-gradient(circle at 80% 30%, rgba(168,85,247,0.12), transparent 60%)",
+          background: `linear-gradient(90deg, ${accentColor}, transparent)`,
         }}
       />
 
-      <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md px-7 py-10 md:px-12 md:py-12">
-        {/* --- Background image inside the bubble --- */}
-        <div className="pointer-events-none absolute inset-0">
-          <Image
-            src={bgImage}
-            alt=""
-            fill
-            sizes="(max-width: 768px) 100vw, 960px"
-            className="object-cover object-center opacity-[0.22]"
-          />
-          {/* darken for readability */}
-          <div className="absolute inset-0 bg-black/55" />
-          {/* subtle brand wash */}
-          <div
-            className="absolute inset-0 opacity-50"
-            style={{
-              background:
-                "radial-gradient(circle at 22% 28%, rgba(34,211,238,0.14), transparent 60%)," +
-                "radial-gradient(circle at 78% 26%, rgba(168,85,247,0.10), transparent 62%)," +
-                "linear-gradient(to bottom, rgba(0,0,0,0.10), rgba(0,0,0,0.35))",
-            }}
-          />
-        </div>
+      <div className="p-8 md:p-10 lg:p-12">
+        <div className="grid gap-8 md:grid-cols-12 md:items-center">
+          {/* Left: number + icon + title + body + CTA */}
+          <div className="md:col-span-5 flex flex-col items-start">
+            <div className="text-[11px] font-mono tracking-[0.18em] text-white/30 mb-5">
+              {num}
+            </div>
 
-        {/* shimmer line (subtle) */}
-        <div
-          className="pointer-events-none absolute inset-x-0 top-0 h-px opacity-80"
-          style={{
-            background:
-              "linear-gradient(90deg, rgba(34,211,238,0), rgba(34,211,238,0.8), rgba(168,85,247,0.8), rgba(99,102,241,0.8), rgba(34,211,238,0))",
-            backgroundSize: "200% 200%",
-            animation: "btb-gradient-move 7s ease infinite",
-          }}
-        />
+            <div className="mb-5 inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/5 p-3">
+              {icon}
+            </div>
 
-        {/* content on top */}
-        <div className="relative z-10 mx-auto max-w-2xl text-center">
-          <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-cyan-200">
-            {icon}
+            <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-white leading-tight">
+              {title}
+            </h2>
+
+            <p className="mt-4 text-sm md:text-base leading-relaxed text-white/60">
+              {body}
+            </p>
+
+            <div className="mt-8">
+              <Link
+                href={ctaHref}
+                className="inline-flex items-center rounded-full px-6 py-2.5 text-sm font-semibold text-black transition-opacity hover:opacity-90"
+                style={{
+                  background:
+                    "linear-gradient(90deg, rgba(197,146,42,1), rgba(21,45,86,1))",
+                }}
+              >
+                {ctaLabel}
+              </Link>
+            </div>
           </div>
 
-          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-white">
-            {title}
-          </h2>
-
-          <p className="mt-4 text-sm md:text-base leading-relaxed text-white/70">
-            {body}
-          </p>
-
-          {/* bullets */}
+          {/* Right: bullets */}
           <motion.ul
             variants={list}
-            className="mt-7 mx-auto max-w-xl space-y-3 text-left"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.15 }}
+            className="md:col-span-7 space-y-3"
           >
             {bullets.map((b, idx) => (
               <motion.li
-                key={`${idx}-${b}`}
+                key={idx}
                 variants={li}
-                className="flex items-start gap-3 text-white/75"
+                className="flex items-start gap-3 rounded-xl border border-white/[0.07] bg-white/[0.03] px-4 py-3.5"
               >
-                <span className="mt-0.5 shrink-0">
-                  <CheckCircle2 className="h-5 w-5 text-cyan-300" />
-                </span>
-                <span className="text-sm md:text-[15px] leading-relaxed">
+                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-cyan-400/70" />
+                <span className="text-sm md:text-[15px] leading-relaxed text-white/75">
                   {b}
                 </span>
               </motion.li>
             ))}
           </motion.ul>
-
-          <div className="mt-8">
-            <Link
-              href={ctaHref}
-              className="relative inline-flex items-center justify-center overflow-hidden rounded-full px-6 py-3 text-sm font-medium text-black focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
-            >
-              <span
-                className="absolute inset-0"
-                style={{
-                  background:
-                    "linear-gradient(90deg, rgba(34,211,238,1), rgba(168,85,247,1), rgba(99,102,241,1))",
-                  backgroundSize: "200% 200%",
-                  animation: "btb-gradient-move 7s ease infinite",
-                }}
-              />
-              <span className="relative z-10">{ctaLabel}</span>
-            </Link>
-          </div>
         </div>
       </div>
-
-      {/* gradient keyframes */}
-      <style jsx global>{`
-        @keyframes btb-gradient-move {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
-      `}</style>
-    </motion.section>
+    </motion.div>
   );
 }
 
@@ -183,73 +135,95 @@ export default function ServicesPageClient() {
 
   const contactHref = `/${locale}/contact-us`;
 
+  const SERVICES = [
+    {
+      icon: <Globe className="h-5 w-5 text-white/80" />,
+      titleKey: "globalPayments" as const,
+      accent: "rgba(197,146,42,0.7)",
+    },
+    {
+      icon: <DollarSign className="h-5 w-5 text-white/80" />,
+      titleKey: "fxTreasury" as const,
+      accent: "rgba(21,45,86,0.7)",
+    },
+    {
+      icon: <Ship className="h-5 w-5 text-white/80" />,
+      titleKey: "tradeSupport" as const,
+      accent: "rgba(12,31,63,0.7)",
+    },
+  ];
+
   return (
     <main className="min-h-screen bg-black text-white">
       {/* HERO */}
-      <section className="px-6 pt-16 pb-12 md:pt-20 md:pb-16">
-        <div className="mx-auto max-w-6xl">
+      <section className="relative min-h-[55vh] md:min-h-[62vh] flex items-center overflow-hidden">
+        <Image
+          src="/images/services-hero.png"
+          alt="BTB Global Trading services"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black/70" />
+
+        {/* Brand glow */}
+        <div
+          className="absolute inset-0 opacity-50"
+          style={{
+            background:
+              "radial-gradient(circle at 30% 40%, rgba(197,146,42,0.18), transparent 55%)," +
+              "radial-gradient(circle at 70% 35%, rgba(21,45,86,0.14), transparent 55%)," +
+              "linear-gradient(to bottom, rgba(0,0,0,0.20), rgba(0,0,0,0.90))",
+          }}
+        />
+
+        {/* Centered hero text */}
+        <div className="relative z-10 w-full px-6 py-20 md:py-24">
           <motion.div
             variants={fadeUp}
             initial="hidden"
             animate="show"
-            className="text-center"
+            className="mx-auto max-w-3xl text-center"
           >
-            <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-white">
+            <div className="text-[11px] tracking-[0.22em] text-white/50 uppercase mb-5">
+              What We Offer
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-tight">
               {t("hero.title")}
             </h1>
-            <p className="mt-5 mx-auto max-w-3xl text-sm md:text-base leading-relaxed text-white/65">
+            <p className="mt-6 text-base md:text-lg leading-relaxed text-white/65 max-w-2xl mx-auto">
               {t("hero.subtitle")}
             </p>
           </motion.div>
         </div>
+
+        {/* Bottom fade */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-black" />
       </section>
 
-      {/* BLOCKS */}
-      <section className="space-y-10 px-6 pb-20 md:space-y-12 md:pb-28">
-        <ServiceBlock
-          icon={<Globe className="h-6 w-6" />}
-          title={t("globalPayments.title")}
-          body={t("globalPayments.body")}
-          bullets={[
-            t("globalPayments.bullets.0"),
-            t("globalPayments.bullets.1"),
-            t("globalPayments.bullets.2"),
-            t("globalPayments.bullets.3"),
-          ]}
-          ctaLabel={t("cta")}
-          ctaHref={contactHref}
-          bgImage="/images/img1.png"
-        />
-
-        <ServiceBlock
-          icon={<DollarSign className="h-6 w-6" />}
-          title={t("fxTreasury.title")}
-          body={t("fxTreasury.body")}
-          bullets={[
-            t("fxTreasury.bullets.0"),
-            t("fxTreasury.bullets.1"),
-            t("fxTreasury.bullets.2"),
-            t("fxTreasury.bullets.3"),
-          ]}
-          ctaLabel={t("cta")}
-          ctaHref={contactHref}
-          bgImage="/images/img2.png"
-        />
-
-        <ServiceBlock
-          icon={<Ship className="h-6 w-6" />}
-          title={t("tradeSupport.title")}
-          body={t("tradeSupport.body")}
-          bullets={[
-            t("tradeSupport.bullets.0"),
-            t("tradeSupport.bullets.1"),
-            t("tradeSupport.bullets.2"),
-            t("tradeSupport.bullets.3"),
-          ]}
-          ctaLabel={t("cta")}
-          ctaHref={contactHref}
-          bgImage="/images/img3.png"
-        />
+      {/* SERVICE BLOCKS */}
+      <section className="space-y-6 px-6 py-16 md:space-y-8 md:py-20">
+        {SERVICES.map(({ icon, titleKey, accent }, idx) => (
+          <ServiceBlock
+            key={titleKey}
+            num={NUMS[idx]}
+            icon={icon}
+            title={t(`${titleKey}.title`)}
+            body={t(`${titleKey}.body`)}
+            bullets={[
+              t(`${titleKey}.bullets.0`),
+              t(`${titleKey}.bullets.1`),
+              t(`${titleKey}.bullets.2`),
+              t(`${titleKey}.bullets.3`),
+            ]}
+            ctaLabel={t("cta")}
+            ctaHref={contactHref}
+            accentColor={accent}
+          />
+        ))}
       </section>
     </main>
   );

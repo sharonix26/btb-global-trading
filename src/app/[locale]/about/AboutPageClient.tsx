@@ -58,8 +58,8 @@ export default function AboutPageClient() {
           className="absolute inset-0 opacity-45"
           style={{
             background:
-              "radial-gradient(circle at 22% 28%, rgba(34,211,238,0.14), transparent 58%)," +
-              "radial-gradient(circle at 78% 26%, rgba(168,85,247,0.10), transparent 60%)," +
+              "radial-gradient(circle at 22% 28%, rgba(197,146,42,0.14), transparent 58%)," +
+              "radial-gradient(circle at 78% 26%, rgba(12,31,63,0.10), transparent 60%)," +
               "linear-gradient(to bottom, rgba(0,0,0,0.18), rgba(0,0,0,0.92))",
           }}
         />
@@ -114,7 +114,7 @@ export default function AboutPageClient() {
               >
                 {/* Primary CTA — calmer (white button) */}
                 <Link
-                  href={`/${locale}/contact`}
+                  href={`/${locale}/contact-us`}
                   className="inline-flex items-center justify-center rounded-full px-7 py-3.5 text-sm font-medium text-black bg-white hover:opacity-90 transition"
                 >
                   <span className="flex items-center gap-2">
@@ -155,8 +155,8 @@ export default function AboutPageClient() {
                 className="pointer-events-none absolute -inset-10 opacity-30 blur-3xl"
                 style={{
                   background:
-                    "radial-gradient(circle at 35% 35%, rgba(34,211,238,0.14), transparent 60%)," +
-                    "radial-gradient(circle at 70% 55%, rgba(168,85,247,0.10), transparent 62%)",
+                    "radial-gradient(circle at 35% 35%, rgba(197,146,42,0.14), transparent 60%)," +
+                    "radial-gradient(circle at 70% 55%, rgba(12,31,63,0.10), transparent 62%)",
                 }}
               />
 
@@ -175,11 +175,6 @@ export default function AboutPageClient() {
                   {t("whoWeAre.description")}
                 </p>
 
-                <div className="mt-8 inline-flex items-center gap-2 rounded-full border border-white/12 bg-black/25 px-4 py-2 text-sm text-white/70 backdrop-blur-md">
-                  <span className="h-2 w-2 rounded-full bg-cyan-300/70" />
-                  <span className="font-medium text-white/80">Signal:</span>
-                  <span>Operational clarity + regulated execution access.</span>
-                </div>
               </div>
             </motion.div>
 
@@ -189,8 +184,8 @@ export default function AboutPageClient() {
                 className="pointer-events-none absolute -inset-10 opacity-35 blur-3xl"
                 style={{
                   background:
-                    "radial-gradient(circle at 55% 40%, rgba(34,211,238,0.16), transparent 60%)," +
-                    "radial-gradient(circle at 85% 35%, rgba(168,85,247,0.12), transparent 60%)",
+                    "radial-gradient(circle at 55% 40%, rgba(197,146,42,0.16), transparent 60%)," +
+                    "radial-gradient(circle at 85% 35%, rgba(12,31,63,0.12), transparent 60%)",
                 }}
               />
 
@@ -239,8 +234,8 @@ export default function AboutPageClient() {
               className="pointer-events-none absolute -inset-10 opacity-30 blur-3xl"
               style={{
                 background:
-                  "radial-gradient(circle at 22% 38%, rgba(34,211,238,0.12), transparent 58%)," +
-                  "radial-gradient(circle at 78% 40%, rgba(168,85,247,0.10), transparent 58%)",
+                  "radial-gradient(circle at 22% 38%, rgba(197,146,42,0.12), transparent 58%)," +
+                  "radial-gradient(circle at 78% 40%, rgba(12,31,63,0.10), transparent 58%)",
               }}
             />
 
@@ -286,8 +281,8 @@ export default function AboutPageClient() {
               className="pointer-events-none absolute -inset-10 opacity-25 blur-3xl"
               style={{
                 background:
-                  "radial-gradient(circle at 30% 35%, rgba(99,102,241,0.10), transparent 60%)," +
-                  "radial-gradient(circle at 75% 40%, rgba(34,211,238,0.10), transparent 60%)",
+                  "radial-gradient(circle at 30% 35%, rgba(21,45,86,0.10), transparent 60%)," +
+                  "radial-gradient(circle at 75% 40%, rgba(197,146,42,0.10), transparent 60%)",
               }}
             />
 
@@ -307,7 +302,7 @@ export default function AboutPageClient() {
               className="relative mt-6 flex flex-wrap gap-2"
             >
               {String(t("operate.regions"))
-                .split("-")
+                .split(" — ")
                 .map((r) => r.trim())
                 .filter(Boolean)
                 .map((r) => (
@@ -421,8 +416,8 @@ export default function AboutPageClient() {
               className="pointer-events-none absolute -inset-10 opacity-25 blur-3xl"
               style={{
                 background:
-                  "radial-gradient(circle at 30% 40%, rgba(34,211,238,0.12), transparent 55%)," +
-                  "radial-gradient(circle at 70% 40%, rgba(168,85,247,0.10), transparent 55%)",
+                  "radial-gradient(circle at 30% 40%, rgba(197,146,42,0.12), transparent 55%)," +
+                  "radial-gradient(circle at 70% 40%, rgba(12,31,63,0.10), transparent 55%)",
               }}
             />
 
@@ -435,7 +430,7 @@ export default function AboutPageClient() {
 
             <motion.div variants={fadeUp} className="relative mt-7">
               <Link
-                href={`/${locale}/contact`}
+                href={`/${locale}/contact-us`}
                 className="inline-flex items-center justify-center rounded-full px-8 py-3.5 text-sm font-medium text-black bg-white hover:opacity-90 transition"
               >
                 <span className="flex items-center gap-2">

@@ -9,7 +9,7 @@ export default function SectionDivider() {
         className="absolute inset-0 opacity-20"
         style={{
           background:
-            "radial-gradient(circle at 50% 0%, rgba(34,211,238,0.12), transparent 60%)"
+            "radial-gradient(circle at 50% 0%, rgba(197,146,42,0.12), transparent 60%)"
         }}
       />
     </section>
