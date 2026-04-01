@@ -10,13 +10,13 @@
     "hero": {
       "titleLine1": "Cross-Border Financial Infrastructure.",
       "titleLine2": "Built for Global Business.",
-      "subtitle": "BTB coordinates regulated financial infrastructure through licensed partners — built for international settlements, FX operations, and cross-border trade execution.",
+      "subtitle": "BTB coordinates regulated financial infrastructure through licensed partners - built for international settlements, FX operations, and cross-border trade execution.",
       "cta": "Contact Sales"
     },
     "features": {
       "globalPayments": {
         "title": "Global Payments",
-        "body": "Multi-currency B2B settlements across key corridors — structured through regulated channels."
+        "body": "Multi-currency B2B settlements across key corridors - structured through regulated channels."
       },
       "fxTreasury": {
         "title": "FX & Treasury",
@@ -24,19 +24,19 @@
       },
       "tradeSupport": {
         "title": "Trade & Deal Support",
-        "body": "Execution support for cross-border deals with regional complexity — where most platforms stop, we start."
+        "body": "Execution support for cross-border deals with regional complexity - where most platforms stop, we start."
       }
     },
     "aboutSection": {
       "title": "About BTB Global Trading",
-      "body": "BTB Global Trading is an EU-based company headquartered in Warsaw, Poland. We coordinate access to regulated financial infrastructure through licensed partners — working with importers, exporters, corporate finance teams, and private clients across regulated markets. We help move capital with control, clarity, and speed. Transactions are carried out by licensed financial partners."
+      "body": "BTB Global Trading is an EU-based company headquartered in Warsaw, Poland. We coordinate access to regulated financial infrastructure through licensed partners - working with importers, exporters, corporate finance teams, and private clients across regulated markets. We help move capital with control, clarity, and speed. Transactions are carried out by licensed financial partners."
     },
     "whyChoose": {
       "title": "Why Choose BTB?",
       "subtitle": "",
       "points": {
         "euCompliance": "Regulated EU Financial Infrastructure",
-        "personalizedGuidance": "Direct Support — No Ticket-Based Runarounds",
+        "personalizedGuidance": "Direct Support - No Ticket-Based Runarounds",
         "crossBorderExpertise": "Coverage Across Major & Emerging Markets",
         "fastSecureTransactions": "Flexible Structuring for Real Operational Needs"
       }
@@ -84,7 +84,7 @@
     },
     "operate": {
       "title": "Where We Operate",
-      "regions": "European Union — Israel — Turkey — UAE — Latin America — China"
+      "regions": "European Union - Israel - Turkey - UAE - Latin America - China"
     },
     "workWith": {
       "title": "Who We Work With",
@@ -164,12 +164,12 @@
   "services": {
     "hero": {
       "title": "What We Deliver",
-      "subtitle": "BTB supports companies with real operational exposure across multiple countries, payment rails, and currencies. We bring clarity, control, and execution to the financial side of international trade — so your team can move quickly, stay aligned with compliance, and reduce friction in day-to-day settlements."
+      "subtitle": "BTB supports companies with real operational exposure across multiple countries, payment rails, and currencies. We bring clarity, control, and execution to the financial side of international trade - so your team can move quickly, stay aligned with compliance, and reduce friction in day-to-day settlements."
     },
     "cta": "Contact Sales",
     "globalPayments": {
       "title": "Global Payments",
-      "body": "Cross-border settlements executed through regulated channels. We support multi-currency B2B payments across key trade corridors in Europe, Latin America, the Middle East, and Asia — structured through licensed, regulated financial partners.",
+      "body": "Cross-border settlements executed through regulated channels. We support multi-currency B2B payments across key trade corridors in Europe, Latin America, the Middle East, and Asia - structured through licensed, regulated financial partners.",
       "bullets": [
         "Multi-currency settlements (EUR, USD, GBP, ILS, TRY, AED, BRL, MXN, CNY, and more).",
         "B2B supplier and operational payments with reliable tracking and documentation readiness.",
@@ -179,7 +179,7 @@
     },
     "fxTreasury": {
       "title": "FX Execution & Treasury Coordination",
-      "body": "Better currency execution, timing, and control across jurisdictions. We help finance teams manage currency flows efficiently — whether you need reactive execution for immediate obligations or proactive planning to reduce exposure.",
+      "body": "Better currency execution, timing, and control across jurisdictions. We help finance teams manage currency flows efficiently - whether you need reactive execution for immediate obligations or proactive planning to reduce exposure.",
       "bullets": [
         "FX conversion execution with clear visibility into how the conversion is structured.",
         "Hedging support through partner solutions (where available and appropriate).",
@@ -189,7 +189,7 @@
     },
     "tradeSupport": {
       "title": "Trade & Deal Support",
-      "body": "Execution support for the operational details most platforms don't handle. Many problems in cross-border finance aren't payment problems — they're coordination, documentation, and timing problems. We help you manage the execution layer around international trade payments.",
+      "body": "Execution support for the operational details most platforms don't handle. Many problems in cross-border finance aren't payment problems - they're coordination, documentation, and timing problems. We help you manage the execution layer around international trade payments.",
       "bullets": [
         "Counterparty and supplier screening support (risk and compliance-oriented checks, where applicable).",
         "Document pack review for operational readiness (invoices, supporting documents, settlement flow).",

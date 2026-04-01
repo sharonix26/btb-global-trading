@@ -10,13 +10,13 @@
     "hero": {
       "titleLine1": "Sınır Ötesi Finansal Altyapı.",
       "titleLine2": "Küresel İşletmeler için Tasarlandı.",
-      "subtitle": "BTB, lisanslı iş ortakları aracılığıyla düzenlenmiş finansal altyapıyı koordine eder — uluslararası mutabakatlar, döviz işlemleri ve sınır ötesi ticaret yürütümü için tasarlanmıştır.",
+      "subtitle": "BTB, lisanslı iş ortakları aracılığıyla düzenlenmiş finansal altyapıyı koordine eder - uluslararası mutabakatlar, döviz işlemleri ve sınır ötesi ticaret yürütümü için tasarlanmıştır.",
       "cta": "Satış ile İletişim"
     },
     "features": {
       "globalPayments": {
         "title": "Küresel Ödemeler",
-        "body": "Kilit koridorlarda çok para birimli B2B mutabakatlar — düzenlenmiş kanallar üzerinden yapılandırılmıştır."
+        "body": "Kilit koridorlarda çok para birimli B2B mutabakatlar - düzenlenmiş kanallar üzerinden yapılandırılmıştır."
       },
       "fxTreasury": {
         "title": "FX & Hazine",
@@ -24,19 +24,19 @@
       },
       "tradeSupport": {
         "title": "Ticaret & Anlaşma Desteği",
-        "body": "Bölgesel karmaşıklığı olan sınır ötesi anlaşmalar için yürütüm desteği — çoğu platformun durduğu yerde biz başlarız."
+        "body": "Bölgesel karmaşıklığı olan sınır ötesi anlaşmalar için yürütüm desteği - çoğu platformun durduğu yerde biz başlarız."
       }
     },
     "aboutSection": {
       "title": "BTB Global Trading Hakkında",
-      "body": "BTB Global Trading, merkezi Varşova, Polonya'da bulunan AB merkezli bir şirkettir. Lisanslı iş ortakları üzerinden düzenlenmiş finansal altyapıya erişimi koordine ediyoruz — ithalatçılar, ihracatçılar, kurumsal finans ekipleri ve düzenlenmiş piyasalardaki özel müşterilerle çalışıyoruz. Sermayenin kontrollü, şeffaf ve hızlı hareket etmesine yardımcı oluyoruz. İşlemler lisanslı finansal iş ortakları tarafından gerçekleştirilir."
+      "body": "BTB Global Trading, merkezi Varşova, Polonya'da bulunan AB merkezli bir şirkettir. Lisanslı iş ortakları üzerinden düzenlenmiş finansal altyapıya erişimi koordine ediyoruz - ithalatçılar, ihracatçılar, kurumsal finans ekipleri ve düzenlenmiş piyasalardaki özel müşterilerle çalışıyoruz. Sermayenin kontrollü, şeffaf ve hızlı hareket etmesine yardımcı oluyoruz. İşlemler lisanslı finansal iş ortakları tarafından gerçekleştirilir."
     },
     "whyChoose": {
       "title": "Neden BTB?",
       "subtitle": "",
       "points": {
         "euCompliance": "AB Düzenlemelerine Uygun Finansal Altyapı",
-        "personalizedGuidance": "Doğrudan Destek — Bürokratik Engel Yok",
+        "personalizedGuidance": "Doğrudan Destek - Bürokratik Engel Yok",
         "crossBorderExpertise": "Büyük ve Gelişen Piyasalarda Geniş Kapsam",
         "fastSecureTransactions": "Gerçek Operasyonel İhtiyaçlara Göre Esnek Yapılandırma"
       }
@@ -84,7 +84,7 @@
     },
     "operate": {
       "title": "Nerelerde Faaliyet Gösteriyoruz",
-      "regions": "Avrupa Birliği — İsrail — Türkiye — BAE — Latin Amerika — Çin"
+      "regions": "Avrupa Birliği - İsrail - Türkiye - BAE - Latin Amerika - Çin"
     },
     "workWith": {
       "title": "Kimlerle Çalışıyoruz",
@@ -164,7 +164,7 @@
   "services": {
     "hero": {
       "title": "Ne Sunuyoruz",
-      "subtitle": "BTB, birden fazla ülke, ödeme altyapısı ve para birimi üzerinde gerçek operasyonel maruziyeti olan şirketlere destek sağlar. Uluslararası ticaretin finansal tarafına netlik, kontrol ve yürütüm getiriyoruz — böylece ekibiniz hızlı hareket edebilir, uyumla uyumlu kalabilir ve günlük mutabakatlardaki sürtünmeyi azaltabilir."
+      "subtitle": "BTB, birden fazla ülke, ödeme altyapısı ve para birimi üzerinde gerçek operasyonel maruziyeti olan şirketlere destek sağlar. Uluslararası ticaretin finansal tarafına netlik, kontrol ve yürütüm getiriyoruz - böylece ekibiniz hızlı hareket edebilir, uyumla uyumlu kalabilir ve günlük mutabakatlardaki sürtünmeyi azaltabilir."
     },
     "cta": "Satış ile İletişim",
     "globalPayments": {
@@ -179,7 +179,7 @@
     },
     "fxTreasury": {
       "title": "FX Yürütümü ve Hazine Koordinasyonu",
-      "body": "Yargı alanları arasında daha iyi döviz yürütümü, zamanlama ve kontrol. Finans ekiplerinin döviz akışlarını verimli yönetmesine yardımcı oluyoruz — acil yükümlülükler için hızlı yürütüm veya riski azaltmak için proaktif planlama olsun.",
+      "body": "Yargı alanları arasında daha iyi döviz yürütümü, zamanlama ve kontrol. Finans ekiplerinin döviz akışlarını verimli yönetmesine yardımcı oluyoruz - acil yükümlülükler için hızlı yürütüm veya riski azaltmak için proaktif planlama olsun.",
       "bullets": [
         "Dönüşümün nasıl yapılandırıldığına dair net görünürlükle FX dönüşüm yürütümü.",
         "İş ortağı çözümleriyle hedge desteği (mevcut ve uygun olduğunda).",
@@ -189,7 +189,7 @@
     },
     "tradeSupport": {
       "title": "Ticaret & Anlaşma Desteği",
-      "body": "Çoğu platformun ele almadığı operasyonel ayrıntılar için yürütüm desteği. Sınır ötesi finanstaki pek çok sorun ödeme sorunu değil — koordinasyon, dokümantasyon ve zamanlama sorunlarıdır. Uluslararası ticaret ödemeleri etrafındaki yürütüm katmanını yönetmenize yardımcı oluyoruz.",
+      "body": "Çoğu platformun ele almadığı operasyonel ayrıntılar için yürütüm desteği. Sınır ötesi finanstaki pek çok sorun ödeme sorunu değil - koordinasyon, dokümantasyon ve zamanlama sorunlarıdır. Uluslararası ticaret ödemeleri etrafındaki yürütüm katmanını yönetmenize yardımcı oluyoruz.",
       "bullets": [
         "Karşı taraf ve tedarikçi tarama desteği (geçerli olduğunda risk ve uyum odaklı kontroller).",
         "Operasyonel hazırlık için belge paketi incelemesi (faturalar, destekleyici belgeler, mutabakat akışı).",
