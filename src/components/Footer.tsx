@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { Linkedin } from "lucide-react";
 
@@ -28,18 +29,14 @@ export default function Footer() {
           <div className="grid gap-10 md:grid-cols-3">
             {/* Brand */}
             <div>
-              <div className="flex items-center gap-3">
-                <div className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-xs font-semibold text-white shrink-0">
-                  BTB
-                </div>
-                <div className="leading-tight">
-                  <div className="text-sm font-semibold tracking-tight text-white">
-                    BTB Global Trading
-                  </div>
-                  <div className="text-[11px] text-white/45">
-                    Cross-border payments &amp; FX
-                  </div>
-                </div>
+              <div className="flex items-center">
+                <Image
+                  src="/images/logo.jpeg"
+                  alt="BTB Global Payment Solutions"
+                  width={120}
+                  height={120}
+                  className="h-16 w-auto object-contain"
+                />
               </div>
 
               <p className="mt-5 text-sm text-white/55 max-w-xs leading-relaxed">

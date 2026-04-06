@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -99,18 +100,15 @@ export default function Navbar() {
           <div className="flex h-16 items-center justify-between gap-4">
 
             {/* Logo */}
-            <Link href={`/${locale}`} className="flex items-center gap-3 shrink-0">
-              <div className="relative flex h-8 w-8 items-center justify-center rounded-lg border border-white/15 bg-white/5">
-                <span className="text-[10px] font-bold tracking-widest text-white">BTB</span>
-              </div>
-              <div className="leading-none">
-                <div className="text-sm font-semibold tracking-tight text-white">
-                  BTB Global Trading
-                </div>
-                <div className="hidden sm:block text-[10px] tracking-wide text-white/40 mt-0.5 uppercase">
-                  Cross-border finance
-                </div>
-              </div>
+            <Link href={`/${locale}`} className="flex items-center shrink-0">
+              <Image
+                src="/images/logo.jpeg"
+                alt="BTB Global Payment Solutions"
+                width={100}
+                height={100}
+                className="h-12 w-auto object-contain"
+                priority
+              />
             </Link>
 
             {/* Desktop nav */}
