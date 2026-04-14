@@ -293,5 +293,123 @@
       "title": "Legal Notice",
       "subtitle": "Legal information about BTB Global Trading."
     }
+  },
+  "privacy": {
+    "pageLabel": "Legal",
+    "title": "Privacy Policy",
+    "updated": "Last updated: April 2026",
+    "s1": {
+      "title": "1. Who We Are",
+      "body": "BTB Global Trading is an EU-based company headquartered in Warsaw, Poland. We coordinate international settlements, FX execution, and trade-payment operations through licensed partners. Contact: info@btbpayments.com."
+    },
+    "s2": {
+      "title": "2. Data We Collect",
+      "body": "When you use our contact form we collect: your name, company name, email address, country, the service category you selected, and your message. We also automatically collect standard server logs (IP address, browser type, pages visited) for security and analytics purposes."
+    },
+    "s3": {
+      "title": "3. How We Use Your Data",
+      "intro": "We use your data to:",
+      "i0": "Respond to your inquiry and provide the services you requested.",
+      "i1": "Conduct compliance and onboarding checks as required by our licensed partners.",
+      "i2": "Improve our website and services.",
+      "i3": "Comply with applicable legal and regulatory obligations."
+    },
+    "s4": {
+      "title": "4. Legal Basis (GDPR)",
+      "body": "Where EU GDPR applies, we process your data on the basis of: (a) your consent (form submission), (b) legitimate interests in operating our business, and (c) compliance with legal obligations."
+    },
+    "s5": {
+      "title": "5. Data Sharing",
+      "body": "We do not sell your personal data. We may share data with licensed financial partners involved in executing your requested service, and with service providers who assist us in operating this website (such as Google Workspace for lead logging). All processors are bound by data processing agreements."
+    },
+    "s6": {
+      "title": "6. Data Retention",
+      "body": "We retain your data for as long as necessary to fulfil the purposes described above, or as required by applicable law — typically up to 5 years for financial coordination records."
+    },
+    "s7": {
+      "title": "7. Your Rights",
+      "body": "Under GDPR you have the right to access, rectify, erase, restrict, or port your data, and to object to processing. To exercise these rights contact us at info@btbpayments.com."
+    },
+    "s8": {
+      "title": "8. Cookies",
+      "body": "This website may use essential cookies to ensure proper functionality. Analytics cookies, if active, are used to improve site performance. You may adjust cookie preferences in your browser settings."
+    },
+    "s9": {
+      "title": "9. Contact",
+      "body": "For privacy-related questions contact: info@btbpayments.com"
+    }
+  },
+  "terms": {
+    "pageLabel": "Legal",
+    "title": "Terms of Use",
+    "updated": "Last updated: April 2026",
+    "s1": {
+      "title": "1. Acceptance of Terms",
+      "body": "By accessing or using the BTB Global Trading website (btbpayments.com) you agree to be bound by these Terms of Use. If you do not agree, please do not use this website."
+    },
+    "s2": {
+      "title": "2. Nature of Services",
+      "body": "BTB Global Trading provides coordination and support services for international settlements, FX execution, and trade-payment operations. BTB does not itself hold a payment institution licence. Regulated financial activities are carried out exclusively through licensed financial partners. Nothing on this website constitutes financial advice."
+    },
+    "s3": {
+      "title": "3. Use of Website",
+      "body": "You may use this website only for lawful purposes and in accordance with these Terms. You agree not to use the site in any way that violates applicable law, transmits unsolicited communications, or interferes with its operation."
+    },
+    "s4": {
+      "title": "4. Intellectual Property",
+      "body": "All content on this website — including text, graphics, logos, and design — is the property of BTB Global Trading or its licensors and is protected by applicable intellectual property laws. You may not reproduce, distribute, or create derivative works without prior written permission."
+    },
+    "s5": {
+      "title": "5. Disclaimer of Warranties",
+      "body": "This website and its content are provided \"as is\" without warranties of any kind, express or implied. BTB Global Trading does not warrant that the website will be error-free, uninterrupted, or free of harmful components."
+    },
+    "s6": {
+      "title": "6. Limitation of Liability",
+      "body": "To the fullest extent permitted by law, BTB Global Trading shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of this website or reliance on its content."
+    },
+    "s7": {
+      "title": "7. Third-Party Links",
+      "body": "This website may contain links to third-party websites. BTB Global Trading has no control over and assumes no responsibility for the content or practices of any third-party sites."
+    },
+    "s8": {
+      "title": "8. Governing Law",
+      "body": "These Terms are governed by the laws of Poland. Any disputes shall be subject to the exclusive jurisdiction of the courts of Warsaw, Poland."
+    },
+    "s9": {
+      "title": "9. Contact",
+      "body": "For questions about these Terms contact: info@btbpayments.com"
+    }
+  },
+  "legalNotice": {
+    "pageLabel": "Legal",
+    "title": "Legal Notice",
+    "updated": "Last updated: April 2026",
+    "companyInfo": {
+      "title": "Company Information",
+      "name": "Company name:",
+      "address": "Registered address:",
+      "email": "Email:",
+      "phone": "Phone:"
+    },
+    "regulatory": {
+      "title": "Regulatory Status",
+      "body": "BTB Global Trading provides coordination and support services for cross-border financial operations. BTB does not hold a payment institution licence or other regulated financial services licence. All regulated financial activities, including payment execution, FX transactions, and settlement operations, are carried out exclusively through licensed financial partner institutions where applicable. Onboarding, corridor review, and compliance checks may apply."
+    },
+    "websiteResp": {
+      "title": "Website Responsibility",
+      "body": "The information provided on this website is for general informational purposes only and does not constitute financial, legal, or investment advice. BTB Global Trading makes reasonable efforts to ensure the accuracy and timeliness of the information published but does not guarantee its completeness."
+    },
+    "ip": {
+      "title": "Intellectual Property",
+      "body": "The content of this website, including texts, images, graphics, and logos, is protected by copyright and other intellectual property rights. Reproduction or distribution without prior written consent of BTB Global Trading is prohibited."
+    },
+    "law": {
+      "title": "Applicable Law",
+      "body": "This website is operated in accordance with the laws of Poland and applicable EU regulations. Any disputes arising in connection with the use of this website shall be subject to the jurisdiction of the competent courts in Warsaw, Poland."
+    },
+    "contact": {
+      "title": "Contact",
+      "body": "For legal inquiries: info@btbpayments.com"
+    }
   }
 }

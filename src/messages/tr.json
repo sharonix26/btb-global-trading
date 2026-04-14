@@ -293,5 +293,123 @@
       "title": "Yasal Bildirim",
       "subtitle": "BTB Global Trading hakkında yasal bilgiler."
     }
+  },
+  "privacy": {
+    "pageLabel": "Yasal",
+    "title": "Gizlilik Politikası",
+    "updated": "Son güncelleme: Nisan 2026",
+    "s1": {
+      "title": "1. Biz Kimiz",
+      "body": "BTB Global Trading, Varşova, Polonya merkezli AB kökenli bir şirkettir. Lisanslı ortaklar aracılığıyla uluslararası ödemeleri, döviz işlemlerini ve ticaret ödeme operasyonlarını koordine ediyoruz. İletişim: info@btbpayments.com"
+    },
+    "s2": {
+      "title": "2. Topladığımız Veriler",
+      "body": "İletişim formunu kullandığınızda şunları topluyoruz: adınız, şirket adınız, e-posta adresiniz, ülkeniz, seçtiğiniz hizmet kategorisi ve mesajınız. Güvenlik ve analiz amaçlı standart sunucu günlüklerini (IP adresi, tarayıcı türü, ziyaret edilen sayfalar) otomatik olarak topluyoruz."
+    },
+    "s3": {
+      "title": "3. Verilerinizi Nasıl Kullanıyoruz",
+      "intro": "Verilerinizi şu amaçlarla kullanıyoruz:",
+      "i0": "Talebinize yanıt vermek ve istediğiniz hizmetleri sağlamak.",
+      "i1": "Lisanslı ortaklarımızın gerekli kıldığı uyumluluk ve katılım kontrollerini yapmak.",
+      "i2": "Web sitemizi ve hizmetlerimizi iyileştirmek.",
+      "i3": "Geçerli yasal ve düzenleyici yükümlülüklere uymak."
+    },
+    "s4": {
+      "title": "4. Yasal Dayanak (GDPR)",
+      "body": "AB GDPR geçerli olduğunda verilerinizi şu gerekçelerle işliyoruz: (a) onayınız (form gönderimi), (b) işletmemizi yürütmedeki meşru çıkarlar ve (c) yasal yükümlülüklere uyum."
+    },
+    "s5": {
+      "title": "5. Veri Paylaşımı",
+      "body": "Kişisel verilerinizi satmıyoruz. Talep ettiğiniz hizmetin yürütülmesinde yer alan lisanslı finansal ortaklarla ve bu web sitesini işletmemize yardımcı olan hizmet sağlayıcılarla veri paylaşabiliriz. Tüm işlemciler veri işleme sözleşmeleriyle bağlıdır."
+    },
+    "s6": {
+      "title": "6. Veri Saklama",
+      "body": "Verilerinizi yukarıda açıklanan amaçları yerine getirmek için gerektiği süre boyunca veya geçerli yasanın gerektirdiği şekilde saklıyoruz — finansal koordinasyon kayıtları için genellikle 5 yıla kadar."
+    },
+    "s7": {
+      "title": "7. Haklarınız",
+      "body": "GDPR kapsamında verilerinize erişme, düzeltme, silme, kısıtlama veya taşıma ve işlemeye itiraz etme haklarına sahipsiniz. Bu hakları kullanmak için info@btbpayments.com adresinden bizimle iletişime geçin."
+    },
+    "s8": {
+      "title": "8. Çerezler",
+      "body": "Bu web sitesi düzgün işlevselliği sağlamak için temel çerezler kullanabilir. Analitik çerezler, etkin olduğunda site performansını iyileştirmek için kullanılır. Tarayıcı ayarlarınızdan çerez tercihlerinizi ayarlayabilirsiniz."
+    },
+    "s9": {
+      "title": "9. İletişim",
+      "body": "Gizlilikle ilgili sorular için: info@btbpayments.com"
+    }
+  },
+  "terms": {
+    "pageLabel": "Yasal",
+    "title": "Kullanım Koşulları",
+    "updated": "Son güncelleme: Nisan 2026",
+    "s1": {
+      "title": "1. Koşulların Kabulü",
+      "body": "BTB Global Trading web sitesine (btbpayments.com) erişerek veya kullanarak bu Kullanım Koşulları'na bağlı olmayı kabul edersiniz. Kabul etmiyorsanız, lütfen bu web sitesini kullanmayın."
+    },
+    "s2": {
+      "title": "2. Hizmetlerin Niteliği",
+      "body": "BTB Global Trading, uluslararası ödemeler, döviz işlemleri ve ticaret ödeme operasyonları için koordinasyon ve destek hizmetleri sunmaktadır. BTB'nin kendisi bir ödeme kurumu lisansına sahip değildir. Düzenlemeye tabi finansal faaliyetler yalnızca lisanslı finansal ortaklar aracılığıyla yürütülmektedir. Bu web sitesindeki hiçbir şey finansal tavsiye niteliği taşımamaktadır."
+    },
+    "s3": {
+      "title": "3. Web Sitesinin Kullanımı",
+      "body": "Bu web sitesini yalnızca yasal amaçlar için ve bu Koşullar'a uygun olarak kullanabilirsiniz. Siteyi geçerli yasayı ihlal eden, istenmeyen iletişim gönderen veya işleyişini engelleyen herhangi bir şekilde kullanmamayı kabul edersiniz."
+    },
+    "s4": {
+      "title": "4. Fikri Mülkiyet",
+      "body": "Bu web sitesindeki tüm içerik — metinler, grafikler, logolar ve tasarım dahil — BTB Global Trading'e veya lisans verenlerine aittir ve geçerli fikri mülkiyet yasalarıyla korunmaktadır. Önceden yazılı izin alınmadan çoğaltma, dağıtma veya türev eserler oluşturamazsınız."
+    },
+    "s5": {
+      "title": "5. Garanti Reddi",
+      "body": "Bu web sitesi ve içeriği \"olduğu gibi\" esasıyla sağlanmakta olup açık veya zımni hiçbir garanti içermemektedir. BTB Global Trading, web sitesinin hatasız, kesintisiz veya zararlı bileşenlerden arınmış olacağını garanti etmemektedir."
+    },
+    "s6": {
+      "title": "6. Sorumluluk Sınırlaması",
+      "body": "Yasanın izin verdiği azami ölçüde, BTB Global Trading bu web sitesini kullanmanızdan veya içeriğine güvenmenizden kaynaklanan dolaylı, tesadüfi, özel veya sonuç olarak ortaya çıkan zararlardan sorumlu olmayacaktır."
+    },
+    "s7": {
+      "title": "7. Üçüncü Taraf Bağlantıları",
+      "body": "Bu web sitesi üçüncü taraf web sitelerine bağlantılar içerebilir. BTB Global Trading, üçüncü taraf sitelerinin içeriği veya uygulamaları üzerinde herhangi bir kontrole sahip değildir ve bunlar için hiçbir sorumluluk üstlenmemektedir."
+    },
+    "s8": {
+      "title": "8. Geçerli Hukuk",
+      "body": "Bu Koşullar, Polonya yasalarına tabidir. Herhangi bir anlaşmazlık, Varşova, Polonya mahkemelerinin münhasır yargı yetkisine tabi olacaktır."
+    },
+    "s9": {
+      "title": "9. İletişim",
+      "body": "Bu Koşullar hakkındaki sorular için: info@btbpayments.com"
+    }
+  },
+  "legalNotice": {
+    "pageLabel": "Yasal",
+    "title": "Yasal Bildirim",
+    "updated": "Son güncelleme: Nisan 2026",
+    "companyInfo": {
+      "title": "Şirket Bilgileri",
+      "name": "Şirket adı:",
+      "address": "Kayıtlı adres:",
+      "email": "E-posta:",
+      "phone": "Telefon:"
+    },
+    "regulatory": {
+      "title": "Düzenleyici Durum",
+      "body": "BTB Global Trading, sınır ötesi finansal operasyonlar için koordinasyon ve destek hizmetleri sunmaktadır. BTB, bir ödeme kurumu lisansına veya başka düzenlenmiş finansal hizmetler lisansına sahip değildir. Ödeme yürütme, döviz işlemleri ve takas operasyonları dahil tüm düzenlemeye tabi finansal faaliyetler, uygulanabilir olduğu durumlarda yalnızca lisanslı finansal ortak kurumlar aracılığıyla yürütülmektedir. Katılım, koridor incelemesi ve uyumluluk kontrolleri uygulanabilir."
+    },
+    "websiteResp": {
+      "title": "Web Sitesi Sorumluluğu",
+      "body": "Bu web sitesinde sağlanan bilgiler yalnızca genel bilgi amaçlıdır ve finansal, hukuki veya yatırım tavsiyesi niteliği taşımamaktadır. BTB Global Trading, yayınlanan bilgilerin doğruluğunu ve güncelliğini sağlamak için makul çaba göstermekte, ancak eksiksizliğini garanti etmemektedir."
+    },
+    "ip": {
+      "title": "Fikri Mülkiyet",
+      "body": "Metinler, görseller, grafikler ve logolar dahil bu web sitesinin içeriği, telif hakkı ve diğer fikri mülkiyet hakları ile korunmaktadır. BTB Global Trading'in önceden yazılı onayı olmaksızın çoğaltma veya dağıtma yasaktır."
+    },
+    "law": {
+      "title": "Geçerli Hukuk",
+      "body": "Bu web sitesi, Polonya yasaları ve geçerli AB düzenlemeleri çerçevesinde işletilmektedir. Bu web sitesinin kullanımıyla bağlantılı olarak ortaya çıkan herhangi bir anlaşmazlık, Varşova, Polonya'daki yetkili mahkemelerin yargı yetkisine tabi olacaktır."
+    },
+    "contact": {
+      "title": "İletişim",
+      "body": "Hukuki sorular için: info@btbpayments.com"
+    }
   }
 }
