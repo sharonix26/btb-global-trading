@@ -1,22 +1,22 @@
 "use client";
 
 import React, { useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { motion, type Variants } from "framer-motion";
 import { Mail, Phone, MessageCircle, Linkedin } from "lucide-react";
 
-/* ---------- Motion variants (typed for prod builds) ---------- */
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 18, filter: "blur(10px)" },
+const reveal: Variants = {
+  hidden: { opacity: 0, y: 22, filter: "blur(8px)" },
   show: {
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
+    opacity: 1, y: 0, filter: "blur(0px)",
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
   },
+};
+
+const stagger: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.1, delayChildren: 0.06 } },
 };
 
 type Status = "idle" | "sending" | "sent" | "error";
@@ -38,10 +38,12 @@ export default function ContactPageClient() {
 
     const payload = {
       name: String(fd.get("name") || ""),
+      company: String(fd.get("company") || ""),
       email: String(fd.get("email") || ""),
-      subject: String(fd.get("subject") || ""),
+      country: String(fd.get("country") || ""),
+      service: String(fd.get("service") || ""),
       message: String(fd.get("message") || ""),
-      website: String(fd.get("website") || ""), // honeypot
+      website: String(fd.get("website") || ""),
       locale,
       page: typeof window !== "undefined" ? window.location.href : "",
       userAgent: typeof navigator !== "undefined" ? navigator.userAgent : "",
@@ -53,242 +55,278 @@ export default function ContactPageClient() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-
       if (!res.ok) {
         const data = await res.json().catch(() => null);
         throw new Error(data?.error || "Failed to send");
       }
-
       setStatus("sent");
       form.reset();
     } catch (err: unknown) {
       setStatus("error");
-      const message = err instanceof Error ? err.message : "Something went wrong";
-      setErrorMsg(message);
+      setErrorMsg(err instanceof Error ? err.message : "Something went wrong");
     }
   }
 
   return (
-    <main className="min-h-screen bg-black text-white">
-      {/* HERO */}
-      <section className="relative min-h-[72vh] md:min-h-[78vh] overflow-hidden">
+    <main className="min-h-screen bg-[#0B1F3A] text-white">
+
+      {/* ── HERO ─────────────────────────────────────────────── */}
+      <section className="relative min-h-[56vh] md:min-h-[62vh] overflow-hidden">
         <Image
           src="/images/contact-hero.png"
-          alt="City skyline"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
+          alt="Contact BTB Global Trading"
+          fill priority sizes="100vw"
+          className="object-cover object-center scale-105"
         />
-
-        <div className="absolute inset-0 bg-black/65" />
-
+        <div className="absolute inset-0 bg-[#0B1F3A]/65" />
         <div
-          className="absolute inset-0 opacity-55"
+          className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(circle at 25% 30%, rgba(197,146,42,0.20), transparent 55%)," +
-              "radial-gradient(circle at 75% 30%, rgba(12,31,63,0.16), transparent 55%)," +
-              "linear-gradient(to bottom, rgba(0,0,0,0.20), rgba(0,0,0,0.88))",
+              "radial-gradient(ellipse 70% 55% at 25% 35%, rgba(200,169,106,0.12), transparent 60%)," +
+              "linear-gradient(to bottom, rgba(7,22,41,0.05), rgba(7,22,41,0.88))",
           }}
         />
 
-        <div className="relative z-10 px-6 pt-20 pb-16 md:pt-24 md:pb-20">
-          <div className="mx-auto max-w-6xl">
+        <div className="relative z-10 px-6 pt-24 pb-14 md:pt-32 md:pb-20">
+          <div className="mx-auto max-w-7xl">
             <motion.div
-              variants={fadeUp}
+              variants={stagger}
               initial="hidden"
               animate="show"
-              className="mx-auto max-w-4xl text-center"
+              className="max-w-2xl"
             >
-              <h1 className="text-4xl md:text-6xl font-semibold tracking-tight">
+              <motion.div variants={reveal}>
+                <span className="section-label">Contact</span>
+              </motion.div>
+              <motion.div
+                variants={reveal}
+                className="h-px w-10 my-4"
+                style={{ background: "linear-gradient(90deg, #C8A96A, transparent)" }}
+              />
+              <motion.h1
+                variants={reveal}
+                className="font-display text-5xl md:text-7xl font-light tracking-tight leading-tight"
+              >
                 {t("hero.title")}
-              </h1>
-
-              <p className="mt-4 text-base md:text-lg text-white/70">
+              </motion.h1>
+              <motion.p
+                variants={reveal}
+                className="mt-5 text-base md:text-lg text-white/55 leading-relaxed font-body font-light"
+              >
                 {t("hero.subtitle")}
-              </p>
-
-              <div className="mt-8 space-y-5 text-white/70 text-sm md:text-base leading-relaxed">
-                <p>{t("hero.body1")}</p>
-                <p>{t("hero.body2")}</p>
-                <p>{t("hero.body3")}</p>
-              </div>
-
-              <div className="mt-10 flex justify-center">
-                <Link
-                  href={`/${locale}/services`}
-                  className="group relative inline-flex items-center justify-center rounded-full px-7 py-3.5 text-sm font-medium text-black overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
-                >
-                  <span
-                    className="absolute inset-0"
-                    style={{
-                      background:
-                        "linear-gradient(90deg, rgba(197,146,42,1), rgba(12,31,63,1), rgba(21,45,86,1))",
-                      backgroundSize: "200% 200%",
-                      animation: "btb-gradient-move 7s ease infinite",
-                    }}
-                  />
-                  <span className="absolute inset-0 opacity-0 transition group-hover:opacity-100 bg-white/10" />
-                  <span className="relative z-10">{t("hero.cta")}</span>
-                </Link>
-              </div>
+              </motion.p>
             </motion.div>
           </div>
         </div>
 
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-black" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-[#0B1F3A]" />
       </section>
 
-      {/* GET IN TOUCH */}
+      {/* ── MAIN CONTENT ─────────────────────────────────────── */}
       <section className="px-6 py-16 md:py-20">
-        <div className="mx-auto max-w-6xl">
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.25 }}
-            className="text-center"
-          >
-            <h2 className="text-3xl md:text-4xl font-semibold">
-              {t("touch.title")}
-            </h2>
-            <p className="mt-3 text-white/65">{t("touch.subtitle")}</p>
-          </motion.div>
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-12 md:grid-cols-5 md:gap-16 items-start">
 
-          <div className="mt-10 grid gap-10 md:grid-cols-2 md:gap-12 items-start">
-            {/* CONTACT DETAILS */}
+            {/* LEFT — Contact info + inquiry guide (2/5) */}
             <motion.div
-              variants={fadeUp}
+              variants={stagger}
               initial="hidden"
               whileInView="show"
-              viewport={{ once: true, amount: 0.25 }}
-              className="space-y-6"
+              viewport={{ once: true, amount: 0.2 }}
+              className="md:col-span-2 space-y-8"
             >
-              <h3 className="text-xl font-semibold text-white">
-                {t("touch.leftTitle")}
-              </h3>
+              <motion.div variants={reveal}>
+                <h2 className="font-display text-3xl md:text-4xl font-light mb-1">
+                  {t("touch.title")}
+                </h2>
+                <div className="gold-line" />
+              </motion.div>
 
-              <div className="space-y-4 text-white/75">
-                <ContactItem
-                  icon={<Mail className="h-5 w-5 text-cyan-300" />}
-                  label={t("touch.items.email.label")}
-                  value={t("touch.items.email.value")}
-                  href={`mailto:${t("touch.items.email.value")}`}
-                />
+              {/* Contact items */}
+              <motion.div variants={stagger} className="space-y-5">
+                {(["email", "phone1", "whatsapp", "linkedin"] as const).map((item) => {
+                  const icon = {
+                    email:    <Mail size={16} style={{ color: "#C8A96A" }} />,
+                    phone1:   <Phone size={16} style={{ color: "#C8A96A" }} />,
+                    whatsapp: <MessageCircle size={16} style={{ color: "#C8A96A" }} />,
+                    linkedin: <Linkedin size={16} style={{ color: "#C8A96A" }} />,
+                  }[item];
 
-                <ContactItem
-                  icon={<Phone className="h-5 w-5 text-cyan-300" />}
-                  label={t("touch.items.phone1.label")}
-                  value={t("touch.items.phone1.value")}
-                  href={`tel:${t("touch.items.phone1.tel")}`}
-                />
+                  const href = item === "email"
+                    ? `mailto:${t(`touch.items.${item}.value`)}`
+                    : item === "phone1"
+                    ? `tel:${t("touch.items.phone1.tel")}`
+                    : t(`touch.items.${item}.href` as Parameters<typeof t>[0]);
 
-                <ContactItem
-                  icon={<MessageCircle className="h-5 w-5 text-cyan-300" />}
-                  label={t("touch.items.whatsapp.label")}
-                  value={t("touch.items.whatsapp.value")}
-                  href={t("touch.items.whatsapp.href")}
-                  external
-                />
+                  const isExternal = item === "whatsapp" || item === "linkedin";
 
-                <ContactItem
-                  icon={<Linkedin className="h-5 w-5 text-cyan-300" />}
-                  label={t("touch.items.linkedin.label")}
-                  value={t("touch.items.linkedin.value")}
-                  href={t("touch.items.linkedin.href")}
-                  external
-                />
-              </div>
+                  return (
+                    <motion.div
+                      key={item}
+                      variants={reveal}
+                      className="flex items-start gap-4"
+                    >
+                      <div
+                        className="mt-0.5 flex items-center justify-center rounded-lg p-2 shrink-0"
+                        style={{
+                          background: "rgba(200,169,106,0.07)",
+                          border: "1px solid rgba(200,169,106,0.15)",
+                        }}
+                      >
+                        {icon}
+                      </div>
+                      <div>
+                        <div className="text-[10px] font-body font-semibold tracking-[0.18em] uppercase text-white/40 mb-0.5">
+                          {t(`touch.items.${item}.label`)}
+                        </div>
+                        <a
+                          href={href as string}
+                          target={isExternal ? "_blank" : undefined}
+                          rel={isExternal ? "noreferrer" : undefined}
+                          className="text-sm text-white/75 hover:text-white transition-colors font-body"
+                        >
+                          {t(`touch.items.${item}.value`)}
+                        </a>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </motion.div>
+
+              {/* Inquiry guide */}
+              <motion.div
+                variants={reveal}
+                className="rounded-2xl p-6"
+                style={{
+                  background: "rgba(13,37,69,0.6)",
+                  border: "1px solid rgba(200,169,106,0.10)",
+                }}
+              >
+                <div className="text-[10px] font-body font-semibold tracking-[0.22em] uppercase mb-4" style={{ color: "#C8A96A" }}>
+                  {t("touch.inquiryGuide.title")}
+                </div>
+                <div className="grid grid-cols-2 gap-2.5">
+                  {(["markets", "currencies", "volume", "timeline"] as const).map((item) => (
+                    <div
+                      key={item}
+                      className="rounded-xl px-4 py-3 text-sm text-white/60 font-body"
+                      style={{
+                        background: "rgba(255,255,255,0.025)",
+                        border: "1px solid rgba(255,255,255,0.06)",
+                      }}
+                    >
+                      {t(`touch.inquiryGuide.${item}`)}
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
             </motion.div>
 
-            {/* FORM */}
+            {/* RIGHT — Form (3/5) */}
             <motion.div
-              variants={fadeUp}
+              variants={reveal}
               initial="hidden"
               whileInView="show"
-              viewport={{ once: true, amount: 0.25 }}
-              className="relative"
+              viewport={{ once: true, amount: 0.15 }}
+              className="md:col-span-3 relative"
             >
               <div
-                className="pointer-events-none absolute -inset-10 opacity-45 blur-3xl"
+                className="pointer-events-none absolute -inset-10 opacity-25 blur-3xl"
                 style={{
                   background:
-                    "radial-gradient(circle at 45% 40%, rgba(197,146,42,0.18), transparent 60%)," +
-                    "radial-gradient(circle at 80% 35%, rgba(12,31,63,0.14), transparent 60%)",
+                    "radial-gradient(ellipse at 50% 40%, rgba(200,169,106,0.12), transparent 65%)",
                 }}
               />
 
-              <div className="relative rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md p-6 md:p-8">
-                <h3 className="text-xl font-semibold text-white">
+              <div
+                className="relative rounded-2xl p-8 md:p-10"
+                style={{
+                  background: "rgba(13,37,69,0.7)",
+                  border: "1px solid rgba(200,169,106,0.10)",
+                }}
+              >
+                {/* Decorative corner lines */}
+                <div
+                  className="absolute top-0 left-0 w-8 h-8"
+                  style={{
+                    borderTop: "1px solid rgba(200,169,106,0.35)",
+                    borderLeft: "1px solid rgba(200,169,106,0.35)",
+                  }}
+                />
+                <div
+                  className="absolute bottom-0 right-0 w-8 h-8"
+                  style={{
+                    borderBottom: "1px solid rgba(200,169,106,0.35)",
+                    borderRight: "1px solid rgba(200,169,106,0.35)",
+                  }}
+                />
+
+                <h3 className="font-display text-2xl md:text-3xl font-light text-white mb-8">
                   {t("form.title")}
                 </h3>
 
-                <form className="mt-6 space-y-4" onSubmit={onSubmit}>
-                  {/* Honeypot — hidden from real users, bots fill it */}
+                <form className="space-y-4" onSubmit={onSubmit}>
+                  {/* Honeypot */}
                   <input
-                    type="text"
-                    name="website"
-                    tabIndex={-1}
-                    autoComplete="off"
+                    type="text" name="website" tabIndex={-1} autoComplete="off"
                     aria-hidden="true"
                     style={{ position: "absolute", left: "-9999px", opacity: 0, height: 0 }}
                   />
-                  <Input
-                    name="name"
-                    label={t("form.fields.name")}
-                    placeholder={t("form.placeholders.name")}
-                    required
-                  />
-                  <Input
-                    name="email"
-                    label={t("form.fields.email")}
-                    placeholder={t("form.placeholders.email")}
-                    type="email"
-                    required
-                  />
-                  <Input
-                    name="subject"
-                    label={t("form.fields.subject")}
-                    placeholder={t("form.placeholders.subject")}
-                  />
-                  <Textarea
-                    name="message"
-                    label={t("form.fields.message")}
-                    placeholder={t("form.placeholders.message")}
-                    required
-                  />
+
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <LuxuryInput name="name" label={t("form.fields.name")} placeholder={t("form.placeholders.name")} required />
+                    <LuxuryInput name="company" label={t("form.fields.company")} placeholder={t("form.placeholders.company")} />
+                  </div>
+
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <LuxuryInput name="email" label={t("form.fields.email")} placeholder={t("form.placeholders.email")} type="email" required />
+                    <LuxuryInput name="country" label={t("form.fields.country")} placeholder={t("form.placeholders.country")} />
+                  </div>
+
+                  {/* Service dropdown */}
+                  <div>
+                    <label className="block text-[10px] font-body font-semibold tracking-[0.18em] uppercase text-white/45 mb-2">
+                      {t("form.fields.service")}
+                    </label>
+                    <select
+                      name="service"
+                      className="w-full rounded-xl px-4 py-3 text-sm font-body outline-none transition-colors"
+                      style={{
+                        background: "rgba(7,22,41,0.7)",
+                        border: "1px solid rgba(200,169,106,0.14)",
+                        color: "rgba(255,255,255,0.7)",
+                      }}
+                    >
+                      <option value="">{t("form.selectService")}</option>
+                      <option value="Global Settlements">{t("form.serviceOptions.globalSettlements")}</option>
+                      <option value="FX & Treasury Coordination">{t("form.serviceOptions.fxTreasury")}</option>
+                      <option value="Trade & Deal Support">{t("form.serviceOptions.tradeSupport")}</option>
+                      <option value="Private International Case">{t("form.serviceOptions.privateCase")}</option>
+                      <option value="General Inquiry">{t("form.serviceOptions.general")}</option>
+                    </select>
+                  </div>
+
+                  <LuxuryTextarea name="message" label={t("form.fields.message")} placeholder={t("form.placeholders.message")} required />
 
                   <button
                     type="submit"
                     disabled={status === "sending"}
-                    className="group relative w-full rounded-xl px-4 py-3 text-sm font-medium text-black overflow-hidden disabled:opacity-60"
+                    className="btn-gold w-full justify-center py-3.5 disabled:opacity-60"
                   >
-                    <span
-                      className="absolute inset-0"
-                      style={{
-                        background:
-                          "linear-gradient(90deg, rgba(197,146,42,1), rgba(12,31,63,1), rgba(21,45,86,1))",
-                        backgroundSize: "200% 200%",
-                        animation: "btb-gradient-move 7s ease infinite",
-                      }}
-                    />
-                    <span className="absolute inset-0 opacity-0 transition group-hover:opacity-100 bg-white/10" />
-                    <span className="relative z-10">
-                      {status === "sending" ? t("form.sending") : t("form.submit")}
-                    </span>
+                    {status === "sending" ? t("form.sending") : t("form.submit")}
                   </button>
 
                   {status === "sent" && (
-                    <p className="text-sm text-emerald-300">{t("form.sent")}</p>
+                    <p className="text-sm font-body" style={{ color: "#7dd3a8" }}>{t("form.sent")}</p>
                   )}
                   {status === "error" && (
-                    <p className="text-sm text-red-300">
+                    <p className="text-sm font-body text-red-300">
                       {errorMsg || t("form.error")}
                     </p>
                   )}
 
-                  <p className="pt-2 text-[11px] text-white/45">
+                  <p className="text-[11px] text-white/35 font-body leading-relaxed pt-1">
                     {t("form.disclaimer")}
                   </p>
                 </form>
@@ -301,92 +339,66 @@ export default function ContactPageClient() {
   );
 }
 
-/* ---------- Small helpers ---------- */
+/* ── Form field helpers ── */
 
-function ContactItem({
-  icon,
-  label,
-  value,
-  href,
-  external,
+function LuxuryInput({
+  name, label, placeholder, required, type = "text",
 }: {
-  icon: React.ReactNode;
-  label: string;
-  value: string;
-  href?: string;
-  external?: boolean;
-}) {
-  const content = (
-    <>
-      <div className="text-sm text-white/55">{label}</div>
-      <div className="hover:text-white transition">{value}</div>
-    </>
-  );
-
-  return (
-    <div className="flex items-start gap-3">
-      {icon}
-      {href ? (
-        <a
-          href={href}
-          target={external ? "_blank" : undefined}
-          rel={external ? "noreferrer" : undefined}
-        >
-          {content}
-        </a>
-      ) : (
-        <div>{content}</div>
-      )}
-    </div>
-  );
-}
-
-function Input({
-  name,
-  label,
-  placeholder,
-  required,
-  type = "text",
-}: {
-  name: string;
-  label: string;
-  placeholder: string;
-  required?: boolean;
-  type?: string;
+  name: string; label: string; placeholder: string; required?: boolean; type?: string;
 }) {
   return (
     <div>
-      <label className="text-xs text-white/60">{label}</label>
+      <label className="block text-[10px] font-body font-semibold tracking-[0.18em] uppercase text-white/45 mb-2">
+        {label}
+      </label>
       <input
-        name={name}
-        type={type}
-        required={required}
-        className="mt-2 w-full rounded-xl border border-white/10 bg-black/35 px-4 py-3 text-sm text-white outline-none focus:border-cyan-400/40"
+        name={name} type={type} required={required}
         placeholder={placeholder}
+        className="w-full rounded-xl px-4 py-3 text-sm font-body outline-none transition-all duration-200 placeholder:text-white/25"
+        style={{
+          background: "rgba(7,22,41,0.7)",
+          border: "1px solid rgba(200,169,106,0.14)",
+          color: "rgba(255,255,255,0.8)",
+        }}
+        onFocus={(e) => {
+          e.target.style.borderColor = "rgba(200,169,106,0.4)";
+          e.target.style.boxShadow = "0 0 0 3px rgba(200,169,106,0.06)";
+        }}
+        onBlur={(e) => {
+          e.target.style.borderColor = "rgba(200,169,106,0.14)";
+          e.target.style.boxShadow = "none";
+        }}
       />
     </div>
   );
 }
 
-function Textarea({
-  name,
-  label,
-  placeholder,
-  required,
+function LuxuryTextarea({
+  name, label, placeholder, required,
 }: {
-  name: string;
-  label: string;
-  placeholder: string;
-  required?: boolean;
+  name: string; label: string; placeholder: string; required?: boolean;
 }) {
   return (
     <div>
-      <label className="text-xs text-white/60">{label}</label>
+      <label className="block text-[10px] font-body font-semibold tracking-[0.18em] uppercase text-white/45 mb-2">
+        {label}
+      </label>
       <textarea
-        name={name}
-        required={required}
-        className="mt-2 min-h-[130px] w-full rounded-xl border border-white/10 bg-black/35 px-4 py-3 text-sm text-white outline-none focus:border-cyan-400/40"
-        placeholder={placeholder}
+        name={name} required={required} placeholder={placeholder}
+        className="w-full min-h-[120px] rounded-xl px-4 py-3 text-sm font-body outline-none transition-all duration-200 resize-none placeholder:text-white/25"
+        style={{
+          background: "rgba(7,22,41,0.7)",
+          border: "1px solid rgba(200,169,106,0.14)",
+          color: "rgba(255,255,255,0.8)",
+        }}
+        onFocus={(e) => {
+          e.target.style.borderColor = "rgba(200,169,106,0.4)";
+          e.target.style.boxShadow = "0 0 0 3px rgba(200,169,106,0.06)";
+        }}
+        onBlur={(e) => {
+          e.target.style.borderColor = "rgba(200,169,106,0.14)";
+          e.target.style.boxShadow = "none";
+        }}
       />
     </div>
   );

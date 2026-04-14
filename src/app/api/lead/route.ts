@@ -31,8 +31,10 @@ setInterval(() => {
 /* ─── Validation schema ─────────────────────────────────────────── */
 const leadSchema = z.object({
   name: z.string().max(120).optional().default(""),
+  company: z.string().max(200).optional().default(""),
   email: z.string().email().max(200),
-  subject: z.string().max(200).optional().default(""),
+  country: z.string().max(100).optional().default(""),
+  service: z.string().max(200).optional().default(""),
   message: z.string().min(1).max(4000),
   locale: z.string().max(20).optional().default(""),
   page: z.string().max(500).optional().default(""),
@@ -90,14 +92,16 @@ async function appendToSheet(payload: LeadPayload) {
 
   await sheets.spreadsheets.values.append({
     spreadsheetId,
-    range: `${tabName}!A:H`,
+    range: `${tabName}!A:K`,
     valueInputOption: "RAW",
     requestBody: {
       values: [[
         now,
         payload.name || "",
+        payload.company || "",
         payload.email || "",
-        payload.subject || "",
+        payload.country || "",
+        payload.service || "",
         payload.message || "",
         payload.locale || "",
         payload.page || "",

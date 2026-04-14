@@ -5,125 +5,209 @@ import Link from "next/link";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { motion, type Variants } from "framer-motion";
-import { Globe, DollarSign, Ship, CheckCircle2 } from "lucide-react";
+import {
+  GlobeHemisphereWest, CurrencyDollar, Anchor,
+  CheckCircle, ArrowRight,
+} from "@phosphor-icons/react";
 
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 18, filter: "blur(8px)" },
+const reveal: Variants = {
+  hidden: { opacity: 0, y: 22, filter: "blur(6px)" },
   show: {
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
+    opacity: 1, y: 0, filter: "blur(0px)",
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
-const list: Variants = {
+const stagger: Variants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.1, delayChildren: 0.08 } },
+  show: { transition: { staggerChildren: 0.09, delayChildren: 0.05 } },
 };
 
-const li: Variants = {
+const capReveal: Variants = {
   hidden: { opacity: 0, x: -8 },
-  show: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
-  },
+  show: { opacity: 1, x: 0, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } },
 };
 
-const NUMS = ["01", "02", "03"];
+type ServiceKey = "globalSettlements" | "fxTreasury" | "tradeSupport";
 
 function ServiceBlock({
   num,
   icon,
-  title,
-  body,
-  bullets,
+  serviceKey,
   ctaLabel,
   ctaHref,
   accentColor,
+  hasTypicalExample,
 }: {
   num: string;
   icon: React.ReactNode;
-  title: string;
-  body: string;
-  bullets: string[];
+  serviceKey: ServiceKey;
   ctaLabel: string;
   ctaHref: string;
   accentColor: string;
+  hasTypicalExample?: boolean;
 }) {
+  const t = useTranslations("services");
+
+  const caps: string[] = [];
+  for (let i = 0; i < 5; i++) {
+    try {
+      const cap = t(`${serviceKey}.keyCapabilities.${i}` as Parameters<typeof t>[0]);
+      if (cap && cap !== `${serviceKey}.keyCapabilities.${i}`) caps.push(cap);
+    } catch { break; }
+  }
+
   return (
     <motion.div
-      variants={fadeUp}
+      variants={reveal}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.15 }}
-      className="relative mx-auto max-w-5xl rounded-2xl border border-white/10 bg-[#0b0e14] overflow-hidden"
+      viewport={{ once: true, amount: 0.08 }}
+      className="relative mx-auto max-w-5xl rounded-2xl overflow-hidden group"
+      style={{
+        background: "#0d2545",
+        border: "1px solid rgba(200,169,106,0.10)",
+        transition: "border-color 0.35s ease, box-shadow 0.35s ease",
+      }}
     >
       {/* Top accent line */}
       <div
-        className="absolute inset-x-0 top-0 h-[2px]"
+        className="absolute inset-x-0 top-0 h-[1.5px] transition-opacity duration-500 group-hover:opacity-100"
         style={{
-          background: `linear-gradient(90deg, ${accentColor}, transparent)`,
+          background: `linear-gradient(90deg, ${accentColor}, ${accentColor}44, transparent)`,
+          opacity: 0.65,
         }}
       />
 
-      <div className="p-8 md:p-10 lg:p-12">
-        <div className="grid gap-8 md:grid-cols-12 md:items-center">
-          {/* Left: number + icon + title + body + CTA */}
-          <div className="md:col-span-5 flex flex-col items-start">
-            <div className="text-[11px] font-mono tracking-[0.18em] text-white/30 mb-5">
-              {num}
-            </div>
+      {/* Ghost service number — large backdrop */}
+      <div
+        className="absolute -right-4 -bottom-6 font-display text-[120px] font-light select-none pointer-events-none leading-none"
+        style={{ color: `${accentColor}07` }}
+      >
+        {num}
+      </div>
 
-            <div className="mb-5 inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/5 p-3">
+      <div className="relative p-8 md:p-10 lg:p-12">
+
+        {/* ── Header: number + icon aligned with title ── */}
+        <div className="flex items-start justify-between mb-7">
+          <div className="flex items-center gap-4">
+            {/* Icon box */}
+            <div
+              className="shrink-0 flex items-center justify-center rounded-xl p-3.5 transition-transform duration-300 group-hover:scale-105"
+              style={{
+                background: `${accentColor}12`,
+                border: `1px solid ${accentColor}28`,
+              }}
+            >
               {icon}
             </div>
-
-            <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-white leading-tight">
-              {title}
-            </h2>
-
-            <p className="mt-4 text-sm md:text-base leading-relaxed text-white/60">
-              {body}
-            </p>
-
-            <div className="mt-8">
-              <Link
-                href={ctaHref}
-                className="inline-flex items-center rounded-full px-6 py-2.5 text-sm font-semibold text-black transition-opacity hover:opacity-90"
-                style={{
-                  background:
-                    "linear-gradient(90deg, rgba(197,146,42,1), rgba(21,45,86,1))",
-                }}
+            {/* Title — same vertical axis as icon */}
+            <div>
+              <div
+                className="font-body text-[10px] font-semibold tracking-[0.22em] uppercase mb-1"
+                style={{ color: `${accentColor}80` }}
               >
-                {ctaLabel}
-              </Link>
+                {num}
+              </div>
+              <h2 className="font-display text-2xl md:text-3xl font-medium text-white leading-tight">
+                {t(`${serviceKey}.title` as Parameters<typeof t>[0])}
+              </h2>
             </div>
           </div>
-
-          {/* Right: bullets */}
-          <motion.ul
-            variants={list}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.15 }}
-            className="md:col-span-7 space-y-3"
-          >
-            {bullets.map((b, idx) => (
-              <motion.li
-                key={idx}
-                variants={li}
-                className="flex items-start gap-3 rounded-xl border border-white/[0.07] bg-white/[0.03] px-4 py-3.5"
-              >
-                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-cyan-400/70" />
-                <span className="text-sm md:text-[15px] leading-relaxed text-white/75">
-                  {b}
-                </span>
-              </motion.li>
-            ))}
-          </motion.ul>
         </div>
+
+        {/* Overview */}
+        <p className="text-sm md:text-base leading-relaxed text-white/60 font-body mb-8 max-w-2xl">
+          {t(`${serviceKey}.overview` as Parameters<typeof t>[0])}
+        </p>
+
+        {/* Best For + Key Capabilities grid */}
+        <div className="grid gap-5 md:grid-cols-2 mb-6">
+          {/* Best For */}
+          <div
+            className="rounded-xl p-5"
+            style={{
+              background: "rgba(255,255,255,0.025)",
+              border: "1px solid rgba(255,255,255,0.07)",
+            }}
+          >
+            <div
+              className="font-body text-[10px] font-semibold tracking-[0.22em] uppercase mb-3"
+              style={{ color: "#C8A96A" }}
+            >
+              {t("bestForLabel")}
+            </div>
+            <p className="text-sm text-white/65 leading-relaxed font-body">
+              {t(`${serviceKey}.bestFor` as Parameters<typeof t>[0])}
+            </p>
+          </div>
+
+          {/* Key Capabilities */}
+          <div
+            className="rounded-xl p-5"
+            style={{
+              background: "rgba(255,255,255,0.025)",
+              border: "1px solid rgba(255,255,255,0.07)",
+            }}
+          >
+            <div
+              className="font-body text-[10px] font-semibold tracking-[0.22em] uppercase mb-3"
+              style={{ color: "#C8A96A" }}
+            >
+              {t("keyCapabilitiesLabel")}
+            </div>
+            <motion.ul
+              variants={stagger}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              className="space-y-2"
+            >
+              {caps.map((cap, idx) => (
+                <motion.li key={idx} variants={capReveal} className="flex items-start gap-2.5">
+                  <CheckCircle
+                    size={14}
+                    weight="fill"
+                    className="mt-0.5 shrink-0"
+                    style={{ color: "#C8A96A" }}
+                  />
+                  <span className="text-sm text-white/65 leading-relaxed font-body">{cap}</span>
+                </motion.li>
+              ))}
+            </motion.ul>
+          </div>
+        </div>
+
+        {/* Typical Example */}
+        {hasTypicalExample && (
+          <div
+            className="rounded-xl px-5 py-4 mb-7"
+            style={{
+              background: "rgba(200,169,106,0.04)",
+              border: "1px solid rgba(200,169,106,0.12)",
+            }}
+          >
+            <div
+              className="font-body text-[10px] font-semibold tracking-[0.22em] uppercase mb-2"
+              style={{ color: "#C8A96A" }}
+            >
+              {t("typicalExampleLabel")}
+            </div>
+            <p className="text-sm text-white/60 italic leading-relaxed font-body">
+              {t(`${serviceKey}.typicalExample` as Parameters<typeof t>[0])}
+            </p>
+          </div>
+        )}
+
+        {/* CTA */}
+        <Link
+          href={ctaHref}
+          className="inline-flex items-center gap-2 btn-gold text-[12px] px-6 py-2.5"
+        >
+          {ctaLabel}
+          <ArrowRight size={14} weight="bold" />
+        </Link>
       </div>
     </motion.div>
   );
@@ -135,93 +219,101 @@ export default function ServicesPageClient() {
 
   const contactHref = `/${locale}/contact-us`;
 
-  const SERVICES = [
+  const SERVICES: {
+    icon: React.ReactNode;
+    serviceKey: ServiceKey;
+    accent: string;
+    hasTypicalExample?: boolean;
+  }[] = [
     {
-      icon: <Globe className="h-5 w-5 text-white/80" />,
-      titleKey: "globalPayments" as const,
-      accent: "rgba(197,146,42,0.7)",
+      icon: <GlobeHemisphereWest size={22} weight="thin" style={{ color: "#C8A96A" }} />,
+      serviceKey: "globalSettlements",
+      accent: "#C8A96A",
+      hasTypicalExample: true,
     },
     {
-      icon: <DollarSign className="h-5 w-5 text-white/80" />,
-      titleKey: "fxTreasury" as const,
-      accent: "rgba(21,45,86,0.7)",
+      icon: <CurrencyDollar size={22} weight="thin" style={{ color: "#6eaadc" }} />,
+      serviceKey: "fxTreasury",
+      accent: "#4a7fb5",
     },
     {
-      icon: <Ship className="h-5 w-5 text-white/80" />,
-      titleKey: "tradeSupport" as const,
-      accent: "rgba(12,31,63,0.7)",
+      icon: <Anchor size={22} weight="thin" style={{ color: "#7eadd4" }} />,
+      serviceKey: "tradeSupport",
+      accent: "#2d5a8a",
     },
   ];
 
   return (
-    <main className="min-h-screen bg-black text-white">
-      {/* HERO */}
-      <section className="relative min-h-[55vh] md:min-h-[62vh] flex items-center overflow-hidden">
+    <main className="min-h-screen bg-[#0B1F3A] text-white">
+      {/* ── HERO ─────────────────────────────────────────────── */}
+      <section className="relative min-h-[60vh] md:min-h-[68vh] flex items-center overflow-hidden">
         <Image
           src="/images/services-hero.png"
           alt="BTB Global Trading services"
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center"
+          className="object-cover object-center scale-105"
         />
 
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/70" />
-
-        {/* Brand glow */}
+        <div className="absolute inset-0 bg-[#0B1F3A]/65" />
         <div
-          className="absolute inset-0 opacity-50"
+          className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(circle at 30% 40%, rgba(197,146,42,0.18), transparent 55%)," +
-              "radial-gradient(circle at 70% 35%, rgba(21,45,86,0.14), transparent 55%)," +
-              "linear-gradient(to bottom, rgba(0,0,0,0.20), rgba(0,0,0,0.90))",
+              "radial-gradient(ellipse 70% 60% at 30% 40%, rgba(200,169,106,0.10), transparent 60%)," +
+              "linear-gradient(to bottom, rgba(7,22,41,0.05), rgba(7,22,41,0.88))",
           }}
         />
 
-        {/* Centered hero text */}
-        <div className="relative z-10 w-full px-6 py-20 md:py-24">
+        <div className="relative z-10 w-full px-6 py-20 md:py-28">
           <motion.div
-            variants={fadeUp}
+            variants={{
+              hidden: {},
+              show: { transition: { staggerChildren: 0.12 } },
+            }}
             initial="hidden"
             animate="show"
             className="mx-auto max-w-3xl text-center"
           >
-            <div className="text-[11px] tracking-[0.22em] text-white/50 uppercase mb-5">
-              What We Offer
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-tight">
+            <motion.div variants={reveal}>
+              <span className="section-label">What We Offer</span>
+            </motion.div>
+            <motion.div
+              variants={reveal}
+              className="mx-auto my-4 h-px w-10"
+              style={{ background: "linear-gradient(90deg, transparent, #C8A96A, transparent)" }}
+            />
+            <motion.h1
+              variants={reveal}
+              className="font-display text-5xl md:text-6xl lg:text-7xl font-light tracking-tight leading-tight"
+            >
               {t("hero.title")}
-            </h1>
-            <p className="mt-6 text-base md:text-lg leading-relaxed text-white/65 max-w-2xl mx-auto">
+            </motion.h1>
+            <motion.p
+              variants={reveal}
+              className="mt-6 text-base md:text-lg leading-relaxed text-white/55 max-w-2xl mx-auto font-body font-light"
+            >
               {t("hero.subtitle")}
-            </p>
+            </motion.p>
           </motion.div>
         </div>
 
-        {/* Bottom fade */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-black" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-[#0B1F3A]" />
       </section>
 
-      {/* SERVICE BLOCKS */}
+      {/* ── SERVICE BLOCKS ───────────────────────────────────── */}
       <section className="space-y-6 px-6 py-16 md:space-y-8 md:py-20">
-        {SERVICES.map(({ icon, titleKey, accent }, idx) => (
+        {SERVICES.map(({ icon, serviceKey, accent, hasTypicalExample }, idx) => (
           <ServiceBlock
-            key={titleKey}
-            num={NUMS[idx]}
+            key={serviceKey}
+            num={`0${idx + 1}`}
             icon={icon}
-            title={t(`${titleKey}.title`)}
-            body={t(`${titleKey}.body`)}
-            bullets={[
-              t(`${titleKey}.bullets.0`),
-              t(`${titleKey}.bullets.1`),
-              t(`${titleKey}.bullets.2`),
-              t(`${titleKey}.bullets.3`),
-            ]}
+            serviceKey={serviceKey}
             ctaLabel={t("cta")}
             ctaHref={contactHref}
             accentColor={accent}
+            hasTypicalExample={hasTypicalExample}
           />
         ))}
       </section>

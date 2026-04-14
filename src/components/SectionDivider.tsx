@@ -1,17 +1,39 @@
 export default function SectionDivider() {
   return (
-    <section className="relative hidden md:block h-24 md:h-24">
-      {/* soft fade from hero */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/60 to-black" />
-
-      {/* subtle ambient glow */}
+    <div className="relative flex items-center justify-center py-2 px-6 overflow-hidden">
+      {/* Full-width hairline */}
       <div
-        className="absolute inset-0 opacity-20"
+        className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-px"
         style={{
-          background:
-            "radial-gradient(circle at 50% 0%, rgba(197,146,42,0.12), transparent 60%)"
+          background: "linear-gradient(90deg, transparent 0%, rgba(200,169,106,0.12) 20%, rgba(200,169,106,0.25) 50%, rgba(200,169,106,0.12) 80%, transparent 100%)",
         }}
       />
-    </section>
+      {/* Center ornament */}
+      <div
+        className="relative flex items-center gap-2.5 px-4"
+        style={{ background: "inherit" }}
+      >
+        <span
+          className="h-px w-8"
+          style={{ background: "linear-gradient(90deg, transparent, rgba(200,169,106,0.45))" }}
+        />
+        <span
+          className="block h-1 w-1 rotate-45"
+          style={{ background: "#C8A96A", opacity: 0.55 }}
+        />
+        <span
+          className="block h-1.5 w-1.5 rotate-45"
+          style={{ background: "#C8A96A", opacity: 0.75 }}
+        />
+        <span
+          className="block h-1 w-1 rotate-45"
+          style={{ background: "#C8A96A", opacity: 0.55 }}
+        />
+        <span
+          className="h-px w-8"
+          style={{ background: "linear-gradient(90deg, rgba(200,169,106,0.45), transparent)" }}
+        />
+      </div>
+    </div>
   );
 }

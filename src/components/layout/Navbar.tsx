@@ -27,8 +27,8 @@ export default function Navbar() {
   const items: NavItem[] = useMemo(
     () => [
       { key: "home", href: "/" },
-      { key: "about", href: "/about" },
       { key: "services", href: "/services" },
+      { key: "about", href: "/about" },
       { key: "contact", href: "/contact-us" },
     ],
     []
@@ -52,7 +52,7 @@ export default function Navbar() {
   const drawerHiddenX = drawerFrom === "right" ? "100%" : "-100%";
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -88,73 +88,94 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-[60]">
+      {/* Thin gold accent line at very top */}
       <div
-        className={[
-          "relative transition-all duration-300",
-          scrolled
-            ? "bg-black/80 backdrop-blur-xl border-b border-white/10"
-            : "bg-transparent backdrop-blur-md border-b border-white/[0.06]",
-        ].join(" ")}
+        className="h-px w-full transition-opacity duration-500"
+        style={{
+          background: "linear-gradient(90deg, transparent, rgba(200,169,106,0.5), rgba(200,169,106,0.8), rgba(200,169,106,0.5), transparent)",
+          opacity: scrolled ? 1 : 0.6,
+        }}
+      />
+
+      <div
+        className="relative transition-all duration-500"
+        style={{
+          background: scrolled
+            ? "rgba(7,22,41,0.92)"
+            : "rgba(11,31,58,0.15)",
+          backdropFilter: scrolled ? "blur(20px) saturate(1.4)" : "blur(8px)",
+          WebkitBackdropFilter: scrolled ? "blur(20px) saturate(1.4)" : "blur(8px)",
+          borderBottom: scrolled
+            ? "1px solid rgba(200,169,106,0.10)"
+            : "1px solid rgba(255,255,255,0.05)",
+          boxShadow: scrolled ? "0 4px 32px rgba(0,0,0,0.4)" : "none",
+        }}
       >
         <Container>
-          <div className="flex h-16 items-center justify-between gap-4">
+          <div className="flex h-[68px] items-center justify-between gap-4">
 
             {/* Logo */}
-            <Link href={`/${locale}`} className="flex items-center shrink-0">
+            <Link href={`/${locale}`} className="flex items-center shrink-0 group">
               <Image
                 src="/images/logo.jpeg"
-                alt="BTB Global Payment Solutions"
+                alt="BTB Global Trading"
                 width={100}
                 height={100}
-                className="h-12 w-auto object-contain"
+                className="h-11 w-auto object-contain transition-opacity duration-300 group-hover:opacity-90"
                 priority
               />
             </Link>
 
             {/* Desktop nav */}
-            <nav className="hidden md:flex items-center gap-0.5">
+            <nav className="hidden md:flex items-center gap-1">
               {items.map((item) => {
                 const active = isActive(item.href);
                 return (
                   <Link
                     key={item.key}
                     href={withLocale(item.href)}
-                    className={[
-                      "relative rounded-md px-3.5 py-2 text-sm transition-colors",
-                      active ? "text-white" : "text-white/55 hover:text-white/90",
-                    ].join(" ")}
+                    className="relative px-4 py-2 text-[13px] font-body font-medium tracking-wide transition-colors duration-200 group"
+                    style={{
+                      color: active ? "#C8A96A" : "rgba(255,255,255,0.6)",
+                      letterSpacing: "0.04em",
+                    }}
                   >
-                    <span className="relative z-10">{t(item.key)}</span>
+                    <span className="relative z-10 transition-colors duration-200 group-hover:text-white">
+                      {t(item.key)}
+                    </span>
+                    {/* Gold underline for active */}
                     {active && (
                       <motion.span
-                        layoutId="btb-active-indicator"
-                        className="absolute inset-0 rounded-md bg-white/8"
-                        transition={{ type: "spring", stiffness: 420, damping: 32 }}
+                        layoutId="btb-nav-active"
+                        className="absolute inset-x-4 bottom-0 h-px"
+                        style={{ background: "linear-gradient(90deg, transparent, #C8A96A, transparent)" }}
+                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
                       />
                     )}
+                    {/* Hover underline */}
+                    <span
+                      className="absolute inset-x-4 bottom-0 h-px opacity-0 group-hover:opacity-40 transition-opacity duration-200"
+                      style={{ background: "linear-gradient(90deg, transparent, rgba(200,169,106,0.6), transparent)" }}
+                    />
                   </Link>
                 );
               })}
             </nav>
 
             {/* Desktop right side */}
-            <div className="hidden md:flex items-center gap-3">
+            <div className="hidden md:flex items-center gap-4">
               <LanguageSwitcher />
               <Link
                 href={`/${locale}/contact-us`}
-                className="inline-flex items-center rounded-full px-4 py-1.5 text-xs font-semibold text-black tracking-wide transition-opacity hover:opacity-90"
-                style={{
-                  background:
-                    "linear-gradient(90deg, rgba(197,146,42,1), rgba(21,45,86,1))",
-                }}
+                className="btn-gold text-[12px] px-5 py-2.5"
               >
-                {t("contactSales")}
+                {t("bookACall")}
               </Link>
             </div>
 
             {/* Mobile hamburger */}
             <button
-              className="md:hidden inline-flex items-center justify-center rounded-lg border border-white/10 bg-white/5 p-2 text-white/80 hover:text-white transition"
+              className="md:hidden inline-flex items-center justify-center rounded-lg p-2 text-white/70 hover:text-white transition border border-white/10 bg-white/5"
               onClick={() => setOpen(true)}
               aria-label="Open menu"
               aria-expanded={open}
@@ -174,8 +195,8 @@ export default function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.15 }}
-              className="fixed inset-0 z-[998] bg-black/75 backdrop-blur-sm"
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-[998] bg-[#071629]/80 backdrop-blur-sm"
               onClick={close}
               aria-hidden="true"
             />
@@ -186,26 +207,40 @@ export default function Navbar() {
               initial={{ x: drawerHiddenX }}
               animate={{ x: 0 }}
               exit={{ x: drawerHiddenX }}
-              transition={{ type: "spring", stiffness: 360, damping: 34 }}
-              className="fixed top-0 z-[999] h-dvh w-[85vw] max-w-xs bg-[#0a0a0a] border-l border-white/10"
-              style={drawerFrom === "right" ? { right: 0 } : { left: 0 }}
+              transition={{ type: "spring", stiffness: 340, damping: 30 }}
+              className="fixed top-0 z-[999] h-dvh w-[82vw] max-w-[300px]"
+              style={{
+                ...(drawerFrom === "right" ? { right: 0 } : { left: 0 }),
+                background: "#071629",
+                borderLeft: "1px solid rgba(200,169,106,0.12)",
+              }}
               role="dialog"
               aria-modal="true"
             >
-              <div className="flex items-center justify-between px-5 py-4 border-b border-white/10">
-                <span className="text-sm font-semibold text-white">Menu</span>
+              {/* Drawer header */}
+              <div
+                className="flex items-center justify-between px-5 py-4"
+                style={{ borderBottom: "1px solid rgba(200,169,106,0.10)" }}
+              >
+                <Image
+                  src="/images/logo.jpeg"
+                  alt="BTB Global Trading"
+                  width={80}
+                  height={80}
+                  className="h-9 w-auto object-contain"
+                />
                 <button
                   onClick={close}
-                  className="inline-flex items-center justify-center rounded-lg border border-white/10 bg-white/5 p-1.5 text-white/70 hover:text-white transition"
+                  className="inline-flex items-center justify-center rounded-lg border border-white/10 bg-white/5 p-1.5 text-white/60 hover:text-white transition"
                   aria-label="Close menu"
                   type="button"
                 >
-                  <X size={16} />
+                  <X size={15} />
                 </button>
               </div>
 
-              <div className="px-4 py-5 flex flex-col gap-4">
-                <nav className="flex flex-col gap-1">
+              <div className="px-4 py-6 flex flex-col gap-5">
+                <nav className="flex flex-col gap-0.5">
                   {items.map((item) => {
                     const active = isActive(item.href);
                     return (
@@ -213,12 +248,12 @@ export default function Navbar() {
                         key={item.key}
                         href={withLocale(item.href)}
                         onClick={close}
-                        className={[
-                          "rounded-xl px-4 py-3 text-sm transition",
-                          active
-                            ? "bg-white/10 text-white font-medium"
-                            : "text-white/65 hover:bg-white/5 hover:text-white",
-                        ].join(" ")}
+                        className="relative rounded-xl px-4 py-3 text-sm font-body font-medium tracking-wide transition-all duration-200"
+                        style={{
+                          color: active ? "#C8A96A" : "rgba(255,255,255,0.65)",
+                          background: active ? "rgba(200,169,106,0.06)" : "transparent",
+                          borderLeft: active ? "2px solid rgba(200,169,106,0.5)" : "2px solid transparent",
+                        }}
                       >
                         {t(item.key)}
                       </Link>
@@ -229,17 +264,16 @@ export default function Navbar() {
                 <Link
                   href={`/${locale}/contact-us`}
                   onClick={close}
-                  className="flex items-center justify-center rounded-full py-2.5 text-sm font-semibold text-black tracking-wide"
-                  style={{
-                    background:
-                      "linear-gradient(90deg, rgba(197,146,42,1), rgba(21,45,86,1))",
-                  }}
+                  className="btn-gold w-full justify-center"
                 >
-                  {t("contactSales")}
+                  {t("bookACall")}
                 </Link>
 
-                <div className="flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3">
-                  <span className="text-xs text-white/45 uppercase tracking-widest">Language</span>
+                <div
+                  className="flex items-center justify-between rounded-xl px-4 py-3"
+                  style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)" }}
+                >
+                  <span className="text-[10px] text-white/35 uppercase tracking-widest font-body">Language</span>
                   <LanguageSwitcher />
                 </div>
               </div>

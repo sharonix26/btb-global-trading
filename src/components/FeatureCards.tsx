@@ -1,42 +1,43 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { Globe, DollarSign, Ship } from "lucide-react";
 import { useTranslations } from "next-intl";
 import React from "react";
 
-const container = {
+const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
+
+const stagger: Variants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.12, delayChildren: 0.05 } },
+  show: { transition: { staggerChildren: 0.14, delayChildren: 0.05 } },
 };
 
-const item = {
-  hidden: { opacity: 0, y: 20 },
+const item: Variants = {
+  hidden: { opacity: 0, y: 24 },
   show: {
-    opacity: 1,
-    y: 0,
-    transition: { type: "spring" as const, stiffness: 260, damping: 24 },
+    opacity: 1, y: 0,
+    transition: { duration: 0.7, ease: EASE },
   },
 };
 
 const CARDS = [
   {
     num: "01",
-    key: "globalPayments" as const,
+    key: "globalSettlements" as const,
     icon: Globe,
-    accent: "rgba(197,146,42,0.7)",
+    accentColor: "#C8A96A",
   },
   {
     num: "02",
     key: "fxTreasury" as const,
     icon: DollarSign,
-    accent: "rgba(21,45,86,0.7)",
+    accentColor: "#4a7fb5",
   },
   {
     num: "03",
-    key: "tradeSupport" as const,
+    key: "tradeDealSupport" as const,
     icon: Ship,
-    accent: "rgba(12,31,63,0.7)",
+    accentColor: "#2d5a8a",
   },
 ];
 
@@ -44,46 +45,68 @@ export default function FeatureCards() {
   const t = useTranslations("home");
 
   return (
-    <section className="px-6 py-20 mx-auto max-w-6xl">
+    <section className="px-6 py-24 md:py-28 mx-auto max-w-7xl">
+      {/* Section header */}
       <motion.div
-        variants={container}
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        className="mb-14"
+      >
+        <span className="section-label">{t("whatWeDo.sectionLabel")}</span>
+        <div className="gold-line" />
+      </motion.div>
+
+      <motion.div
+        variants={stagger}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.25 }}
+        viewport={{ once: true, amount: 0.2 }}
         className="grid gap-5 md:grid-cols-3"
       >
-        {CARDS.map(({ num, key, icon: Icon, accent }) => (
+        {CARDS.map(({ num, key, icon: Icon, accentColor }) => (
           <motion.div
             key={key}
             variants={item}
-            className="group relative rounded-2xl border border-white/10 bg-[#0b0e14] p-7 overflow-hidden transition-colors hover:border-white/20"
+            className="card-luxury group p-8"
           >
-            {/* Top accent line */}
+            {/* Top accent glow bar */}
             <div
-              className="absolute inset-x-0 top-0 h-[2px]"
+              className="absolute inset-x-0 top-0 h-[2px] transition-opacity duration-500 group-hover:opacity-100"
               style={{
-                background: `linear-gradient(90deg, ${accent}, transparent)`,
+                background: `linear-gradient(90deg, ${accentColor}, transparent)`,
+                opacity: 0.5,
               }}
             />
 
-            {/* Number label */}
-            <div className="text-[11px] font-mono tracking-[0.18em] text-white/30 mb-5">
+            {/* Ghost number */}
+            <div
+              className="absolute top-5 right-6 font-display text-5xl font-light select-none pointer-events-none transition-opacity duration-300"
+              style={{ color: `${accentColor}10` }}
+            >
               {num}
             </div>
 
-            {/* Icon */}
-            <div className="mb-5 inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/5 p-3">
-              <Icon size={20} className="text-white/80" />
+            {/* Icon — gold tinted box */}
+            <div
+              className="mb-6 inline-flex items-center justify-center rounded-xl p-3 transition-all duration-300 group-hover:scale-105"
+              style={{
+                background: `${accentColor}12`,
+                border: `1px solid ${accentColor}28`,
+              }}
+            >
+              <Icon size={22} style={{ color: accentColor }} />
             </div>
 
             {/* Title */}
-            <h3 className="text-base font-semibold text-white leading-snug">
-              {t(`features.${key}.title`)}
+            <h3 className="font-display text-xl md:text-2xl font-medium text-white leading-snug mb-3">
+              {t(`whatWeDo.${key}.title`)}
             </h3>
 
             {/* Body */}
-            <p className="mt-3 text-sm text-white/60 leading-relaxed">
-              {t(`features.${key}.body`)}
+            <p className="text-sm text-white/55 leading-relaxed font-body">
+              {t(`whatWeDo.${key}.body`)}
             </p>
           </motion.div>
         ))}

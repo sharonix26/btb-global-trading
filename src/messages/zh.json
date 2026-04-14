@@ -4,150 +4,262 @@
     "services": "服务",
     "about": "关于我们",
     "contact": "联系我们",
-    "contactSales": "联系销售"
+    "bookACall": "预约通话"
   },
   "home": {
     "hero": {
-      "titleLine1": "跨境金融基础设施，",
-      "titleLine2": "专为全球业务而建。",
-      "subtitle": "BTB 通过持牌合作伙伴协调受监管金融基础设施--专为国际结算、外汇业务及跨境贸易执行而构建。",
-      "cta": "联系销售"
+      "title": "通过持牌合作伙伴实现跨境结算与资金管理协调",
+      "subtitle": "BTB 协调复杂通道中的国际结算、外汇执行及贸易支付运营。",
+      "bookACall": "预约通话",
+      "seeServices": "了解服务"
     },
-    "features": {
-      "globalPayments": {
-        "title": "全球支付",
-        "body": "通过合规渠道，在关键通道上执行多币种 B2B 结算。"
+    "trust": {
+      "euBased": "欧盟注册",
+      "warsawHQ": "华沙总部",
+      "licensedPartner": "持牌合作伙伴模式",
+      "multiCurrency": "多币种"
+    },
+    "whatWeDo": {
+      "sectionLabel": "我们的业务",
+      "globalSettlements": {
+        "title": "全球结算",
+        "body": "通过可信赖的基础设施及适用的持牌合作伙伴，协调跨境支付流程与结算。"
       },
       "fxTreasury": {
-        "title": "外汇与资金管理",
-        "body": "提供执行与规划支持，优化汇率时机、资金管控与外汇风险敞口管理。"
+        "title": "外汇与资金协调",
+        "body": "支持结构化外汇执行规划、资金管理时机安排及多币种运营流程。"
       },
-      "tradeSupport": {
+      "tradeDealSupport": {
         "title": "贸易与交易支持",
-        "body": "为具有区域复杂性的跨境交易提供执行支持--大多数平台止步之处，我们才刚刚开始。"
+        "body": "支持跨境贸易支付安排、商业交易协调及复杂交易相关的支付结构。"
       }
     },
-    "aboutSection": {
-      "title": "关于 BTB Global Trading",
-      "body": "BTB Global Trading 是一家欧盟注册公司，总部位于波兰华沙。我们通过持牌合作伙伴协调提供受监管金融基础设施的接入--服务于受监管市场中的进口商、出口商、企业财务团队及个人客户。我们帮助客户以有序、清晰、高效的方式调动资金。交易由持牌金融合作伙伴执行。"
+    "whoWeServe": {
+      "sectionLabel": "服务对象",
+      "importersExporters": {
+        "title": "进口商 / 出口商",
+        "body": "管理国际供应商、采购方及跨境支付义务的企业。"
+      },
+      "cfosTreasury": {
+        "title": "首席财务官 / 财务团队",
+        "body": "需要运营可视性、通道规划及结构化多币种协调的企业。"
+      },
+      "internationalOperators": {
+        "title": "国际运营商 / 平台",
+        "body": "拥有国际资金流、需要跨市场、交易对手方及多司法管辖区可靠支持的企业。"
+      },
+      "privateInternational": {
+        "title": "私人国际事务",
+        "body": "特定私人跨境事务，包括教育支持、家庭汇款、遗产协调及国际转账结构安排。"
+      }
     },
-    "whyChoose": {
+    "howItWorks": {
+      "sectionLabel": "服务流程",
+      "review": {
+        "title": "初步评估",
+        "body": "评估市场、货币、时机及运营需求。"
+      },
+      "corridorMapping": {
+        "title": "通道梳理",
+        "body": "确定路由逻辑与执行注意事项。"
+      },
+      "partnerStructuring": {
+        "title": "合作伙伴安排",
+        "body": "涉及受监管环节时，通过持牌合作伙伴进行执行对接。"
+      },
+      "executionSupport": {
+        "title": "执行支持",
+        "body": "全程参与协调、沟通与流程跟进，确保清晰透明。"
+      }
+    },
+    "whyBTB": {
+      "sectionLabel": "为何选择 BTB",
       "title": "为什么选择 BTB？",
-      "subtitle": "",
-      "points": {
-        "euCompliance": "欧盟受监管金融基础设施",
-        "personalizedGuidance": "直接沟通，无繁琐流程",
-        "crossBorderExpertise": "覆盖主要及新兴市场",
-        "fastSecureTransactions": "灵活结构化方案，适配真实运营需求"
-      }
+      "operationalClarity": "流程透明",
+      "directSupport": "直接支持",
+      "crossBorderExpertise": "跨境专业能力",
+      "structuredCoordination": "结构化协调"
+    }
+  },
+  "services": {
+    "hero": {
+      "title": "我们提供的服务",
+      "subtitle": "BTB 与可信赖的持牌合作伙伴协作，协调国际结算、外汇执行及贸易支付运营。"
+    },
+    "cta": "预约通话",
+    "bestForLabel": "适合对象",
+    "keyCapabilitiesLabel": "核心能力",
+    "typicalExampleLabel": "典型案例",
+    "globalSettlements": {
+      "title": "全球结算",
+      "overview": "通过合规渠道执行跨境结算，支持欧洲、拉丁美洲、中东及亚洲主要贸易通道中的多币种 B2B 支付。",
+      "bestFor": "进口商 / 出口商；国际企业；多司法管辖区运营集团。",
+      "keyCapabilities": [
+        "多币种结算",
+        "B2B 供应商及运营支付",
+        "文件准备",
+        "多条通道支持当日 / 次日执行",
+        "符合合规流程的结算结构安排"
+      ],
+      "typicalExample": "跨多个国家和货币的国际供应商付款协调。"
+    },
+    "fxTreasury": {
+      "title": "外汇执行与资金管理协调",
+      "overview": "跨司法管辖区实现更优的外汇执行、时机把握与管控，帮助财务团队高效管理货币流。",
+      "bestFor": "首席财务官；资金管理人；财务部门；存在周期性多币种敞口的企业。",
+      "keyCapabilities": [
+        "外汇兑换执行可视化",
+        "通过合作伙伴方案提供套期保值支持（如适用）",
+        "资金时机与现金流规划",
+        "分阶段结算",
+        "多方资金流"
+      ]
+    },
+    "tradeSupport": {
+      "title": "贸易与交易支持",
+      "overview": "为国际贸易支付的协调、文件管理、时机把控及运营细节提供执行支持。",
+      "bestFor": "贸易运营商；交易撮合方；平台 / 集成商；涉及复杂商业交易的企业。",
+      "keyCapabilities": [
+        "适用时提供交易对手方筛查支持",
+        "文件包审核",
+        "多方协调",
+        "与结算里程碑挂钩的货币敞口规划",
+        "与贸易里程碑对齐的付款时间安排"
+      ]
     }
   },
   "about": {
     "hero": {
-      "title": "关于我们",
+      "title": "关于 BTB",
       "imageAlt": "全球网络",
-      "description": "BTB Global Trading 是一家总部位于波兰华沙的欧洲私营公司。我们通过持牌合作伙伴网络，提供受监管金融基础设施的接入。我们的角色是协调、支持并简化复杂的跨境金融运营。我们帮助企业和个人客户与可信赖的金融合作伙伴建立联系，管理运营复杂性，确保全球资金流动高效运转并完全合规。",
-      "ctaPrimary": "联系销售",
-      "ctaSecondary": "了解更多"
+      "description": "面向国际结算、外汇及跨境贸易的欧盟注册金融协调服务 — 通过持牌合作伙伴进行协调。",
+      "ctaPrimary": "预约通话",
+      "ctaSecondary": "合作对象"
     },
-    "whoWeAre": {
-      "title": "我们是谁",
-      "description": "BTB Global Trading 是一家总部位于波兰华沙的欧洲私营公司。我们通过持牌合作伙伴网络，提供受监管金融基础设施的接入。我们的角色是协调、支持并简化复杂的跨境金融运营。我们帮助企业和个人客户与可信赖的金融合作伙伴建立联系，管理运营复杂性，确保全球资金流动高效运转并完全合规。",
-      "features": {
-        "coordination": {
-          "title": "协调执行",
-          "text": "通过持牌合作伙伴统筹执行，推动流程端到端顺畅运行。"
-        },
-        "compliance": {
-          "title": "合规优先",
-          "text": "流程与不同司法辖区的监管框架保持一致。"
-        },
-        "crossBorder": {
-          "title": "跨境聚焦",
-          "text": "面向国际资金流、多币种需求与复杂清算路径而设计。"
-        },
-        "visibility": {
-          "title": "运营透明",
-          "text": "对步骤、时间线与相关对手方提供清晰可视化。"
-        }
+    "companyOverview": {
+      "title": "公司简介",
+      "euBased": {
+        "title": "欧盟注册",
+        "body": "专注于跨境金融协调的欧洲业务核心。"
+      },
+      "warsawHQ": {
+        "title": "华沙总部",
+        "body": "总部位于波兰华沙。"
+      },
+      "partnerLed": {
+        "title": "合作伙伴主导模式",
+        "body": "BTB 通过可信赖的持牌金融合作伙伴协调准入与执行支持（如适用）。"
+      },
+      "complianceFirst": {
+        "title": "合规优先",
+        "body": "运营规范性与合规合作伙伴对接已内嵌于整体业务流程之中。"
       }
     },
-    "builtFor": {
-      "title": "我们为这些需求而打造",
-      "subtitle": "我们支持需要以下能力的机构与个人：",
-      "bullets": [
-        "可靠、准确的国际清算与结算。",
-        "透明的外汇（FX）执行与清晰的运营可视化。",
-        "跨时区、跨币种、跨监管框架的协同支持。",
-        "通过多地持牌金融机构实现完全合规。"
-      ]
+    "howOperates": {
+      "title": "BTB 的运营方式",
+      "operationalClarity": {
+        "title": "流程透明",
+        "body": "明确的步骤、可视化进展及跨境流程结构。"
+      },
+      "directSupport": {
+        "title": "直接支持",
+        "body": "全程提供务实、人性化的沟通与服务。"
+      },
+      "crossBorderPrecision": {
+        "title": "跨境精准执行",
+        "body": "关注通道实际情况、时机安排、交易对手方及文件要求。"
+      },
+      "structuredCoordination": {
+        "title": "结构化协调",
+        "body": "以严谨规范的模型处理复杂运营流程。"
+      }
     },
     "operate": {
-      "title": "我们的覆盖区域",
-      "regions": "欧盟 - 以色列 - 土耳其 - 阿联酋 - 拉丁美洲 - 中国"
+      "title": "业务覆盖区域",
+      "regions": "欧盟 — 以色列 — 土耳其 — 阿联酋 — 拉丁美洲"
     },
     "workWith": {
-      "title": "我们服务的对象",
-      "cards": {
-        "importers": {
-          "title": "进口商、出口商与全球供应链",
-          "items": [
-            "为国际贸易提供高效的 B2B 支付流程。",
-            "高效外汇执行，帮助管理汇率风险敞口。",
-            "合规流程支持，提升跨境运营顺畅度。"
-          ]
+      "title": "合作对象",
+      "importersExporters": "进口商 / 出口商",
+      "treasuryTeams": "财务管理团队",
+      "internationalOperators": "国际运营商",
+      "privateInternational": "私人国际事务"
+    }
+  },
+  "contact": {
+    "hero": {
+      "title": "联系 BTB",
+      "subtitle": "请告知您的目标市场、货币需求、时间安排及运营要求。",
+      "body1": "请告知您的目标市场、货币需求、时间安排及运营要求。"
+    },
+    "touch": {
+      "title": "与我们联系",
+      "inquiryGuide": {
+        "title": "联系时请提供以下信息：",
+        "markets": "目标市场",
+        "currencies": "货币",
+        "volume": "预计交易量",
+        "timeline": "时间安排"
+      },
+      "items": {
+        "email": {
+          "label": "电子邮件",
+          "value": "info@btbpayments.com"
         },
-        "cfos": {
-          "title": "CFO、资金团队与财务部门",
-          "items": [
-            "提升运营可视化，强化财务控制。",
-            "可靠、准确的国际结算。",
-            "支持处理复杂监管框架。"
-          ]
+        "phone1": {
+          "label": "电话（以色列）",
+          "value": "+972 58-515-5340",
+          "tel": "+972585155340"
         },
-        "logistics": {
-          "title": "国际物流服务商与 B2B 平台",
-          "items": [
-            "跨时区与多币种的协同支持。",
-            "简化复杂的跨境金融运营。",
-            "接入受监管金融基础设施。"
-          ]
+        "whatsapp": {
+          "label": "WhatsApp（波兰）",
+          "value": "+48 510 436 128",
+          "href": "https://wa.me/48510436128"
         },
-        "private": {
-          "title": "个人客户与家族办公室",
-          "items": [
-            "以专业方式处理跨境资金需求。",
-            "可靠、准确的国际结算。",
-            "需进行准入（onboarding）与合规核验。"
-          ]
-        },
-        "partners": {
-          "title": "持牌金融合作伙伴",
-          "items": [
-            "可信赖的受监管合作机构网络。",
-            "确保所有交易符合监管要求。",
-            "促进全球范围内安全高效的金融运营。"
-          ]
-        },
-        "security": {
-          "title": "合规与安全导向",
-          "items": [
-            "遵循欧盟监管标准。",
-            "对所有交易采用稳健的安全措施。",
-            "与完全持牌的金融机构合作。"
-          ]
+        "linkedin": {
+          "label": "LinkedIn",
+          "value": "BTB Global Trading",
+          "href": "https://www.linkedin.com/company/btbpayments/"
         }
       }
     },
-    "cta": {
-      "title": "准备好精准调动资金了吗？",
-      "button": "联系销售"
+    "form": {
+      "title": "给我们发送消息",
+      "fields": {
+        "name": "姓名",
+        "company": "公司",
+        "email": "电子邮件",
+        "country": "国家",
+        "service": "您需要哪方面的帮助？",
+        "message": "留言"
+      },
+      "placeholders": {
+        "name": "您的全名",
+        "company": "公司名称",
+        "email": "your.email@example.com",
+        "country": "所在国家",
+        "message": "您的留言..."
+      },
+      "serviceOptions": {
+        "globalSettlements": "全球结算",
+        "fxTreasury": "外汇与资金协调",
+        "tradeSupport": "贸易与交易支持",
+        "privateCase": "私人国际事务",
+        "general": "一般咨询"
+      },
+      "selectService": "请选择服务...",
+      "submit": "提交留言",
+      "sending": "发送中...",
+      "sent": "留言已发送！",
+      "error": "出现错误，请重试。",
+      "disclaimer": "受监管环节由持牌合作伙伴执行（如适用）。可能涉及客户入职、通道评估及合规审查流程。"
     }
   },
   "footer": {
-    "description": "欧盟注册的金融协调机构，专注国际结算、外汇业务及跨境贸易。交易由持牌金融合作伙伴执行。",
+    "description": "面向国际结算、外汇及跨境贸易的欧盟注册金融协调服务。交易由持牌金融合作伙伴执行。",
     "company": "公司",
     "services": "服务",
+    "legal": "法律",
     "links": {
       "home": "首页",
       "about": "关于我们",
@@ -155,89 +267,31 @@
       "contact": "联系我们"
     },
     "serviceItems": {
-      "globalPayments": "全球支付",
-      "fxTreasury": "外汇与资金管理",
+      "globalSettlements": "全球结算",
+      "fxTreasury": "外汇与资金协调",
       "tradeSupport": "贸易与交易支持"
     },
-    "copyright": "BTB Global Trading。保留所有权利。"
+    "legalLinks": {
+      "privacy": "隐私政策",
+      "terms": "使用条款",
+      "legalNotice": "法律声明"
+    },
+    "copyright": "BTB Global Trading 版权所有。",
+    "location": "波兰华沙",
+    "email": "info@btbpayments.com"
   },
-  "services": {
-    "hero": {
-      "title": "我们提供的服务",
-      "subtitle": "BTB 为在多个国家、支付通道和币种中拥有真实运营敞口的企业提供支持。我们为国际贸易的金融层面带来清晰度、管控力与执行能力--让您的团队快速行动、保持合规一致，并降低日常结算中的摩擦。"
+  "legal": {
+    "privacy": {
+      "title": "隐私政策",
+      "subtitle": "我们如何收集、使用及保护您的信息。"
     },
-    "cta": "联系销售",
-    "globalPayments": {
-      "title": "全球支付",
-      "body": "通过合规渠道执行跨境结算。我们通过持牌、受监管的金融合作伙伴，支持欧洲、拉丁美洲、中东与亚洲等关键贸易通道的多币种 B2B 支付。",
-      "bullets": [
-        "多币种结算（EUR、USD、GBP、ILS、TRY、AED、BRL、MXN、CNY 等）。",
-        "B2B 供应商与运营付款，提供可靠追踪与文档准备支持。",
-        "多条通道可实现当日/次日执行。",
-        "付款结构设计与合规流程及运营现实相匹配。"
-      ]
+    "terms": {
+      "title": "使用条款",
+      "subtitle": "规范您使用本网站及服务的条款。"
     },
-    "fxTreasury": {
-      "title": "外汇执行与资金协调",
-      "body": "在不同司法辖区之间实现更优质的汇率执行、时机把控与资金管控。我们帮助财务团队高效管理币种流--无论是应对即时义务的快速执行，还是降低风险敞口的前瞻性规划。",
-      "bullets": [
-        "外汇兑换执行，并清晰展示兑换结构。",
-        "通过合作伙伴方案提供对冲支持（如可用且适用）。",
-        "跨币种与付款日期的资金时点与现金流规划。",
-        "按交易定制结构（拆分付款、分阶段结算、多方资金流）。"
-      ]
-    },
-    "tradeSupport": {
-      "title": "贸易与交易支持",
-      "body": "为大多数平台无法处理的运营细节提供执行支持。跨境金融中的许多问题并非支付问题--而是协调、文档和时机问题。我们帮助您管理围绕国际贸易付款的执行层。",
-      "bullets": [
-        "交易对手与供应商筛查支持（适用时进行风险与合规导向审查）。",
-        "文件包审查，确保运营准备就绪（发票、支持文件、结算流程）。",
-        "跨利益相关方与司法辖区的多方协调。",
-        "与时间线、交付成果及结算里程碑挂钩的汇率风险规划。"
-      ]
-    }
-  },
-  "contact": {
-    "hero": {
-      "title": "BTB Global Trading",
-      "subtitle": "您可信赖的国际贸易与支付合作伙伴",
-      "body1": "BTB Global Trading 总部位于波兰华沙，支持贸易金融协调与跨境支付运营。我们的使命是简化复杂的全球流程，帮助企业在不同市场高效执行。",
-      "body2": "凭借对全球通道与监管环境的深刻理解，我们通过持牌合作伙伴，为进口商、出口商与国际运营方提供定制化的协调与执行支持。",
-      "body3": "我们重视基于清晰与信任的长期合作关系。在 BTB Global Trading，顺畅的跨境支付与贸易运营支持是推动全球业务的核心。",
-      "cta": "查看服务"
-    },
-    "touch": {
-      "title": "联系我们",
-      "subtitle": "请求通话或通过 WhatsApp 联系我们，探讨您的市场、币种、时间线及结算需求。",
-      "leftTitle": "联系团队",
-      "items": {
-      "email": { "label": "邮箱", "value": "info@btbpayments.com" },
-      "phone1": { "label": "电话（以色列）", "value": "+972 58-515-5340", "tel": "+972585155340" },
-      "whatsapp": { "label": "WhatsApp（波兰）", "value": "+48 510 436 128", "href": "https://wa.me/48510436128" },
-      "linkedin": { "label": "LinkedIn", "value": "BTB Global Trading", "href": "https://www.linkedin.com/company/btbpayments/" }
-      }
-
-    },
-    "form": {
-      "title": "给我们留言",
-      "fields": {
-        "name": "姓名",
-        "email": "邮箱",
-        "subject": "主题",
-        "message": "消息"
-      },
-      "placeholders": {
-        "name": "您的姓名",
-        "email": "your.email@example.com",
-        "subject": "咨询主题",
-        "message": "请详细描述您的需求..."
-      },
-      "submit": "提交信息",
-      "sending": "发送中...",
-      "sent": "消息已发送！",
-      "error": "出现问题，请重试。",
-      "disclaimer": "提交即表示您知悉：通过受监管合作伙伴可能需要进行准入（onboarding）与合规审查。"
+    "legalNotice": {
+      "title": "法律声明",
+      "subtitle": "关于 BTB Global Trading 的法律信息。"
     }
   }
 }

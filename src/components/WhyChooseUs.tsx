@@ -2,83 +2,88 @@
 
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { Eye, Users, Compass, LayoutGrid } from "lucide-react";
 
-const EASE_OUT: [number, number, number, number] = [0.16, 1, 0.3, 1];
+const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
-const container = {
+const stagger = {
   hidden: {},
-  show: {
-    transition: { staggerChildren: 0.1, delayChildren: 0.1 },
-  },
+  show: { transition: { staggerChildren: 0.1, delayChildren: 0.08 } },
 };
 
 const item = {
-  hidden: { opacity: 0, y: 16 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.55, ease: EASE_OUT },
-  },
+  hidden: { opacity: 0, y: 18 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE } },
 };
 
 const POINTS = [
-  "euCompliance",
-  "personalizedGuidance",
-  "crossBorderExpertise",
-  "fastSecureTransactions",
-] as const;
-
-const NUMS = ["01", "02", "03", "04"];
+  { key: "operationalClarity" as const, icon: Eye },
+  { key: "directSupport"      as const, icon: Users },
+  { key: "crossBorderExpertise" as const, icon: Compass },
+  { key: "structuredCoordination" as const, icon: LayoutGrid },
+];
 
 export default function WhyChooseUs() {
   const t = useTranslations("home");
 
   return (
-    <section className="px-6 py-20 md:py-24">
-      <div className="mx-auto max-w-6xl">
-        {/* Header */}
+    <section className="px-6 py-24 md:py-28">
+      <div className="mx-auto max-w-7xl">
+
+        {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 14 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.35 }}
-          transition={{ duration: 0.6, ease: EASE_OUT }}
-          className="mb-12"
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, ease: EASE }}
+          className="mb-14"
         >
-          <div className="text-[11px] tracking-[0.22em] text-white/40 uppercase mb-4">
-            Why BTB
-          </div>
-          <h2 className="text-3xl md:text-4xl font-semibold text-white">
-            {t("whyChoose.title")}
+          <span className="section-label">{t("whyBTB.sectionLabel")}</span>
+          <div className="gold-line" />
+          <h2 className="font-display text-4xl md:text-5xl font-light text-white leading-tight mt-1">
+            {t("whyBTB.title")}
           </h2>
-          <p className="mt-3 text-sm md:text-base text-white/55 max-w-xl">
-            {t("whyChoose.subtitle")}
-          </p>
         </motion.div>
 
-        {/* 2×2 grid */}
+        {/* 2 × 2 grid */}
         <motion.div
-          variants={container}
+          variants={stagger}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.15 }}
           className="grid gap-4 sm:grid-cols-2"
         >
-          {POINTS.map((key, idx) => (
+          {POINTS.map(({ key, icon: Icon }, idx) => (
             <motion.div
               key={key}
               variants={item}
-              className="group relative rounded-2xl border border-white/10 bg-[#0b0e14] p-6 overflow-hidden hover:border-white/20 transition-colors"
+              className="card-luxury group flex items-start gap-5 p-8"
             >
-              {/* Top accent */}
-              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-cyan-400/40 via-indigo-400/30 to-transparent" />
-
-              <div className="text-[11px] font-mono tracking-[0.18em] text-white/25 mb-4">
-                {NUMS[idx]}
+              {/* Numbered icon cluster */}
+              <div className="shrink-0 flex flex-col items-center gap-2">
+                <div
+                  className="flex items-center justify-center rounded-xl p-3 transition-all duration-300 group-hover:scale-105"
+                  style={{
+                    background: "rgba(200,169,106,0.08)",
+                    border: "1px solid rgba(200,169,106,0.18)",
+                  }}
+                >
+                  <Icon size={20} style={{ color: "#C8A96A" }} />
+                </div>
+                <span
+                  className="font-display text-xs font-light"
+                  style={{ color: "rgba(200,169,106,0.35)" }}
+                >
+                  0{idx + 1}
+                </span>
               </div>
 
-              <p className="text-sm md:text-[15px] leading-relaxed text-white/80">
-                {t(`whyChoose.points.${key}`)}
-              </p>
+              {/* Text */}
+              <div className="pt-1">
+                <p className="font-display text-xl md:text-2xl font-medium text-white leading-snug">
+                  {t(`whyBTB.${key}`)}
+                </p>
+              </div>
             </motion.div>
           ))}
         </motion.div>
